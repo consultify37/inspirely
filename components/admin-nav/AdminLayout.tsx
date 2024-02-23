@@ -1,41 +1,32 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { auth, db } from '../../firebase'
-import { onAuthStateChanged, signOut } from "firebase/auth"
-import { doc, getDoc } from 'firebase/firestore'
+import { auth } from '../../firebase'
+import { signOut } from "firebase/auth"
 import ReactLoading from 'react-loading'
 import Head from 'next/head'
+import toast from 'react-hot-toast'
+import { useAuthContext } from '../../context/AuthContext'
 
 type Props = {
   children: React.ReactNode
 }
 
 const AdminLayout = ({ children }: Props) => {
+  const { currentUser } = useAuthContext()
   const router = useRouter()
+  const path = usePathname()
   const [isLoadingSignout, setIsLoadingSignout] = useState(false)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const userDoc = doc(db, 'users', user.uid)
-        const userDocSnap = await getDoc(userDoc)
-        const userDocData: any = userDocSnap.data()
-        
-        if ( !userDocData.roles ) {
-          router.push('/admin/login')
-        } else if ( !userDocData.roles.includes("admin")) {
-          router.push('/admin/login')
-        }
 
-      } else {
-        router.push('/admin/login')
-      }
-    })
+    if ( !currentUser || !currentUser.roles || (!currentUser!.roles.includes("editor") && !currentUser!.roles.includes("admin") ) ) {
+      toast.error('Nu aveți permisii suficiente să accesați această pagină.', { duration: 3000 })
+      router.push('/admin/login')
+    }
 
-    return () => unsubscribe()
-  }, [router])
+  }, [router, currentUser])
 
   const signout = async () => {
     setIsLoadingSignout(true)
@@ -44,9 +35,9 @@ const AdminLayout = ({ children }: Props) => {
   }
 
   return (
-    <>
+    <div>
       <Head>
-        <title>Socialy | Admin</title>
+        <title>Inspirely | Admin</title>
       </Head>
       <div className='flex flex-row w-screen min-h-screen p-4'>
         <div className='bg-secondary fixed rounded-3xl w-1/5 min-w-[256px] max-w-80 mr-8 h-[calc(100vh-32px)] flex flex-col justify-between p-4'>
@@ -55,23 +46,105 @@ const AdminLayout = ({ children }: Props) => {
               src="/images/logo.svg"
               width={120}
               height={38}
-              className="align-middle w-[180px] mt-6 ml-6"
+              className=" w-[180px] mt-6 ml-6"
               alt="Consultify logo"
             />
-            <div className='flex flex-col mt-16 gap-y-6 ml-6'>
-              <Link href='/admin/slide-homepage'>
+            <div className='bg-white rounded-xl w-[calc(100%-16px)] p-2 flex flex-row items-center mt-8 ml-2'>
+              <Image 
+                src={currentUser && currentUser.profilePic ? currentUser.profilePic.image : '/images/person.jpeg' }
+                width={512}
+                height={512}
+                alt={currentUser?.name || 'profil' }
+                className='w-16 h-16 object-cover rounded-full mr-2'
+              />
+              <div>
+                <p className='text-[16px] text-secondary font-bold mt-1'>{currentUser?.name || ""}</p>
+                <p className='relative -top-1 text-[14px] text-[#787878] font-semibold'>{currentUser?.role || ""}</p>
+              </div>
+            </div>
+            <div className='flex flex-col mt-8 gap-y-6 ml-6'>
+              <Link href='/admin' className='flex flex-row items-center'>
+                <Image 
+                  src='/images/admin/dashboard.svg'
+                  width={32}
+                  height={32}
+                  alt='window'
+                  className='w-4 h-4 mr-[10px]'
+                />
                 <p className='text-lg font-bold text-onSecondary'>
-                  slide homepage
+                  dashboard
                 </p>
               </Link>
-              <Link href='/admin/categorii-campanii'>
+              <Link href='/admin/slide-homepage' className='flex flex-row items-center'>
+                <Image 
+                  src='/images/admin/window.svg'
+                  width={32}
+                  height={32}
+                  alt='window'
+                  className='w-4 h-4 mr-[10px]'
+                />
                 <p className='text-lg font-bold text-onSecondary'>
-                  categorii campanii
+                  homepage
                 </p>
               </Link>
-              <Link href='/admin/campanii'>
+              <Link href='/admin/e-commerce' className='flex flex-row items-center'>
+                <Image 
+                  src='/images/admin/e-commerce.svg'
+                  width={32}
+                  height={32}
+                  alt='window'
+                  className='w-4 h-4 mr-[10px]'
+                />
                 <p className='text-lg font-bold text-onSecondary'>
-                  campanii
+                  e-commerce
+                </p>
+              </Link>
+              <Link href='/admin/produse' className='flex flex-row items-center'>
+                <Image 
+                  src='/images/admin/products.svg'
+                  width={32}
+                  height={32}
+                  alt='window'
+                  className='w-4 h-4 mr-[10px]'
+                />
+                <p className='text-lg font-bold text-onSecondary'>
+                  produse
+                </p>
+              </Link>
+              <Link href='/admin/categorii-produse'className='flex flex-row items-center'>
+                <Image 
+                  src='/images/admin/apps 1.svg'
+                  width={32}
+                  height={32}
+                  alt='window'
+                  className='w-4 h-4 mr-[10px]'
+                />
+                <p className='text-lg font-bold text-onSecondary'>
+                  categorii produse
+                </p>
+              </Link>
+              <Link href='/admin/blog'className='flex flex-row items-center'>
+                <Image 
+                  src='/images/admin/blog.svg'
+                  width={32}
+                  height={32}
+                  alt='window'
+                  className='w-4 h-4 mr-[10px]'
+                />
+                <p className='text-lg font-bold text-onSecondary'>
+                  blog
+                </p>
+              </Link>
+              <Link href='/admin/users'className='flex flex-row items-center'>
+                <Image 
+                  src='/images/admin/user.svg'
+                  width={32}
+                  height={32}
+                  alt='window'
+                  className='w-4 h-4 mr-[10px]'
+                />
+                <p className='text-lg font-bold text-onSecondary'>
+                  users
                 </p>
               </Link>
             </div>
@@ -79,7 +152,7 @@ const AdminLayout = ({ children }: Props) => {
 
           { isLoadingSignout ?
             <div className='w-full flex flex-col items-center justify-center'>
-              <ReactLoading type="spin" color="#8717F8" width={32} height={32} />
+              <ReactLoading type="spin" color="#0F52FF" width={32} height={32} />
             </div> :
             <button 
               className="bg-primary font-bold flex items-center justify-center w-full mx-auto px-12 py-3 text-onPrimary rounded-[28.5px] hover:scale-[1.05] transition-all"
@@ -91,11 +164,16 @@ const AdminLayout = ({ children }: Props) => {
         </div>
         <div className='w-1/5 min-w-[256px] max-w-80 mr-8 h-[calc(100vh-32px)]'></div>
 
-        <div className='bg-admin-background rounded-3xl w-[calc(80%-32px)] min-h-[calc(100vh-32px)] p-12'>
-          { children } 
-        </div>
+        { !path?.includes('admin/users/user/') ?
+          <div className='bg-admin-background rounded-3xl w-[calc(80%-32px)] min-h-[calc(100vh-32px)] p-12'>
+            { children } 
+          </div>:
+          <div className='w-[calc(80%-32px)] min-h-[calc(100vh-32px)]'>
+            { children }
+          </div>
+        }
       </div>
-    </>
+    </div>
   )
 }
 

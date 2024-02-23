@@ -15,7 +15,7 @@ const SlideHomePageImages = ({ slides, handleDelete, isFetching }: Props) => {
       {
         isFetching ?
         <div className='flex flex-col justify-center items-center h-full w-[242px] xl:w-[484px]'>
-          <ReactLoading type="spin" color="#0CFF00" width={32} height={32} />
+          <ReactLoading type="spin" color="#0F52FF" width={32} height={32} />
         </div> : 
         <div className='flex flex-col'>
           {
@@ -29,9 +29,9 @@ const SlideHomePageImages = ({ slides, handleDelete, isFetching }: Props) => {
                   className='rounded-xl bg-[#e6e6e6] h-[186px] w-[484px] mb-4 object-cover'
                 />
                 <svg width="24" height="24" className='absolute top-4 right-4 cursor-pointer hover:scale-[1.05] transition-all' onClick={() => handleDelete(image)} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#0CFF00"/>
-                  <rect x="14.8281" y="7.75732" width="2" height="10" rx="1" transform="rotate(45 14.8281 7.75732)" fill="#0CFF00"/>
-                  <rect x="16.2422" y="14.8284" width="2" height="10" rx="1" transform="rotate(135 16.2422 14.8284)" fill="#0CFF00"/>
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="#0F52FF"/>
+                  <rect x="14.8281" y="7.75732" width="2" height="10" rx="1" transform="rotate(45 14.8281 7.75732)" fill="#0F52FF"/>
+                  <rect x="16.2422" y="14.8284" width="2" height="10" rx="1" transform="rotate(135 16.2422 14.8284)" fill="#0F52FF"/>
                 </svg>
               </div>
             ))

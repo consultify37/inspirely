@@ -5,7 +5,7 @@ import { email, facebook, instagram, tiktok } from "../../utils/constants";
 
 export default function TopBar() {
     return(
-        <div className="fixed w-full z-[999] bg-[#202020]">
+        <div className="fixed w-full z-[999] bg-primary">
             <div className="flex flex-row items-center justify-between mx-4 py-2 md:mx-[80px] xl:mx-[140px] 2xl:mx-[276px]">
                 <Link href='tel:0727153317' className="flex sm:hidden flex-row items-center text-white text-[12px] md:text-[16px] mr-2 hover:scale-105 transition-all">
                     <Image src='/images/TopBar/phone.svg' width={10} height={10} alt="phone" className="w-[14px] md:w-[20px] mr-1 lg:ml-2 lg:mr-2"/>

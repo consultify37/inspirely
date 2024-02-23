@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import { auth, db } from '../../../firebase'
+import { auth } from '../../../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import ReactLoading from 'react-loading'
 import toast from 'react-hot-toast'
@@ -64,7 +64,7 @@ const Login = () => {
           
           <div className='mt-8 flex flex-col w-full items-center'>
             { isLoading ?
-              <ReactLoading type="spin" color="#8717F8" width={32} height={32} /> :
+              <ReactLoading type="spin" color="#0CFF00" width={32} height={32} /> :
               <button 
                 type='submit' 
                 className='py-4 bg-primary flex items-center justify-center rounded-full w-full transition-all hover:scale-[1.05]'

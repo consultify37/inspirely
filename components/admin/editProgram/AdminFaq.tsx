@@ -31,7 +31,7 @@ const AdminFaq = ({ faqs, setFaqs }: Props) => {
   }
 
   return (
-    <div className='flex flex-row my-8'>
+    <div className='flex flex-row'>
       <div className='flex flex-col w-[calc(50%-32px)] min-w-[220px] max-w-[480px] mr-16'>
         <FormInput 
           value={newQuestion}

@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         var uploadUrl = response.data.uploadUrl
     	  var uploadAuthorizationToken = response.data.authorizationToken
         var source = fs.readFileSync(filePath)
-        var fileName = file.newFilename+'.webp'
+        var fileName = file.newFilename + '.' + file.mimetype.split('/')[1]
 
         var sha1 = crypto.createHash('sha1').update(source).digest("hex");
     

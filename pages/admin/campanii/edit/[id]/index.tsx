@@ -9,7 +9,7 @@ import Conditions from '../../../../../components/admin/editProgram/Conditions'
 import AdminFaq from '../../../../../components/admin/editProgram/AdminFaq'
 import { Condition, Faq, Program } from '../../../../../types'
 import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore'
-import { db } from '../../../../../firebase'
+import { auth, db } from '../../../../../firebase'
 import { uploadFile } from '../../../../../utils/b2_storage/upload_file'
 import { useRouter } from 'next/navigation'
 import ReactLoading from 'react-loading'
@@ -68,7 +68,7 @@ const EditProgram = ({ categories, program }: Props) => {
           throw e
         }
       } else {
-        newImaginePrincipala = oldImaginePrincipala?.file
+        newImaginePrincipala = oldImaginePrincipala ? oldImaginePrincipala.file : null
       }
 
       if ( typeof backgroundImage != 'string' && backgroundImage != oldBackgroundImage )  {
@@ -79,7 +79,7 @@ const EditProgram = ({ categories, program }: Props) => {
           throw e
         }
       } else {
-        newBackgroundImage = oldBackgroundImage?.file
+        newBackgroundImage = oldBackgroundImage ? oldBackgroundImage.file : null
       }
 
       const newData = {
@@ -97,12 +97,13 @@ const EditProgram = ({ categories, program }: Props) => {
         descriere3,
         conditions,
         faqs,
-        imaginePrincipala: { file: newImaginePrincipala, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newImaginePrincipala.fileName}` },
-        backgroundImage: { file: newBackgroundImage, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newBackgroundImage.fileName}` }
+        imaginePrincipala: newImaginePrincipala ? { file: newImaginePrincipala, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newImaginePrincipala.fileName}` } : null,
+        backgroundImage: newBackgroundImage ? { file: newBackgroundImage, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newBackgroundImage.fileName}` } : null
       }
       
       await updateDoc(doc(db, 'programe-fonduri', program.id), newData)
 
+      toast.success('Campanie modificată cu succes.', { duration: 3000 })
       router.push('/admin/campanii')
     } catch (e) {
       toast.error('Ceva nu a mers bine, încearcă din nou!')
@@ -195,7 +196,6 @@ const EditProgram = ({ categories, program }: Props) => {
           id={'fileinput1'}
         />
 
-
         <div className='flex flex-row mt-8'>
           <div className='flex flex-col w-[calc(50%-32px)] min-w-[220px] max-w-[480px] mr-16'>
             <FormInput 
@@ -262,7 +262,7 @@ const EditProgram = ({ categories, program }: Props) => {
 
         <div className='w-full flex justify-center items-center'>
           { isLoading ?
-            <ReactLoading type="spin" color="#8717F8" width={32} height={32} /> :
+            <ReactLoading type="spin" color="#0CFF00" width={32} height={32} /> :
             <button 
               type='submit'
               className="bg-primary cursor-pointer font-semibold flex items-center justify-center w-[80%] py-3 text-onPrimary rounded-lg hover:scale-[1.05] transition-all mt-8"

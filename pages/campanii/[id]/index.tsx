@@ -97,6 +97,13 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   const id = context.params.id
   const programSnap = await  getDoc(doc(db, 'programe-fonduri', id))
+
+  if ( !programSnap.exists() ) {
+    return {
+      notFound: true
+    }
+  }
+
   const program = { id: programSnap.id, ...programSnap.data() }
 
   return { 

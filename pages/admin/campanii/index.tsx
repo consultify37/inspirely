@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../../components/admin-nav/AdminLayout'
 import Link from 'next/link'
-import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
-import { db } from '../../../firebase'
+import { collection, deleteDoc, doc, getDoc, getDocs, query, where } from 'firebase/firestore'
+import { auth, db } from '../../../firebase'
 import ReactLoading from 'react-loading'
-import { Program } from '../../../types'
+import { Program, User } from '../../../types'
 import { deleteFile } from '../../../utils/b2_storage/delete_file'
 import toast from 'react-hot-toast'
 

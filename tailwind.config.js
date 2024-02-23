@@ -9,13 +9,15 @@ module.exports = {
     extend: {
       colors: {
         "transparent-white": "rgba(242, 244, 255, 0.75);",
-        "primary": "#0CFF00",
-        "onPrimary": "#000",
-        "secondary": "#0E0E0E",
+        "primary": "#0F52FF",
+        "onPrimary": "#FFF",
+        "secondary": "#00103C",
         "onSecondary": "white",
-        "tertiary": "#515151",
-        "admin-background": "#F4F4F46B",
-        "admin-card": "#EAEAEA"
+        "tertiary": "#01EA88",
+        "onTertiary": "#00103C",
+        "admin-background": "#F9FAFF",
+        "admin-card": "#E3E8FF",
+        "admin-header": "#C6CFFF"
       },
     },
   },
