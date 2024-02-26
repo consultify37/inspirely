@@ -4,7 +4,7 @@ import Link from 'next/link'
 import AdminLayout from '../../../components/admin-nav/AdminLayout'
 import Image from 'next/image'
 import Dots from '../../../components/admin/users/Dots'
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, or, query, where } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import toast from 'react-hot-toast'
 
@@ -13,7 +13,7 @@ const Users = () => {
 
   const fetchUsers = async () => {
     try {
-      const docsRef = query(collection(db, 'users'), where('roles', 'array-contains-any', ['admin','editor']))
+      const docsRef = query(collection(db, 'users'), or(where('roles', 'array-contains-any', ['admin','editor']), where('isCreating', '==', true)))
       const docsSnap = await getDocs(docsRef)
 
       const users: User[] = docsSnap.docs.map((doc) => (
@@ -72,11 +72,16 @@ const Users = () => {
               </td>
               <td className='py-4'>{user.email}</td>
               <td className='py-4'>{user.role ? user.role : "" }</td>
-              <td className='py-4' style={{color: user.inactive ? '#FF0F0F' : '#04D200'}} >{user.inactive ? 'blocat' : 'activ'}</td>
+              { user.isCreating ?
+                <td className='py-4' style={{color: '#FFA500'}} >se crează...</td> :
+                <td className='py-4' style={{color: user.inactive ? '#FF0F0F' : '#04D200'}} >{user.inactive ? 'blocat' : 'activ'}</td>
+              }
               <td className='rounded-e-lg'>
-                <Dots 
-                  to={`/admin/users/user/${user.id}`}
-                />
+                { !user.isCreating &&
+                  <Dots 
+                    to={`/admin/users/user/${user.id}`}
+                  />
+                }
               </td>
             </tr>
           )) }

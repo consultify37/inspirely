@@ -2,7 +2,7 @@ import { useContext, useState, createContext, useEffect } from "react"
 import { User } from "../types"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth, db } from "../firebase"
-import { doc, getDoc } from "firebase/firestore"
+import { doc, getDoc, onSnapshot } from "firebase/firestore"
 import ReactLoading from 'react-loading'
 import { usePathname } from "next/navigation"
 
@@ -20,6 +20,7 @@ type Props = {
 
 export const AuthContext = ({ children }: Props) => {
   const pathname = usePathname()
+  const [currentUserAuth, setCurrentUserAuth] = useState< any >(null)
   const [currentUser, setcurrentUser] = useState< User | null>(null)
   const [isLoadingAuth, setIsLoadingAuth] = useState(true)
   
@@ -28,13 +29,13 @@ export const AuthContext = ({ children }: Props) => {
       setIsLoadingAuth(true)
 
       if (user) {
+        setCurrentUserAuth(user)
         const userDoc = doc(db, 'users', user.uid)
         const userDocSnap = await getDoc(userDoc)
-        const userDocData: any = { id: userDocSnap.id, ...userDocSnap.data()}
 
-        setcurrentUser(userDocData)
+        setcurrentUser({ id: userDocSnap.id, ...userDocSnap.data() } as User)
       } else {
-        setcurrentUser(null)
+        setCurrentUserAuth(null)
       }
 
       setIsLoadingAuth(false)
@@ -42,8 +43,18 @@ export const AuthContext = ({ children }: Props) => {
 
     return () => unsubscribe()
   }, [])
-  
-  console.log(currentUser)
+
+  useEffect(() => {
+    if ( currentUserAuth ) {
+      const userDoc = doc(db, 'users', currentUserAuth.uid)
+      
+      const unsubscribe = onSnapshot(userDoc, (doc) => {
+        setcurrentUser({ id: doc.id, ...doc.data()} as User)
+      })
+
+      return () => unsubscribe()
+    }
+  }, [currentUserAuth])
 
   if ( isLoadingAuth && pathname?.includes('/admin') ) {
     return (

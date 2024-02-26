@@ -42,7 +42,7 @@ const Add = () => {
       const docs = query(collection(db, 'users'), where('email', '==', email))
       const docsSnap = await getDocs(docs)
 
-      if ( !docsSnap.empty && docsSnap.docs[0].data().roles && ( docsSnap.docs[0].data().roles.includes('editor') || docsSnap.docs[0].data().roles.includes('admin') )) {
+      if ( !docsSnap.empty ) {
         toast.error('Email deja folosit.', { duration: 3000 })
         setIsLoading(false)
         return
@@ -68,6 +68,7 @@ const Add = () => {
         name, 
         role: numeRol, 
         roles: permisiuni, 
+        isCreating: true,
         profilePic: result ? { file: result, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${result.fileName}` } : null
       }
       

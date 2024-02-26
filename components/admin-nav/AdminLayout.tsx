@@ -75,78 +75,96 @@ const AdminLayout = ({ children }: Props) => {
                   dashboard
                 </p>
               </Link>
-              <Link href='/admin/slide-homepage' className='flex flex-row items-center'>
-                <Image 
-                  src='/images/admin/window.svg'
-                  width={32}
-                  height={32}
-                  alt='window'
-                  className='w-4 h-4 mr-[10px]'
-                />
-                <p className='text-lg font-bold text-onSecondary'>
-                  homepage
-                </p>
-              </Link>
-              <Link href='/admin/e-commerce' className='flex flex-row items-center'>
-                <Image 
-                  src='/images/admin/e-commerce.svg'
-                  width={32}
-                  height={32}
-                  alt='window'
-                  className='w-4 h-4 mr-[10px]'
-                />
-                <p className='text-lg font-bold text-onSecondary'>
-                  e-commerce
-                </p>
-              </Link>
-              <Link href='/admin/produse' className='flex flex-row items-center'>
-                <Image 
-                  src='/images/admin/products.svg'
-                  width={32}
-                  height={32}
-                  alt='window'
-                  className='w-4 h-4 mr-[10px]'
-                />
-                <p className='text-lg font-bold text-onSecondary'>
-                  produse
-                </p>
-              </Link>
-              <Link href='/admin/categorii-produse'className='flex flex-row items-center'>
-                <Image 
-                  src='/images/admin/apps 1.svg'
-                  width={32}
-                  height={32}
-                  alt='window'
-                  className='w-4 h-4 mr-[10px]'
-                />
-                <p className='text-lg font-bold text-onSecondary'>
-                  categorii produse
-                </p>
-              </Link>
-              <Link href='/admin/blog'className='flex flex-row items-center'>
-                <Image 
-                  src='/images/admin/blog.svg'
-                  width={32}
-                  height={32}
-                  alt='window'
-                  className='w-4 h-4 mr-[10px]'
-                />
-                <p className='text-lg font-bold text-onSecondary'>
-                  blog
-                </p>
-              </Link>
-              <Link href='/admin/users'className='flex flex-row items-center'>
-                <Image 
-                  src='/images/admin/user.svg'
-                  width={32}
-                  height={32}
-                  alt='window'
-                  className='w-4 h-4 mr-[10px]'
-                />
-                <p className='text-lg font-bold text-onSecondary'>
-                  users
-                </p>
-              </Link>
+              { currentUser?.roles && currentUser.roles.includes('banner-homepage') &&
+                <Link href='/admin/slide-homepage' className='flex flex-row items-center'>
+                  <Image 
+                    src='/images/admin/window.svg'
+                    width={32}
+                    height={32}
+                    alt='window'
+                    className='w-4 h-4 mr-[10px]'
+                  />
+                  <p className='text-lg font-bold text-onSecondary'>
+                    homepage
+                  </p>
+                </Link>
+              }
+
+              { currentUser?.roles && currentUser.roles.includes('produse') && 
+                <Link href='/admin/e-commerce' className='flex flex-row items-center'>
+                  <Image 
+                    src='/images/admin/e-commerce.svg'
+                    width={32}
+                    height={32}
+                    alt='window'
+                    className='w-4 h-4 mr-[10px]'
+                  />
+                  <p className='text-lg font-bold text-onSecondary'>
+                    e-commerce
+                  </p>
+                </Link>
+              }
+
+              { currentUser?.roles && currentUser.roles.includes('produse') && 
+                <Link href='/admin/produse' className='flex flex-row items-center'>
+                  <Image 
+                    src='/images/admin/products.svg'
+                    width={32}
+                    height={32}
+                    alt='window'
+                    className='w-4 h-4 mr-[10px]'
+                  />
+                  <p className='text-lg font-bold text-onSecondary'>
+                    produse
+                  </p>
+                </Link>
+              } 
+
+              {
+                currentUser?.roles && currentUser.roles.includes('produse') && 
+                <Link href='/admin/categorii-produse'className='flex flex-row items-center'>
+                  <Image 
+                    src='/images/admin/apps 1.svg'
+                    width={32}
+                    height={32}
+                    alt='window'
+                    className='w-4 h-4 mr-[10px]'
+                  />
+                  <p className='text-lg font-bold text-onSecondary'>
+                    categorii produse
+                  </p>
+                </Link>
+              }
+              
+              { currentUser?.roles && currentUser.roles.includes('pagina-blog') && 
+                <Link href='/admin/blog'className='flex flex-row items-center'>
+                  <Image 
+                    src='/images/admin/blog.svg'
+                    width={32}
+                    height={32}
+                    alt='window'
+                    className='w-4 h-4 mr-[10px]'
+                  />
+                  <p className='text-lg font-bold text-onSecondary'>
+                    blog
+                  </p>
+                </Link>
+              }
+
+              { currentUser?.roles && currentUser.roles.includes('users') &&
+                <Link href='/admin/users'className='flex flex-row items-center'>
+                  <Image 
+                    src='/images/admin/user.svg'
+                    width={32}
+                    height={32}
+                    alt='window'
+                    className='w-4 h-4 mr-[10px]'
+                  />
+                  <p className='text-lg font-bold text-onSecondary'>
+                    users
+                  </p>
+                </Link>
+              }
             </div>
           </div>
 

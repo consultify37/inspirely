@@ -62,12 +62,13 @@ export type Faq2 = {
 }
 
 export type User = {
-  id: string,
-  name: string,
-  email: string,
-  role: string,
-  roles: string[],
-  inactive: boolean,
+  isCreating: string
+  id: string
+  name: string
+  email: string
+  role: string
+  roles: string[]
+  inactive: boolean
   profilePic?: { 
     file: { fileName: string, fileId: string } 
     image: string 

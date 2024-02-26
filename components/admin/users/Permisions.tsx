@@ -6,7 +6,6 @@ const Permisiuni = [
   { name: 'Banner homepage', value: 'banner-homepage'},
   { name: 'Users', value: 'users' },
   { name: 'Produse', value: 'produse' },
-  { name: 'Categorii', value: 'categorii' },
   { name: 'Consultify', value: 'consultify' },
   { name: 'Socialy', value: 'socialy' },
   { name: 'Creditfy', value: 'creditfy' }
