@@ -35,6 +35,7 @@ export const AuthContext = ({ children }: Props) => {
 
         setcurrentUser({ id: userDocSnap.id, ...userDocSnap.data() } as User)
       } else {
+        setcurrentUser(null)
         setCurrentUserAuth(null)
       }
 
