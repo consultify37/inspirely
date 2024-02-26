@@ -28,7 +28,7 @@ const Edit = ({ initialCategories, article }: Props) => {
   
   const toolbarOptions = useMemo(() => (
     {
-      container: [[{ 'header': [1, 2, 3, false] }], ['bold', 'italic',{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }, { 'color': [] }, { 'background': [] }, 'link']],
+      container: [[{ 'header': [1, 2, 3, false] }]], //[[{ 'header': [1, 2, 3, false] }], ['bold', 'italic',{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }, { 'color': [] }, { 'background': [] }, 'link']]
     }
   ), []) 
   
