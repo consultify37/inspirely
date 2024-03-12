@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { WhyUsCartItemsInterface } from "../components/Home/Why-Us/CartItem";
-import { ProductData } from "../components/Shop/Category/CategoryItems";
-import { blogData } from "../pages/blog/index";
+import React, { useEffect } from "react"
+import { Article, Product } from "../types"
 
 export const backCarousel = (
   setScrollAmount: React.Dispatch<React.SetStateAction<number>>,
@@ -31,14 +29,14 @@ export const nextCarousel = (
   );
 };
 
-export function Pagination(data: ProductData[], current: number, max: number) {
+export function Pagination(data: Product[], current: number, max: number) {
   const last = (current + 1) * max;
   const first = last - max;
   const newdata = data.slice(first, last);
   return newdata;
 }
 
-export function PaginationBlog(data: blogData[], current: number, max: number) {
+export function PaginationBlog(data: Article[], current: number, max: number) {
   const last = (current + 1) * max;
   const first = last - max;
   const newdata = data.slice(first, last);
