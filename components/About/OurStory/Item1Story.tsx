@@ -15,18 +15,18 @@ const Item1Story = () => {
         <p className="text-secondary font-normal text-[14px] md:text-base">
           Echipa noastră tânără și dinamică este dedicată clienților și lucrează individual cu fiecare dintre ei pentru a înțelege și aborda nevoile specifice. De la evaluarea inițială până la prezentarea finală a proiectului, suntem mereu alături de clienții noștri, asigurându-ne că obțin finanțarea necesară. Cu o rată de succes ridicată și o abordare personalizată, Consultify este partenerul ideal în accesarea fondurilor europene.
         </p>
-        <div className="flex gap-4 mt-4">
+        <div className="flex gap-4 mt-6">
           <Link
-            href="/campanii" 
-            className="bg-primary py-3 text-onPrimary font-semibold rounded-[28.5px] font-xl px-12 hover:scale-[1.05] transition-all"
+            href="/blog" 
+            className="bg-tertiary py-3 text-[14px] lg:text-[16px] text-onTertiary font-semibold rounded-[28.5px] px-12 hover:scale-[1.05] transition-all"
           >
-            Campanii
+            Noutăți
           </Link>
           <Link
-            href="/servicii"
-            className="py-3 bg-transparent font-semibold text-secondary flex items-center rounded-[28.5px] border-2 border-primary px-12 hover:scale-[1.05] transition-all"
+            href="/shop"
+            className="py-3 text-[14px] lg:text-[16px] bg-transparent font-semibold text-secondary flex items-center rounded-[28.5px] border-2 border-primary px-12 hover:scale-[1.05] transition-all"
           >
-            Servicii
+            Shop
           </Link>
         </div>
       </div>

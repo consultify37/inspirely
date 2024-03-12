@@ -38,7 +38,7 @@ export default function FonduriComponent({ program, index=0, carousel=false }: P
                 </h5>
                 <div className="lg:max-w-[280px] xl:max-w-[340px] 2xl:max-w-[400px]">
                     <p className={'text-white text-xs lg:text-base ' + (index % 2 === 0 ? 'text-right' : '')}>
-                        { program.text2 } bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                        { program.text2 }
                     </p>
                 </div>
             </div>

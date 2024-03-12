@@ -64,7 +64,7 @@ const Login = () => {
           
           <div className='mt-8 flex flex-col w-full items-center'>
             { isLoading ?
-              <ReactLoading type="spin" color="#0CFF00" width={32} height={32} /> :
+              <ReactLoading type="spin" color="#0F52FF" width={32} height={32} /> :
               <button 
                 type='submit' 
                 className='py-4 bg-primary flex items-center justify-center rounded-full w-full transition-all hover:scale-[1.05]'

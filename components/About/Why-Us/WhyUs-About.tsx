@@ -1,84 +1,111 @@
+import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import WhyUsItem1 from "../../Home/Why-Us/Item1"
+import WhyUs from "../../Home/WhyUs"
+import OurStats from "./OurStats"
 
-const WhyUsAbout = () => {
+export interface ProcesData {
+    id: number
+    title: string,
+    text: string,
+    titluText: string,
+}
+
+export default function WhyUsAbout(){
+    const Proces: ProcesData[] = [
+        {
+            id: 1, title: 'Analizarea societății', 
+            text: 'Primul pas în colaborarea noastră constă într-o analiză atentă a firmei dumneavoastră și identificarea programului activ care se potrivește cel mai bine cu obiectivele și nevoile afacerii dumneavoastră. Avem o echipă dedicată de specialiști cu experiență în identificarea celor mai bune programe de finanțare și înțelegerea tuturor cerințelor și criteriilor de eligibilitate. Cu noi la bord, sunteți sigur că veți fi încadrat în programul potrivit, care va maximiza șansele de a obține finanțarea dorită.',
+            titluText: "Analizarea societății și încadrarea în programul cel mai potrivit",
+        },
+        {
+            id: 2, title: 'Pregătirea documentației',
+            text: 'În pasul 2 al procesului nostru, ne concentrăm pe obținerea tuturor informațiilor necesare pentru a începe redactarea proiectului. În cadrul acestei etape, solicităm clienților noștri să ne ofere toate documentele necesare pentru a putea continua. Avem o echipă de specialiști care se ocupă de analiza atentă a informațiilor furnizate, astfel încât să ne asigurăm că proiectul este construit în conformitate cu cerințele specifice ale programului selectat. În plus, colaborăm îndeaproape cu clienții noștri pe tot parcursul procesului de redactare, pentru a ne asigura că soluțiile propuse corespund nevoilor și cerințelor lor specifice.',
+            titluText: 'Pregătirea documentației necesare pentru proiect',
+        },
+        {
+            id: 3, title: 'Depunerea proiectului', 
+            text: 'Depunerea proiectului este momentul crucial în obținerea finanțării dorite. După ce am finalizat analiza și scrierea proiectului, acesta este depus cu mare atenție la instituția responsabilă. În acest punct, noi preluăm întreaga responsabilitate și ne asigurăm că proiectul depus respectă toate criteriile și normele impuse de instituție. După depunere, urmează momentul așteptării verificării proiectului, moment în care noi monitorizăm cu atenție toate etapele procesului pentru a ne asigura că acesta are loc în cele mai bune condiții.',
+            titluText: 'Depunerea proiectului și verificarea lui',
+        },
+        {
+            id: 4, title: 'Aprobarea proiectului', 
+            text: 'Pasul 4 în procesul nostru de a ajuta clienții să obțină finanțarea necesară este primirea deciziei de aprobare a proiectului depus, un pas crucial pentru succesul afacerii dumneavoastră. În acest moment, intrăm în acțiune și demarăm procedurile de achiziție, astfel încât clientul să beneficieze de cele mai bune oferte. De asemenea, începem și perioada de implementare a proiectului, iar echipa noastră dedicată va monitoriza cu atenție fiecare etapă a acestui proces pentru a asigura succesul final.',
+            titluText: 'Aprobarea proiectului și începerea perioadei de implementare',
+        },
+        {
+            id: 5, title: 'Perioada de monitorizare', 
+            text: 'După ce am finalizat cu succes implementarea proiectului, începem perioada de monitorizare. Suntem mereu alături de tine pentru a-ți oferi consultanță și a răspunde la întrebări pe toată durata monitorizării. Este o perioadă de grație în care savurăm succesul, dar și de a verifica dacă firma este eligibilă pentru alte programe de finanțare. Suntem mândri de parteneriatele noastre și suntem pregătiți să ajutăm și alte companii să-și atingă obiectivele lor de afaceri prin proiecte finanțate cu succes.',
+            titluText: 'Perioada de monitorizare și finalizarea obligațiilor',
+        },
+    ]
+    const [procesActive, setProcesActive] = useState(false)
+    const [selectedProces, setSelectedProces] = useState(Proces[0])
+
+    const handleClick = (proces: ProcesData) => {
+        setProcesActive(true)
+        setSelectedProces(proces)
+    }
     return(
-        <section id='why-us' className='mt-[12rem] w-full relative'>
-            {/* Frames */}
-            <span className='bg-secondary rounded-[200px_250px_0px_0px] w-[115vw] md:w-[102vw] -rotate-2 absolute -left-5 -top-20 h-32' />
-            <div className="w-full flex relative flex-col justify-between items-center py-6 pb-12 md:py-12 bg-secondary px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">
-                <div className="w-full flex relative flex-col lg:flex-row justify-between items-start py-6 px-6 md:py-12 md:px-12 bg-[#1D1D1D] rounded-3xl">
-                    <Image src='/images/rezultate/triangle.svg' className="absolute md:left-[-2rem] left-[-1.5rem] top-[-3rem] md:top-[-2rem] w-[60px] md:w-[110px] h-[110px]" alt='triangle' width={146} height={146}/>
-                    <Image src='/images/rezultate/square.svg' className="absolute right-[-2.75rem] bottom-[-2.75rem] w-[99px] h-[99px]" alt='triangle' width={146} height={146}/>
+        <section className="relative w-full mt-16 md:mt-32 py-20 md:py-32">
+            <div className="w-[136%] md:w-[120%] bg-secondary h-full absolute rotate-[-2.69deg] left-[-16%] z-[-1] top-0"></div>
 
-                    <Image src='/images/rezultate/circle.svg' className="hidden lg:block absolute left-[25%] bottom-[-79px] w-[300px] h-[300px]" alt='triangle' width={250} height={250}/>
-                    <Image src='/images/rezultate/hexagon.svg' className="hidden lg:block absolute left-[5%] bottom-[-39px] w-[200px] h-[200px]" alt='triangle' width={250} height={250}/>
-
-                    <div className="flex items-start w-full flex-col md:mr-12">
-                        <h2 className="text-primary text-2xl md:text-4xl font-semibold mb-4">Iată rezultatele noastre:</h2>
-                        <p className="text-sm mb-4 md:mb-10 text-white">Cu ani de experiență în domeniul consultanței pentru fonduri europene, am ajutat numeroase companii să-și atingă obiectivele și să-și realizeze proiectele cu succes.</p>
-                        <Link className="py-3 bg-primary text-onPrimary rounded-[28.5px] font-semibold px-12 hover:scale-[1.05] transition-all" href="/contact">Contactează-ne!</Link>
+            <Image src='/images/proces/circle-proces.svg' className="hidden md:block absolute right-[-80px] top-0 w-[300px] h-[300px]" alt='triangle' width={250} height={250}/>
+            <div className="px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">
+                <h2 className="text-[#fff] text-xl lg:text-2xl xl:text-3xl text-center font-bold mb-20 md:mb-28 ">Ce putem face pentru tine?</h2>
+                <div className="w-full flex relative flex-col md:flex-row justify-between items-start">
+                    <Image src='/images/proces/triangle-proces.svg' className="absolute right-0 2xl:-right-48 bottom-0 w-[110px] h-[110px] hidden md:block" alt='triangle' width={146} height={146}/>
+                    <Image src='/images/proces/hexagon.svg' className="hidden md:block absolute bottom-0 -left-56 xl:-left-64 w-[200px] h-[200px]" alt='triangle' width={250} height={250}/>
+                    <div className="flex items-center w-full flex-col md:mr-8">
+                        {Proces.map(proces => (
+                            <div className="justify-start w-full" key={proces.id}>
+                                <button
+                                    onClick={() => handleClick(proces)}
+                                    className={`flex w-full max-w-[400px] flex-row items-center py-8 px-6 justify-start ${
+                                        proces.id == selectedProces.id
+                                            ? "bg-primary rounded-2xl mb-6 md:mb-4"
+                                            : "md:mb-4"
+                                    }`}
+                                >
+                                    <Image
+                                        src="/images/proces/check.svg"
+                                        className="mr-4"
+                                        width={31}
+                                        height={31}
+                                        alt="check"
+                                    />
+                                    <span
+                                        className={`text-lg sm:text-xl font-bold text-start ${
+                                            proces.id === selectedProces.id
+                                                ? "text-onPrimary"
+                                                : "text-onSecondary"
+                                        }`}
+                                    >
+                                        {proces.id}. {proces.title}
+                                    </span>
+                                </button>
+                                <h4 className={`text-[#fff] text-lg  ${proces.id == selectedProces.id ? "" : "hidden"} md:hidden font-semibold px-6 mb-4`}>{selectedProces.titluText}</h4>
+                                <p className={`${proces.id == selectedProces.id ? "" : "hidden"} md:hidden text-onSecondary text-[14px] px-6`}>{ proces.text }</p>
+                            </div>
+                        ))}
                     </div>
-                    <div className="grid gap-5 w-full grid-cols-2 justify-between mt-6 lg:mt-0 lg:ml-12">
-                        <div className="flex flex-col bg-[#303030] p-2 md:p-4 rounded-xl">
-                            <h6 className="text-primary text-lg md:text-3xl mb-1 font-bold">850+</h6>
-                            <span className="text-onSecondary font-semibold text-[14px] md:text-2xl mt-[-10px]">clienți fericiți</span>
-                            <p className="text-xs text-onSecondary">Peste 850 de companii din diverse domenii au obținut finanțarea dorită prin intermediul nostru.</p>
-                        </div>
-                        <div className="flex flex-col bg-[#303030] p-2 md:p-4 rounded-xl">
-                            <h6 className="text-primary text-lg md:text-3xl mb-1 font-bold">20+</h6>
-                            <span className="text-onSecondary font-semibold text-[14px] md:text-2xl mt-[-10px]">programe diferite</span>
-                            <p className="text-xs text-onSecondary">Colaborând atât cu start-up-uri, cât și cu instituții publice, ne-am specializat în proiecte din domenii variate.</p>
-                        </div>
-                        <div className="flex flex-col bg-[#303030] p-2 md:p-4 rounded-xl">
-                            <h6 className="text-primary text-lg md:text-3xl mb-1 font-bold">2</h6>
-                            <span className="text-onSecondary font-semibold text-[14px] md:text-2xl mt-[-10px]">birouri în România</span>
-                            <p className="text-xs text-onSecondary">Siguranța și confortul clienților sunt prioritățile noastre, de aceea avem birouri deschise în mai multe orașe.</p>
-                        </div>
-                        <div className="flex flex-col bg-[#303030] p-2 md:p-4 rounded-xl">
-                            <h6 className="text-primary text-lg md:text-3xl mb-1 font-bold">5+</h6>
-                            <span className="text-onSecondary font-semibold text-[14px] md:text-2xl mt-[-10px]">ani de experiență</span>
-                            <p className="text-xs text-onSecondary">Cu peste 5 ani de experiență, am ajutat oameni din diverse domenii să-și îndeplinească visurile.</p>
-                        </div>
+                    <div className="hidden md:flex w-full md:ml-8 mt-12 flex-col items-start">
+                        <h4 className="text-[#fff] text-2xl lg:text-4xl font-bold mb-8">{selectedProces.titluText}</h4>
+                        <p className="text-base font-light text-[#fff] ">{selectedProces.text}</p>
                     </div>
                 </div>
-                <h2 className='text-white font-bold text-center w-full mt-12 md:mt-24 text-xl lg:text-2xl xl:text-3xl mb-8 lg:mb-16'>De ce să alegi Consultify?</h2>
-                <div className='relative flex flex-wrap w-full lg:mt-10 justify-center items-center md:justify-between md:items-center gap-y-20'>
-                    {/* Left-Side */}
-                    <div className='mx-auto lg:mx-0 w-full z-[2] lg:w-[49%] grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-y-8'>
-                        <WhyUsItem1 
-                            src="/images/questions-comment.svg"
-                            text="Comunicare excelentă! Răspuns rapid și soluții eficiente pentru succesul proiectelor tale."
-                            title="Comunicare"
-                        />
-                        <WhyUsItem1 
-                            src="/images/rocket.svg"
-                            text="Echipă tânără, inovatoare și dinamică, aducând idei proaspete și abordări moderne."
-                            title="Spirit tânăr"
-                        />
-                        <WhyUsItem1 
-                            src="/images/chess.svg"
-                            text="Oferim o abordare individuală pentru a ne asigura că satisfacem nevoile și obiectivele fiecărui client."
-                            title="Abordare individuală"
-                        />
-                        <WhyUsItem1 
-                            src="/images/chart.svg"
-                            text="Profesionalismul nostru este evidențiat de abordarea noastră meticuloasă și atenția la detalii în fiecare proiect."
-                            title="Profesionalism"
-                        />
-                    </div>
-                    {/* Right-Side */}
-                    <div className='relative mx-auto lg:mx-0'>
-                        <Image src='/images/About/Pag - despre noi - structura misiunea noastra.png' alt='Why-Us' className='relative rounded-[35px] z-[2] w-[400px]' width={350} height={400} placeholder='blur' blurDataURL='/images/About/Pag - despre noi - structura misiunea noastra.png' />
-                        <Image src='/images/About/triangle.svg' alt='triangle' width={164} height={164} className='z-[1] absolute -top-12 -left-16' /> 
-                    </div>
-                </div>
-                <Link href='/testimoniale' className='py-3 md:py-4 bg-primary text-onPrimary rounded-[28.5px] font-semibold px-12 hover:scale-[1.05] transition-all mt-16'>Ce spun clienții noștri?</Link>
+                <Link href='/shop' className="mt-12 md:mt-4 py-3 md:py-4 font-semibold bg-primary text-onPrimary rounded-[28.5px] px-12 flex items-center justify-center w-fit mx-auto transition-all hover:scale-[1.05]">
+                    Shop
+                </Link>
             </div>
-            <Image src='/images/About/circle.svg' alt='triangle' width={164} height={164} className='z-[1] w-[300px] bottom-32 lg:w-[300px] xl:w-[340px] 2xl:w-[400px] absolute lg:bottom-64 xl:bottom-56 2xl:bottom-48 -right-48 lg:right-0' /> 
+            
+            <OurStats />
+            
+            <WhyUs inverted={true}/>
+            <Link href='/divizii' className="bg-tertiary mt-12 md:mt-24 text-[14px] md:text-[16px] flex font-semibold items-center justify-center w-[max-content] mx-auto justify-self-center px-16 py-3 md:py-4 text-onTertiary rounded-[28.5px] hover:scale-[1.05] transition-all">
+                Diviziile noastre
+            </Link>
         </section>
     )
 }
-
-export default WhyUsAbout

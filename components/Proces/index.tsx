@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import WhyUsItem1 from "../Home/Why-Us/Item1";
 
 export interface ProcesData {
     id: number;
@@ -46,13 +47,14 @@ export default function Proces(){
     }
     return(
         <section className="relative w-full mt-16 md:mt-32 py-32 px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">
-            <Image src='/images/proces/triangle-proces.svg' className="absolute right-[1rem] bottom-[3rem] w-[110px] h-[110px]" alt='triangle' width={146} height={146}/>
-            <div className="w-[122%] md:w-[120%] bg-secondary h-full absolute rotate-[-2.69deg] left-[-10%] z-[-1] top-0"></div>
+            <div className="w-[136%] md:w-[120%] bg-secondary h-full absolute rotate-[-2.69deg] left-[-15%] z-[-1] top-0"></div>
 
             <Image src='/images/proces/circle-proces.svg' className="hidden md:block absolute right-[-80px] top-0 w-[300px] h-[300px]" alt='triangle' width={250} height={250}/>
-            <Image src='/images/proces/hexagon.svg' className="hidden md:block absolute bottom-[5%] -left-12 w-[200px] h-[200px]" alt='triangle' width={250} height={250}/>
-            <h2 className="text-[#fff] text-xl lg:text-2xl xl:text-3xl text-center font-bold mb-20 md:mb-28">Ghidul nostru pentru accesarea fondurilor: <br /> Pas cu pas cu Socialy</h2>
+            
+            <h2 className="text-[#fff] text-xl lg:text-2xl xl:text-3xl text-center font-bold mb-20 md:mb-28">Ce putem face pentru tine?</h2>
             <div className="w-full flex relative flex-col md:flex-row justify-between items-start">
+                <Image src='/images/proces/triangle-proces.svg' className="absolute right-0 2xl:-right-48 bottom-0 w-[110px] h-[110px] hidden md:block" alt='triangle' width={146} height={146}/>
+                <Image src='/images/proces/hexagon.svg' className="hidden md:block absolute bottom-0 -left-56 xl:-left-64 w-[200px] h-[200px]" alt='triangle' width={250} height={250}/>
                 <div className="flex items-center w-full flex-col md:mr-8">
                     {Proces.map(proces => (
                         <div className="justify-start w-full" key={proces.id}>
@@ -64,22 +66,13 @@ export default function Proces(){
                                         : ""
                                 }`}
                             >
-                                {proces.id === selectedProces.id ? 
-                                    <Image
-                                        src="/images/proces/check-selected.svg"
-                                        className="mr-4"
-                                        width={31}
-                                        height={31}
-                                        alt="check"
-                                    /> : 
-                                    <Image
-                                        src="/images/proces/check.svg"
-                                        className="mr-4"
-                                        width={31}
-                                        height={31}
-                                        alt="check"
-                                    />
-                                }
+                                <Image
+                                    src="/images/proces/check.svg"
+                                    className="mr-4"
+                                    width={31}
+                                    height={31}
+                                    alt="check"
+                                />
                                 <span
                                     className={`text-lg sm:text-xl font-bold text-start ${
                                         proces.id === selectedProces.id
@@ -100,9 +93,83 @@ export default function Proces(){
                     <p className="text-base font-light text-[#fff] ">{selectedProces.text}</p>
                 </div>
             </div>
-            <Link href='/contact' className="mt-12 md:mt-0 py-3 md:py-4 font-semibold bg-primary text-onPrimary rounded-[28.5px] px-12 flex items-center justify-center w-fit mx-auto transition-all hover:scale-[1.05]">
+            <Link href='/contact' className="mt-12 md:mt-4 py-3 md:py-4 font-semibold bg-primary text-onPrimary rounded-[28.5px] px-12 flex items-center justify-center w-fit mx-auto transition-all hover:scale-[1.05]">
                 Contactează-ne!
             </Link>
+
+            <h2 className="text-[#fff] text-[20px] lg:text-[36px] text-center font-bold mt-16 md:mt-32">Organigrama Inspirely</h2>
+            <div className="relative flex flex-col items-center mt-8 md:mt-24 px-2">
+                <Image 
+                    src='/images/proces/proces.svg'
+                    width={512}
+                    height={512}
+                    alt="."
+                    className="w-full max-w-[360px] h-auto md:hidden"
+                />
+                <Image 
+                    src='/images/proces/proces xl.svg'
+                    width={512}
+                    height={512}
+                    alt="."
+                    className="w-full h-auto hidden md:block"
+                />
+            </div>
+
+            <Image 
+                src='/images/proces/Ellipse 35.svg'
+                width={128}
+                height={128}
+                alt="."
+                className="absolute hidden md:block w-[80px] xl:w-[90px] left-0 top-[1120px]"
+            />
+            <Image 
+                src='/images/proces/triangle-proces.svg' 
+                className="absolute hidden md:block w-[80px] xl:w-[90px] left-20 xl:left-40 top-[1320px]" 
+                alt='triangle' 
+                width={146} 
+                height={146}
+            />
+            <Image 
+                src='/images/proces/Ellipse 53.svg'
+                width={128}
+                height={128}
+                alt="."
+                className="absolute hidden md:block w-[140px] lg:w-[180px] xl:w-[240px] 2xl:w-[280px] right-0 top-[1320px] -z-[1]"
+            />
+
+            <h2 className='text-white font-bold text-center w-full mt-20 md:mt-40 text-[20px] lg:text-[32px] mb-8 lg:mb-16'>De ce să alegi Inspirely?</h2>
+            <div className='relative flex flex-wrap w-full lg:mt-10 justify-center md:justify-between gap-y-20'>
+                <div className='mx-auto lg:mx-0 w-full z-[2] lg:w-[49%] grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-y-8'>
+                    <WhyUsItem1 
+                        src="/images/questions-comment.svg"
+                        text="Comunicare excelentă! Răspuns rapid și soluții eficiente pentru succesul proiectelor tale."
+                        title="Comunicare"
+                    />
+                    <WhyUsItem1
+                        src="/images/rocket.svg"
+                        text="Echipă tânără, inovatoare și dinamică, aducând idei proaspete și abordări moderne."
+                        title="Spirit tânăr"
+                    />
+                    <WhyUsItem1 
+                        src="/images/chess.svg"
+                        text="Oferim o abordare individuală pentru a ne asigura că satisfacem nevoile și obiectivele fiecărui client."
+                        title="Abordare individuală"
+                    />
+                    <WhyUsItem1 
+                        src="/images/chart.svg"
+                        text="Profesionalismul nostru este evidențiat de abordarea noastră meticuloasă și atenția la detalii în fiecare proiect."
+                        title="Profesionalism"
+                    />
+                </div>
+                <div className='relative mx-auto lg:mx-0'>
+                    <Image src='/images/About/Pag - despre noi - structura misiunea noastra.png' alt='Why-Us' className='relative rounded-[35px] z-[2] w-[400px]' width={350} height={400} placeholder='blur' blurDataURL='/images/About/Pag - despre noi - structura misiunea noastra.png' />
+                    <Image src='/images/About/triangle.svg' alt='triangle' width={164} height={164} className='z-[1] absolute -top-12 -left-16' /> 
+                </div>
+                <div className="w-full flex justify-center mt-16">
+                    <Link href='/divizii' className='py-3 md:py-4 bg-tertiary text-onTertiary rounded-[28.5px] font-semibold px-20 hover:scale-[1.05] transition-all'>Diviziile Inspirely</Link>
+                </div>
+            </div>
+            <Image src='/images/About/circle.svg' alt='triangle' width={164} height={164} className='z-[1] w-[300px] bottom-32 lg:w-[300px] xl:w-[340px] 2xl:w-[400px] absolute lg:bottom-64 xl:bottom-56 2xl:bottom-[360px] -right-48 lg:right-0' /> 
         </section>
     )
 }

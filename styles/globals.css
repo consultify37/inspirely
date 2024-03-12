@@ -99,25 +99,25 @@ html.normal-scroll {
   @apply hover:scale-105 transition-all
 }
 
-.rec-arrow-right, .rec-arrow-right:hover, .rec-arrow-right:enabled{background-color: #0CFF00 !important; color: #fff !important; font-family: Averta-All, sans-serif !important;}
-.rec-arrow-left, .rec-arrow-left:hover, .rec-arrow-left:enabled {background-color: #0CFF00 !important; color: #fff !important; font-family: Averta-All, sans-serif !important;}
+.rec-arrow-right, .rec-arrow-right:hover, .rec-arrow-right:enabled{background-color: #0F52FF !important; color: #fff !important; font-family: Averta-All, sans-serif !important;}
+.rec-arrow-left, .rec-arrow-left:hover, .rec-arrow-left:enabled {background-color: #0F52FF !important; color: #fff !important; font-family: Averta-All, sans-serif !important;}
 .home-carousel .rec-arrow-right, .home-carousel .rec-arrow-right:hover, .home-carousel .rec-arrow-right:enabled {position: absolute; right: 36px; z-index: 20;}
 .home-carousel .rec-arrow-left, .home-carousel .rec-arrow-left:hover, .home-carousel .rec-arrow-left:enabled {position: absolute; left: 36px; z-index: 20;}
 
 .carousel-programe .rec-arrow-right, .carousel-programe .rec-arrow-right:hover, .carousel-programe .rec-arrow-right:enabled {position: absolute; z-index: 20;right: 15px;}
 .carousel-programe .rec-arrow-left, .carousel-programe .rec-arrow-left:hover, .carousel-programe .rec-arrow-left:enabled {position: absolute; z-index: 20; left: 15px;}
 
-.rec-dot {box-shadow: 0 0 1px 2px #a0ff9b !important; }
+.rec-dot {box-shadow: 0 0 1px 2px #0F52FF !important; }
 
 @media screen and (max-width: 1024px) {
-  .carousel-fonduri .rec-dot { margin-top: 40px !important; }
+  .carousel-fonduri .rec-dot { margin-top: 256px !important; }
 }
 
 @media screen and (min-width: 1024px) {
-  .carousel-fonduri .rec-dot { margin-top: 92px !important; }
+  .carousel-fonduri .rec-dot { margin-top: 116px !important; }
 }
 
-.rec-dot_active {background-color: #0CFF00 !important; box-shadow: 0 0 1px 2px #0CFF00 !important;}
+.rec-dot_active {background-color: #0F52FF !important; box-shadow: 0 0 1px 2px #0F52FF !important;}
 .rec-item-wrapper {overflow: inherit !important; }
 .rec-pagination {align-items: center !important;}
 .rec-slider-container {overflow-y: visible !important; overflow-x: clip !important;}

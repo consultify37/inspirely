@@ -13,6 +13,7 @@ import WhyUsItem1 from "../../components/Home/Why-Us/Item1"
 import axios from "axios"
 import ReactLoading from 'react-loading'
 import { facebook, instagram, tiktok } from "../../utils/constants"
+import WhyUs from "../../components/Home/WhyUs"
  
 export default function Contact() {
     const [nume, setNume] = useState('')
@@ -316,46 +317,7 @@ export default function Contact() {
                 </form>
             </section>
             <Rezultate contact={false} />
-            <section id='why-us' className='mt-24 md:mt-48 w-full relative px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]'>
-                <h2 className='text-secondary text-center font-bold md:text-base text-xl lg:text-2xl xl:text-4xl mb-12 lg:mb-32'>De ce să alegi Consultify?</h2>
-                <div className='relative flex flex-wrap w-full lg:mt-10 justify-center items-center md:justify-between md:items-start gap-y-20'>
-                    {/* Left-Side */}
-                    <div className='mx-auto lg:mx-0 w-full z-[2] lg:w-[49%] grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-y-8'>
-                    <WhyUsItem1 
-                            src="/images/questions-comment.svg"
-                            text="Comunicare excelentă! Răspuns rapid și soluții eficiente pentru succesul proiectelor tale."
-                            title="Comunicare"
-                            textColor="secondary"
-                        />
-                        <WhyUsItem1 
-                            src="/images/flash.svg"
-                            text="Echipă tânără, inovatoare și dinamică, aducând idei proaspete și abordări moderne."
-                            title="Spirit tânăr"
-                            textColor="secondary"
-                        />
-                        <WhyUsItem1 
-                            src="/images/person.svg"
-                            text="Oferim o abordare individuală pentru a ne asigura că satisfacem nevoile și obiectivele fiecărui client."
-                            title="Abordare individuală"
-                            textColor="secondary"
-                        />
-                        <WhyUsItem1 
-                            src="/images/chart.svg"
-                            text="Profesionalismul nostru este evidențiat de abordarea noastră meticuloasă și atenția la detalii în fiecare proiect."
-                            title="Profesionalism"
-                            textColor="secondary"
-                        />
-                    </div>
-                    {/* Right-Side */}
-                    <div className='relative mx-auto lg:mx-0'>
-                        <Image src='/images/contact/pag - contact - structura calitati.png' alt='Why-Us' className='relative rounded-[35px] z-[2] w-[400px]' width={350} height={400} placeholder='blur' blurDataURL='/images/About/Pag - despre noi - structura misiunea noastra.png' />
-                        <Image src='/images/About/triangle.svg' alt='triangle' width={164} height={164} className='z-[1] absolute -top-12 -left-16' /> 
-                    </div>
-                </div>
-                <Link href='#' className="bg-primary mt-12 flex font-semibold items-center justify-center w-[max-content] mx-auto justify-self-center px-16 py-3 md:py-4 text-onPrimary rounded-[28.5px] hover:scale-[1.05] transition-all">
-                    Vreau să completez!
-                </Link>
-            </section>
+            <WhyUs />
             <div className="h-12 md:h-8"></div>
             <NewsLetter headingText={'Fii la curent cu cele mai recente informații despre fonduri europene!'} />
         </>

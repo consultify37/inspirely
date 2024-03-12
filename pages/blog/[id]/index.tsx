@@ -5,42 +5,48 @@ import NewsLetter from "../../../components/global/newsletter"
 import News from "../../../components/Home/News/News"
 import reactHtmlParser from 'react-html-parser'
 import { formatter } from "../../../utils/formatter"
-import { collection, doc, getDoc, getDocs } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, limit, orderBy, query, where } from "firebase/firestore"
 import { db } from "../../../firebase"
 import { Article } from "../../../types"
 import { formatDate } from "../../../utils/formatDate"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 type Props = {
     article: Article
+    articles: Article[]
 }
 
 
-const BlogPost = ({ article }: Props) => {
+const BlogPost = ({ article, articles }: Props) => {
     const [shareButton, setShareButton] = useState('/images/link.svg')
     const [shareButtonText, setShareButtonText] = useState('')
+    const pathName = usePathname()
 
     // const content = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue augue ac mattis venenatis. Curabitur eu semper augue. Donec semper, elit hendrerit aliquet volutpat, orci eros vehicula nulla, et auctor magna ipsum ac metus. Nam ex dui, vestibulum vel gravida in, vehicula a enim.</p><p><br></p><p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed ac fermentum massa. Nullam quis cursus sem. Aliquam purus dui, finibus sit amet diam eget, venenatis rutrum velit. In vehicula purus ac malesuada fermentum. Aenean a congue sapien, nec eleifend metus. Nullam faucibus ipsum congue nunc dapibus, sed ultrices erat rhoncus. Phasellus et sagittis erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ligula elit, porttitor eget aliquam ut, ornare eu est.</p><p><br></p><p>Nullam efficitur fermentum tristique. Maecenas sed odio eu nisl semper sollicitudin nec vitae nibh. Duis rhoncus mauris sit amet risus malesuada tristique. Integer consectetur ante elit, vitae venenatis felis ullamcorper ut. Sed eget ipsum urna. Etiam tincidunt accumsan tortor et aliquam. Suspendisse vitae tempus ligula. Pellentesque vitae pulvinar ipsum, nec sodales est. Etiam eu eros faucibus, rutrum elit eu, suscipit enim. Quisque tincidunt felis sapien, et rutrum risus maximus vitae. Curabitur dictum pulvinar gravida.</p><p><br></p><p><img src="https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/df650838f54e192527d09ff01.png" /></p><p><br></p><h2>Lorem lipsum dolor sit</h2><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue augue ac mattis venenatis. Curabitur eu semper augue. Donec semper, elit hendrerit aliquet volutpat, orci eros vehicula nulla, et auctor magna ipsum ac metus. Nam ex dui, vestibulum vel gravida in, vehicula a enim.</p><p><br></p><p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed ac fermentum massa. Nullam quis cursus sem. Aliquam purus dui, finibus sit amet diam eget, venenatis rutrum velit. In vehicula purus ac malesuada fermentum. Aenean a congue sapien, nec eleifend metus. Nullam faucibus ipsum congue nunc dapibus, sed ultrices erat rhoncus. Phasellus et sagittis erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ligula elit, porttitor eget aliquam ut, ornare eu est.</p><p><br></p><p>Nullam efficitur fermentum tristique. Maecenas sed odio eu nisl semper sollicitudin nec vitae nibh. Duis rhoncus mauris sit amet risus malesuada tristique. Integer consectetur ante elit, vitae venenatis felis ullamcorper ut. Sed eget ipsum urna. Etiam tincidunt accumsan tortor et aliquam. Suspendisse vitae tempus ligula. Pellentesque vitae pulvinar ipsum, nec sodales est. Etiam eu eros faucibus, rutrum elit eu, suscipit enim. Quisque tincidunt felis sapien, et rutrum risus maximus vitae. Curabitur dictum pulvinar gravida.</p><p><br></p><p><img src="https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/df650838f54e192527d09ff02.jpeg" /></p>`
-
     return(
         <>
             <Head>
-                <title>Inspirely | { article.title }</title>
+                <title>{`${process.env.SITE} | ${ article.title }`}</title>
+                <meta name="keywords" content={article.keywords.join(', ')}></meta>
+                <meta name="description" content={article.description}></meta>
+                <meta name="author" content={article.author}></meta>
             </Head>
             <div className="relative">
                 <Image
                     className="w-full h-[70vh] lg:h-[95vh] object-cover"
                     src={ article.mainImage.image }
-                    width={200}
-                    height={100}
+                    width={2048}
+                    height={2048}
                     alt="blog-post-1"
                 />
-                <div className="absolute w-full h-full flex justify-center items-center top-0 bg-[#260056] opacity-70"></div>
+                <div className="absolute w-full h-full flex justify-center items-center top-0 bg-secondary opacity-70"></div>
                 <div className="absolute w-full h-full flex flex-col justify-center items-center top-0 pt-12">
-                    <h2 className="font-bold text-[#F7EDFF] text-base lg:text-lg 2xl:text-xl mb-5">{ article.category }</h2>
+                    <h2 className="font-bold text-[#d7fdd3] text-base lg:text-lg 2xl:text-xl mb-2 lg:mb-5">{ article.category }</h2>
                     <h1 className="font-extrabold text-2xl lg:text-3xl  2xl:text-5xl leading-relaxed text-white z-10 text-center w-[80vw] lg:w-[50vw]">{ article.title }</h1>
-                    <div className="p-8 rounded-3xl mt-12 border-[1px] border-[hsla(0,0%,100%,.03)] bg-[linear-gradient(132deg,#4e2869,#260056)] flex flex-col items-center">
+                    <div className="p-8 rounded-3xl mt-12 border-[1px] border-[hsla(0,0%,100%,.03)] bg-[linear-gradient(132deg,#358c2d,#184614)] flex flex-col items-center">
                         <p className="text-white text-base lg:text-lg 2xl:text-xl font-light">Articol de <span className="font-semibold">{ article.author }</span></p>
-                        <p className="text-[#F7EDFF] text-base lg:text-lg 2xl:text-xl font-semibold mt-2">{ article.authorDescription }</p>
+                        <p className="text-[#d7fdd3] text-base lg:text-lg 2xl:text-xl font-semibold mt-2">{ article.authorDescription }</p>
                     </div>
                 </div>
                 <div className="absolute w-full bottom-4 hidden lg:flex items-center justify-center animate-bounce">
@@ -66,23 +72,30 @@ const BlogPost = ({ article }: Props) => {
                             Distribuie pe social media
                         </span>
                         <div className="flex flex-row items-center">
-                            <div className="flex items-center bg-[#8717F8] rounded-full mr-2 p-2">
+                            {/* <Link href='#' className="flex items-center bg-primary rounded-full mr-2 p-2 hover:scale-105 transition-all">
                                 <Image src="/images/instagram.svg" width={12} height={12} alt="instagram" />
-                            </div>
-                            <div className="flex items-center bg-[#8717F8] rounded-full mr-2 p-2">
+                            </Link> */}
+                            <Link target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${(`https://${process.env.SITE?.toLowerCase()}.ro${pathName}`).replaceAll(':', '%3A').replaceAll('/', '%2F')}`} className="flex items-center bg-primary rounded-full mr-2 p-2 hover:scale-105 transition-all">
                                 <Image src="/images/facebook.svg" width={12} height={12} alt="facebook" />
-                            </div>
-                            <div
-                            onClick={() => {
-                                setShareButton('/images/check.svg')
-                                setShareButtonText('Copied')
-                                navigator.clipboard.writeText(window.location.href)
-                            }}
-                                className="flex items-center bg-[#8717F8] rounded-full mr-2 p-2"
-                            >
-                                <Image src={shareButton} width={12} height={12} alt="link" />
-                            </div>
-                            <span>{shareButtonText}</span>
+                            </Link>
+                            { shareButtonText == 'Copied' ?
+                                <div
+                                    className="flex items-center bg-primary rounded-full mr-2 p-2"
+                                >
+                                    <Image src={shareButton} width={12} height={12} alt="link" className="w-3 h-3" />
+                                </div> :
+                                <div
+                                    onClick={() => {
+                                        setShareButton('/images/check.svg')
+                                        setShareButtonText('Copied')
+                                        navigator.clipboard.writeText(window.location.href)
+                                    }}
+                                    className="flex items-center bg-primary rounded-full mr-2 p-2 cursor-pointer hover:scale-105 transition-all"
+                                >
+                                    <Image src={shareButton} width={12} height={12} alt="link" />
+                                </div>
+                            }
+                            <span className="hidden sm:block">{shareButtonText}</span>
                         </div>
                     </div>
                 </div>
@@ -116,7 +129,7 @@ const BlogPost = ({ article }: Props) => {
                     Nullam efficitur fermentum tristique. Maecenas sed odio eu nisl semper sollicitudin nec vitae nibh. Duis rhoncus mauris sit amet risus malesuada tristique. Integer consectetur ante elit, vitae venenatis felis ullamcorper ut. Sed eget ipsum urna. Etiam tincidunt accumsan tortor et aliquam. Suspendisse vitae tempus ligula. Pellentesque vitae pulvinar ipsum, nec sodales est. Etiam eu eros faucibus, rutrum elit eu, suscipit enim. Quisque tincidunt felis sapien, et rutrum risus maximus vitae. Curabitur dictum pulvinar gravida.
                 </p> */}
             </section>
-            <News />
+            <News articles={articles}/>
             <NewsLetter headingText={'Alătură-te comunității noastre și fii la curent cu cele mai noi oportunități de finanțare!'} />
         </>
     )
@@ -149,8 +162,18 @@ export const getStaticProps = async (context: any) => {
 
     const article = { id: articleSnap.id, formattedCreatedAt: formatDate(new Date(createdAt.seconds*1000)), ...data }
 
+    const articlesSnap = await  getDocs(query(collection(db, 'articles'), where('active', '==', true), where('featured', '==', true), orderBy('createdAt', 'desc'), limit(8)))
+    var articles = articlesSnap.docs.map((doc) => {
+        const { lastUpdated, createdAt, ...data } = doc.data()
+        return ({ id: doc.id, formattedCreatedAt: formatDate(new Date(createdAt.seconds*1000)), ...data }) 
+    })
+
+    if ( articles.length >=2 ) {
+        articles = articles.filter((item) => item.id != article.id )
+    }
+
     return { 
-        props: { article }, 
+        props: { article, articles }, 
         revalidate: Number(process.env.REVALIDATE )
     }
 }

@@ -56,7 +56,7 @@ const FAQAbout = ({ intrebari=IntrebariStandard }: Props) => {
                 intrebari.map(faq => (
                     <article key={faq.id} className='w-full rounded-[8px] bg-admin-card'>
                         <div className='flex justify-between p-4 px-6 cursor-pointer w-full' onClick={() => handleSelectQuestion(faq.id)}>
-                            <h3 className='text-sm md:text-lg text-onPrimary font-bold'>{faq.intrebari}</h3>
+                            <h3 className='text-sm md:text-lg text-secondary font-bold'>{faq.intrebari}</h3>
                             <Image
                                 className={`w-[20px] right-[10px] top-[23px]
                                 ${
@@ -72,7 +72,7 @@ const FAQAbout = ({ intrebari=IntrebariStandard }: Props) => {
                             />
                         </div>
                         {faq.id === selectedQuestion && (
-                            <p className='p-4 px-6 text-onPrimary text-sm md:text-base'>
+                            <p className='p-4 px-6 text-secondary text-sm md:text-base'>
                                 {faq.raspuns}
                             </p>
                         )}

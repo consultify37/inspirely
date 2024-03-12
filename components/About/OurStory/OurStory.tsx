@@ -1,5 +1,3 @@
-import Image from "next/image"
-import Link from "next/link"
 import Item1Story from "./Item1Story"
 import Item2Story from "./Item2Story"
 

@@ -61,7 +61,7 @@ export default function NewsLetter({ headingText }: NewsLetterProps) {
             className="relative flex mt-10 flex-col lg:flex-row items-center"
           >
             <input
-              className="py-3 text-onSecondary xl:px-6 px-4 lg:px-5 w-full bg-secondary placeholder:text-onSecondary border-2 border-primary rounded-full"
+              className="py-3 text-onSecondary xl:px-6 px-4 lg:px-5 w-full bg-secondary placeholder:text-onSecondary border-2 border-tertiary rounded-full"
               type="email"
               name="Email"
               placeholder='Adresa ta de email'
@@ -69,7 +69,7 @@ export default function NewsLetter({ headingText }: NewsLetterProps) {
               onChange={(e) => setNewsletter(e.target.value)}
               value={newsletter}
             />
-            <button type="submit" className="text-onPrimary font-bold lg:absolute w-full mt-3 lg:mt-0 lg:right-0 z-30 transition-all hover:scale-[1.05] lg:w-44 border-4 cursor-pointer border-secondary bg-primary py-4 px-10 text-sm rounded-full">
+            <button type="submit" className="text-onTertiary font-bold lg:absolute w-full mt-3 lg:mt-0 lg:right-0 z-30 transition-all hover:scale-[1.05] lg:w-44 border-4 cursor-pointer border-secondary bg-tertiary py-4 px-10 text-sm rounded-full">
               Mă abonez
             </button>
           </form>

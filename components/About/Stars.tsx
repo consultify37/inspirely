@@ -20,7 +20,7 @@ const Stars = ({ numberOfStars }: Props) => {
           ))
         }
       </div>
-      <p className='text-[17px] text-[#260056] font-semibold ml-2 pt-1'>
+      <p className='text-[14px] md:text-[16px] text-[#FFCE00] ml-2 pt-1'>
         <span className='text-[#FFCE00]'>{numberOfStars}</span> / 5
       </p>
     </div>

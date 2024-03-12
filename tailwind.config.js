@@ -15,6 +15,8 @@ module.exports = {
         "onSecondary": "white",
         "tertiary": "#01EA88",
         "onTertiary": "#00103C",
+        "yellow": "#FFCE00",
+        "onYellow": "#00103C",
         "admin-background": "#F9FAFF",
         "admin-card": "#E3E8FF",
         "admin-header": "#C6CFFF"

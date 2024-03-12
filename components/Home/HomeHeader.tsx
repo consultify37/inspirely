@@ -33,10 +33,10 @@ const HomeHeader = ({ slides }: Props) => {
         id="HeroContainer"
         className={`relative flex flex-col w-full items-center justify-start pt-24 md:pt-40 px-6 sm:px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]`}
         >
-        <div className="z-10 w-full flex flex-col items-center gap-6 md:gap-9 relative pt-14 md:pt-12">
-          <div className="relative flex items-center justify-center mb-8">
-            <h1 className="text-white text-[27px] md:text-4xl xl:text-[44px] font-extrabold text-center">
-              Finanțarea potrivită <br className="block md:hidden"/> pentru firma potrivită!
+        <div className="z-10 w-full flex flex-col items-center gap-6 md:gap-7 relative pt-14 md:pt-12">
+          <div className="relative flex items-center justify-center">
+            <h1 className="text-white text-[30px] md:text-[38px] xl:text-[45px] font-extrabold text-center">
+              Platforma care se ocupă de afacerea ta
             </h1>
             {/* <Image
               id="hero-video"
@@ -48,13 +48,13 @@ const HomeHeader = ({ slides }: Props) => {
             /> */}
           </div>
           <p className="text-white font-light text-center text-[14px] md:text-[18px] lg:max-w-[60%]">
-            Consultify este partenerul tău de încredere în obținerea finanțărilor nerambursabile, oferind soluții personalizate pentru dezvoltarea afacerii tale.
+            Inspirely este partenerul tău de încredere în obținerea finanțărilor nerambursabile, oferind soluții personalizate pentru dezvoltarea afacerii tale.
           </p>
           <Link
-            href='#proces'
-            className="relative px-10 py-4 bg-primary text-onPrimary rounded-[28.5px] mb-8 text-base font-semibold transition-all hover:scale-[1.05] z-[12]"
+            href='/divizii'
+            className="relative px-10 py-4 bg-tertiary text-onTertiary rounded-[28.5px] mb-8 text-base font-semibold transition-all hover:scale-[1.05] z-[12]"
             >
-            Cum pot accesa fonduri?
+            Diviziile Inspirely
           </Link>
           <div className="relative w-[100%] home-carousel flex items-center justify-center mx-auto">
             <HomeCarousel slides={slides} />
@@ -78,7 +78,7 @@ const HomeHeader = ({ slides }: Props) => {
           alt="Hero blue circle"
           width={200}
           height={200}
-          className="absolute right-0 -top-4 md:top-32 z-[5] w-[140px] md:w-[228px]"
+          className="absolute right-0 -top-12 md:top-32 z-[5] w-[140px] md:w-[228px]"
           />
         <Image
           src="/images/triangle-hero.svg"
