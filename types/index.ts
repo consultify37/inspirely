@@ -13,21 +13,15 @@ export type Slide = {
   link: string 
   image: File | string 
   file: null | { fileName: string, fileId: string } 
+  admin?: string
+  data?: string
 }
 
 export type Category = {
   category: string
-  description: string
-  image: { 
-    file: { fileName: string, fileId: string } 
-    image: string 
-  } | null
   id?: string
-}
-
-export type ArticleCategory = {
-  category: string
-  id: string
+  admin?: string
+  data?: string
 }
 
 export type Program = {
@@ -46,11 +40,11 @@ export type Program = {
   conditions: Condition[]
   faqs: Faq[]
   imaginePrincipala: { 
-    file: { fileName: string, fileId: string } 
+    file: { fileName: string, fileId: string } | null
     image: string 
   }
   backgroundImage: { 
-    file: { fileName: string, fileId: string } 
+    file: { fileName: string, fileId: string } | null
     image: string 
   }
 }
@@ -61,15 +55,40 @@ export type Faq2 = {
   raspuns: string,
 }
 
-export type User = {
-  isCreating: string
+export type Article = {
+  title: string
   id: string
-  phone: string
+  description: string
+  featured: boolean
+  active: boolean
+  mainImage: any
+  images: any[]
+  content: string
+  formattedContent: string
+  duration: string
+  author: string
+  authorDescription: string
+  category: string
+  keywords: string[]
+  createdAt: Date
+  lastUpdated: Date
+  formattedCreatedAt?: string
+}
+
+export type ArticleCategory = {
+  category: string
+  id: string
+}
+
+export type User = {
+  id: string
   name: string
-  email: string
-  role: string
-  roles: string[]
-  inactive: boolean
+  isCreating?: boolean
+  phone?: string,
+  email: string,
+  role: string,
+  roles: string[],
+  inactive: boolean,
   profilePic?: { 
     file: { fileName: string, fileId: string } 
     image: string 
@@ -77,8 +96,8 @@ export type User = {
 }
 
 export type Product = {
+  stripe_price_id: string
   active: boolean
-  featured: boolean
   id?: string
   name: string
   price: number
@@ -100,28 +119,6 @@ export type Product = {
     file: { fileName: string, fileId: string } 
     url: string 
   }
-}
-
-export type FileExtended = File | { file: { fileName: string, fileId: string }, image: string } | null
-
-export type Article = {
-  title: string
-  id: string
-  mainImage: any
-  description: string
-  featured: boolean
-  active: boolean
-  images: any[]
-  content: string
-  formattedContent: string
-  duration: string
-  author: string
-  authorDescription: string
-  category: string
-  keywords: string[]
-  createdAt: Date
-  lastUpdated: Date
-  formattedCreatedAt?: string
 }
 
 export type ProductCategory = {
