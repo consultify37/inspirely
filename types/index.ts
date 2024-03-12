@@ -64,6 +64,7 @@ export type Faq2 = {
 export type User = {
   isCreating: string
   id: string
+  phone: string
   name: string
   email: string
   role: string

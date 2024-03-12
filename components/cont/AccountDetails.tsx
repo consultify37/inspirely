@@ -8,7 +8,7 @@ import { useAuthContext } from '../../context/AuthContext'
 import { deleteUser, signInWithEmailAndPassword, updatePassword } from 'firebase/auth'
 
 const AccountDetails = () => {
-  const { setCurrentUser, currentUser } = useAuthContext()
+  const { setcurrentUser, currentUser } = useAuthContext()
   const [name, setName] = useState( currentUser?.name ? currentUser.name : '' )
   const [phone, setPhone] = useState( currentUser?.phone ? currentUser.phone : '' )
   const [oldPassword, setOldPassword] = useState('')
@@ -34,7 +34,7 @@ const AccountDetails = () => {
         phone
       })
 
-      setCurrentUser(currentUser => ({ ...currentUser, name, phone: phone != '' ? phone : null } as User))
+      setcurrentUser(currentUser => ({ ...currentUser, name, phone: phone != '' ? phone : null } as User))
       toast.success('Datele contului au fost modificate cu succes.')
     } catch (e) {
       toast.error('Ceva nu a mers bine. Încearcă din nou.')
