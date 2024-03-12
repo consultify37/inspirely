@@ -123,3 +123,13 @@ export type Article = {
   lastUpdated: Date
   formattedCreatedAt?: string
 }
+
+export type Order = {
+  id: string
+  channel: string
+  checkout_session_id: string
+  createdAt: string
+  customer_email: string
+  line_items: { data: any[] }
+  number_of_items: number
+}
