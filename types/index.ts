@@ -19,9 +19,12 @@ export type Slide = {
 
 export type Category = {
   category: string
+  description: string
+  image: { 
+    file: { fileName: string, fileId: string } 
+    image: string 
+  } | null
   id?: string
-  admin?: string
-  data?: string
 }
 
 export type Program = {
