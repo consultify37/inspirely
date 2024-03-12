@@ -28,7 +28,7 @@ const FeaturedProducts = ({ products, dark=false }: Props) => {
       top: 0,
       left: scrollAmount,
       behavior: "smooth",
-    })
+    }) //
   }, [scrollAmount])
 
   return(
