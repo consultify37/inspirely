@@ -124,6 +124,16 @@ export type Article = {
   formattedCreatedAt?: string
 }
 
+export type ProductCategory = {
+  category: string
+  description: string
+  image: { 
+    file: { fileName: string, fileId: string } 
+    image: string 
+  } | null
+  id?: string
+}
+
 export type Order = {
   id: string
   channel: string
