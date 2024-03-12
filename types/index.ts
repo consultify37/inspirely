@@ -109,6 +109,7 @@ export type Product = {
   description2: string
   description3: string
   category: string
+  featured: boolean
   image: { 
     file: { fileName: string, fileId: string } 
     image: string 
