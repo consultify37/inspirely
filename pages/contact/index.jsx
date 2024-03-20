@@ -9,11 +9,11 @@ import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
 import ReCAPTCHA from "react-google-recaptcha"
 import PageHeader from "../../components/Header/PageHeader"
-import WhyUsItem1 from "../../components/Home/Why-Us/Item1"
 import axios from "axios"
 import ReactLoading from 'react-loading'
 import { facebook, instagram, tiktok } from "../../utils/constants"
 import WhyUs from "../../components/Home/WhyUs"
+import TrustSRL from "../../components/Home/Trust"
  
 export default function Contact() {
     const [nume, setNume] = useState('')
@@ -56,12 +56,12 @@ export default function Contact() {
                     cui: cui,
                     nevoie: nevoie,
                     telefon: telefon,
-                    website: 'socialy' //process.env.SITE
+                    website: process.env.SITE
                 }
             })
             
             if (response.status == 200) {
-                toast.success('Mulțumim! Un reprezentat Consultify te va contacta în curând. 🚀', { duration: 5000, style: { textAlign: 'center' } })
+                toast.success('Mulțumim! Un reprezentat Inspirely te va contacta în curând. 🚀', { duration: 5000, style: { textAlign: 'center' } })
                 setCui("")
                 setEmail("")
                 setIsChecked(false)
@@ -85,7 +85,7 @@ export default function Contact() {
     return (
         <>
             <Head>
-                <title>Socialy | Contact</title>
+                <title>{`${process.env.SITE} | Contact`}</title>
             </Head>
             <PageHeader
                 title="Suntem aici pentru tine!"
@@ -105,7 +105,7 @@ export default function Contact() {
                     alt="Yellow triangle"
                 />
             </PageHeader>
-            <div className="bg-[#F9F9F9] w-[100vw] h-[130vh] lg:h-[83vh] absolute top-0 left-0 z-[-1]"></div>
+            <div className="bg-[#F2F4FF] w-[100vw] h-[130vh] lg:h-[83vh] absolute top-0 left-0 z-[-1]"></div>
             <section className="w-full flex flex-col lg:flex-row items-start my-32 justify-between px-4 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">
                 <div className="flex flex-col w-full mr-12 bg-secondary rounded-3xl p-8">
                     <div className="flex flex-row mb-6">
@@ -173,7 +173,7 @@ export default function Contact() {
                     className="mt-12 lg:mt-0 lg:ml-12 rounded-3xl shadow-box bg-[#fff] w-full max-w-[1000px] p-8 px-4 md:px-8 flex flex-col"
                     onSubmit={upload}
                 >
-                    <h2 className="text-xl font-bold mb-10 md:text-2xl text-center">Hai să lucrăm împreună!</h2>
+                    <h2 className="text-xl text-secondary font-bold mb-10 md:text-2xl text-center">Hai să lucrăm împreună!</h2>
                     <div className="flex w-full flex-col items-center md:flex-row justify-between mb-6">
                         <div className="flex flex-col w-full md:w-[47%] md:mr-2 mb-6 md:mb-0">
                             <span className="text-md mb-2 font-semibold">
@@ -316,9 +316,15 @@ export default function Contact() {
                     </div>
                 </form>
             </section>
-            <Rezultate contact={false} />
+            {/* <Rezultate contact={false} /> */}
+            <div className="h-2 md:h-4"></div>
             <WhyUs />
-            <div className="h-12 md:h-8"></div>
+            <div className="h-0 md:h-32"></div>
+            <TrustSRL />
+            <Link href='#' className="bg-primary mt-12 flex font-semibold items-center justify-center w-[max-content] mx-auto justify-self-center px-12 md:px-16 py-3 md:py-4 text-onPrimary rounded-[28.5px] hover:scale-[1.05] transition-all">
+                Vreau să lucrez alături de voi!
+            </Link>
+            <div className="h-12 md:h-4"></div>
             <NewsLetter headingText={'Fii la curent cu cele mai recente informații despre fonduri europene!'} />
         </>
     )
