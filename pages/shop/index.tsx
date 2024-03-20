@@ -14,7 +14,7 @@ const Shop = ({ categories, products }: Props) => {
 	return(
 		<>
 			<Head>
-				<title>Consultify | Shop</title>
+				<title>{`${process.env.SITE} | Shop`}</title>
 			</Head>
 			<ShopHeader />
 			<ShopItems 

@@ -12,7 +12,7 @@ const CuiIseAdreseaza = ({ title, description }: Props) => {
     <div className='flex flex-col md:flex-row justify-center md:justify-between items-center mt-12 md:mt-32 w-full'>
       <Image 
         alt='Cui i se adreseaza'
-        src='/images/PaginaProgram/Cui-adreseazaz.png'
+        src='/images/Cui-adreseazaz.svg'
         width={387}
         height={387}
         className='w-full h-full md:w-[25vw] max-w-[300px] max-h-[300px] md:h-[25vw] md:mr-10'

@@ -51,7 +51,7 @@ const Product = ({ product, featuredProducts }: Props) => {
           width={512}
           height={512}
           alt={product.name}
-          className='w-full h-[320px] lg:max-w-[400px] lg:h-[360px] xl:max-w-[440px] xl:h-[400px] 2xl:max-w-[420px] 2xl:h-[460px] p-4 object-contain bg-admin-card rounded-[22px] lg:mr-8 xl:mr-16'
+          className='w-full h-[320px] lg:max-w-[400px] lg:h-[360px] xl:max-w-[440px] xl:h-[400px] 2xl:max-w-[420px] 2xl:h-[460px] p-4 object-contain bg-[#F2F4FF] rounded-[22px] lg:mr-8 xl:mr-16'
         />
 
         <div className='flex flex-col self-start lg:self-center'>

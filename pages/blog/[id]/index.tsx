@@ -40,13 +40,13 @@ const BlogPost = ({ article, articles }: Props) => {
                     height={2048}
                     alt="blog-post-1"
                 />
-                <div className="absolute w-full h-full flex justify-center items-center top-0 bg-secondary opacity-70"></div>
+                <div className="absolute w-full h-full flex justify-center items-center top-0 bg-secondary opacity-60"></div>
                 <div className="absolute w-full h-full flex flex-col justify-center items-center top-0 pt-12">
-                    <h2 className="font-bold text-[#d7fdd3] text-base lg:text-lg 2xl:text-xl mb-2 lg:mb-5">{ article.category }</h2>
+                    <h2 className="font-bold text-tertiary text-base lg:text-lg 2xl:text-xl mb-2 lg:mb-5">{ article.category }</h2>
                     <h1 className="font-extrabold text-2xl lg:text-3xl  2xl:text-5xl leading-relaxed text-white z-10 text-center w-[80vw] lg:w-[50vw]">{ article.title }</h1>
-                    <div className="p-8 rounded-3xl mt-12 border-[1px] border-[hsla(0,0%,100%,.03)] bg-[linear-gradient(132deg,#358c2d,#184614)] flex flex-col items-center">
+                    <div className="p-8 rounded-3xl mt-12 border-[1px] border-[hsla(0,0%,100%,.03)] bg-[linear-gradient(132deg,#0F52FF,#1b336e)] flex flex-col items-center">
                         <p className="text-white text-base lg:text-lg 2xl:text-xl font-light">Articol de <span className="font-semibold">{ article.author }</span></p>
-                        <p className="text-[#d7fdd3] text-base lg:text-lg 2xl:text-xl font-semibold mt-2">{ article.authorDescription }</p>
+                        <p className="text-white text-base lg:text-lg 2xl:text-xl font-semibold mt-2">{ article.authorDescription }</p>
                     </div>
                 </div>
                 <div className="absolute w-full bottom-4 hidden lg:flex items-center justify-center animate-bounce">

@@ -42,7 +42,7 @@ export default function Testimoniale({ articles, categories, products }: Props) 
   return (
     <>
         <Head>
-            <title>Consultify | Blog</title>
+            <title>{`${process.env.SITE} | Blog`}</title>
         </Head>
         <PageHeader 
             title="Află noutățile din business și nu numai"

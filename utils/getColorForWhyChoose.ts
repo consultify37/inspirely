@@ -1,13 +1,13 @@
 export const getColorForWhyChoose = (index: number) => {
   switch (index%4) {
     case 0:
-      return ['#0CFF00', '#000']
+      return ['#01EA88', '#00103C']
     case 1:
-      return ['#0E0E0E', '#fff']
+      return ['#006CFF', '#fff']
     case 2:
-      return ['#079800', '#fff']
+      return ['#FFCE00', '#00103C']
     case 3:
-      return ['#1F7D1B', '#fff']
+      return ['#FB8351', '#00103C']
     default:
       return ['#0E0E0E', '#fff']
   }

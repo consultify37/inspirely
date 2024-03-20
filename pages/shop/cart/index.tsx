@@ -20,7 +20,7 @@ const Cart = ({ products: featuredProducts }: Props) => {
   return (
     <>
       <Head>
-				<title>Consultify | Coș de cumpărături</title>
+				<title>{`${process.env.SITE} | Coș de cumpărături`}</title>
 			</Head>
 
       <div className="pt-[158px] lg:pt-48 px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">

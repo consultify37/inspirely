@@ -67,7 +67,7 @@ const Products = ({ products }: Props) => {
   return (
     <div className="flex flex-col lg:flex-row">
       <div className='flex flex-col lg:w-[70%]'>
-        <div className='bg-admin-card w-full rounded-[10px] flex flex-row p-4 mt-8'>
+        <div className='bg-admin-background w-full rounded-[10px] flex flex-row p-4 mt-8'>
           <Image 
             src='/images/Shop/cart/comment-info.svg'
             width={128}

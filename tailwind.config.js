@@ -19,7 +19,8 @@ module.exports = {
         "onYellow": "#00103C",
         "admin-background": "#F9FAFF",
         "admin-card": "#E3E8FF",
-        "admin-header": "#C6CFFF"
+        "admin-header": "#C6CFFF",
+        "price": "#04D200"
       },
     },
   },

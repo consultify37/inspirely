@@ -28,14 +28,14 @@ const TabsComponent = ({ values, setSelectedValue }: Props) => {
 
   return (
     <div className='-mx-1'>
-      <div className='relative hidden md:flex flex-row bg-admin-card justify-between items-center rounded-full px-16'>
+      <div className='relative hidden md:flex flex-row bg-[#ECECEC] justify-between items-center rounded-full px-16'>
         {
           values.map((value, index) => (
             <p 
               key={value+index}
               ref={(el) => (tabsRef.current[index] = el)}
               className='py-[28px] px-2 md:px-6 z-10 cursor-pointer text-onPrimary text-center font-semibold'
-              //style={{color: index == activeTabIndex ? 'white' : 'black'}}
+              style={{color: index == activeTabIndex ? 'white' : '#00103C'}}
               onClick={() => {
                 setActiveTabIndex(index)
                 setSelectedValue(value)
