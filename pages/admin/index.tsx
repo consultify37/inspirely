@@ -182,66 +182,77 @@ const Admin = ({ article, users, banners }: Props) => {
             </>
           }
 
-          <div className='flex flex-col w-full mt-4'>
-            <h2 className='font-bold text-secondary text-[28px]'>Homepage - Inspirely</h2>
-            <div className='w-full flex flex-col bg-admin-background rounded-[24px] p-6 mt-4'>
-              <Carousel 
-                banners={banners}
-              />
-              <Link href={`/admin/slide-homepage`} className="text-primary font-bold text-sm underline hover:scale-105 transition-all self-end">Vezi mai mult</Link>
-            </div>
-          </div>
+          { currentUser?.roles.includes('banner-homepage') &&
+            <div className='flex flex-col w-full mt-4'>
+              <h2 className='font-bold text-secondary text-[28px]'>Homepage - Inspirely</h2>
+              <div className='w-full flex flex-col bg-admin-background rounded-[24px] p-6 mt-4'>
+                <Carousel 
+                  banners={banners}
+                />
+                <Link href={`/admin/slide-homepage`} className="text-primary font-bold text-sm underline hover:scale-105 transition-all self-end">Vezi mai mult</Link>
+              </div>
+            </div> 
+          }
         </div>
 
         <div className='flex flex-col w-1/3'>
-          <h2 className='font-bold text-secondary text-[28px]'>Blog</h2>
-          <div className='w-full bg-admin-background rounded-[24px] p-6 mt-4'>
-            <div className="p-2 pb-[10px]">
-              <h3 className='text-secondary font-bold text-base'>{article.title}</h3>
-              <p className="text-secondary text-[14px] pt-2">{article.description}</p>
-              <div className="flex flex-row items-center mt-2">
-                <Image 
-                  src='/images/blog/clock.svg'
-                  width={24}
-                  height={24}
-                  alt="clock svg"
-                  className="w-[14px] h-[14px] mr-2"
-                />
-                <p className="font-semibold text-secondary pt-[3px]">{article.duration}</p>
-              </div>
-              <div className='flex items-center justify-between px-[2px] pt-2'>
-                  <p className='text-[#828282] text-sm'>{article.formattedCreatedAt}</p>
-                  <Link href={`/admin/blog/edit/${article.id}`} className="text-primary font-bold text-sm underline hover:scale-105 transition-all">Vezi mai mult</Link>
-              </div>
-            </div>
-          </div>
-
-          <h2 className='font-bold text-secondary text-[28px] mt-4'>Users</h2>
-          <div className='w-full flex flex-col justify-between bg-admin-background rounded-[24px] pb-6 mt-4 h-full'>
-            <div>
-              { users.map((user) => (
-                <Link 
-                  href={`/admin/users/user/${user.id}`}
-                  key={user.id}
-                  className='w-full flex flex-row items-center border-[#EAEAEA] border-b-[1px] p-6 py-4'
-                >
-                  <Image 
-                    src={user && user.profilePic ? user.profilePic.image : '/images/person.jpeg' }
-                    width={512}
-                    height={512}
-                    alt={currentUser?.name || 'profil' }
-                    className='w-14 h-14 object-cover rounded-full mr-3'
-                  />
-                  <div>
-                    <p className='text-[16px] text-secondary font-bold mt-1'>{user?.name || ""}</p>
-                    <p className='relative -top-1 text-[14px] text-[#787878] font-semibold'>{user?.role || ""}</p>
+          { currentUser?.roles.includes('pagina-blog') &&
+            <>
+              <h2 className='font-bold text-secondary text-[28px]'>Blog</h2>
+              <div className='w-full bg-admin-background rounded-[24px] p-6 mt-4'>
+                <div className="p-2 pb-[10px]">
+                  <h3 className='text-secondary font-bold text-base'>{article.title}</h3>
+                  <p className="text-secondary text-[14px] pt-2">{article.description}</p>
+                  <div className="flex flex-row items-center mt-2">
+                    <Image 
+                      src='/images/blog/clock.svg'
+                      width={24}
+                      height={24}
+                      alt="clock svg"
+                      className="w-[14px] h-[14px] mr-2"
+                    />
+                    <p className="font-semibold text-secondary pt-[3px]">{article.duration}</p>
                   </div>
-                </Link>
-              ))}
-            </div>
+                  <div className='flex items-center justify-between px-[2px] pt-2'>
+                      <p className='text-[#828282] text-sm'>{article.formattedCreatedAt}</p>
+                      <Link href={`/admin/blog/edit/${article.id}`} className="text-primary font-bold text-sm underline hover:scale-105 transition-all">Vezi mai mult</Link>
+                  </div>
+                </div>
+              </div>
+            </> 
+          }
 
-            <Link href={`/admin/blog/edit/${article.id}`} className="text-primary font-bold text-sm self-end underline hover:scale-105 transition-all mr-6">Vezi mai mult</Link>
-          </div>
+          { currentUser?.roles.includes('users') && 
+            <>
+              <h2 className='font-bold text-secondary text-[28px] mt-4'>Users</h2>
+              <div className='w-full flex flex-col justify-between bg-admin-background rounded-[24px] pb-6 mt-4 h-full'>
+                <div>
+                  { users.map((user) => (
+                    <Link 
+                      href={`/admin/users/user/${user.id}`}
+                      key={user.id}
+                      className='w-full flex flex-row items-center border-[#EAEAEA] border-b-[1px] p-6 py-4'
+                    >
+                      <Image 
+                        src={user && user.profilePic ? user.profilePic.image : '/images/person.jpeg' }
+                        width={512}
+                        height={512}
+                        alt={currentUser?.name || 'profil' }
+                        className='w-14 h-14 object-cover rounded-full mr-3'
+                      />
+                      <div>
+                        <p className='text-[16px] text-secondary font-bold mt-1'>{user?.name || ""}</p>
+                        <p className='relative -top-1 text-[14px] text-[#787878] font-semibold'>{user?.role || ""}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                <Link href={`/admin/blog/edit/${article.id}`} className="text-primary font-bold text-sm self-end underline hover:scale-105 transition-all mr-6">Vezi mai mult</Link>
+              </div>
+            </> 
+          }
+          
         </div>
       </div>
     </AdminLayout>
