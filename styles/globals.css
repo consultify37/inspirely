@@ -52,14 +52,6 @@
 }
 
 body{max-width: 2000px; margin: 0 auto;}
-.rec-arrow-right {
-  background-image: url('/images/arrows/arrow-right.svg') !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  text-indent: -9999px; /* Hide the text content */
-  border: none; /* Optional: Remove any default button styles */
-  @apply hover:scale-105 transition-all
-}
 
 * {
   font-family: "AvertaStd", sans-serif;
@@ -98,6 +90,18 @@ html.normal-scroll {
   border: none; /* Optional: Remove any default button styles */
   @apply hover:scale-105 transition-all
 }
+
+.rec-arrow-right {
+  background-image: url('/images/arrows/arrow-right.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  text-indent: -9999px; /* Hide the text content */
+  border: none; /* Optional: Remove any default button styles */
+  @apply hover:scale-105 transition-all
+}
+
+.carousel-admin .rec-arrow-right, .carousel-admin .rec-arrow-right:hover, .carousel-admin .rec-arrow-right:enabled{background-color: transparent !important; color: #0F52FF !important; box-shadow: none; font-family: Averta-All, sans-serif !important; background-image: url('/images/arrows/arrow-right-blue.svg') !important; @apply hover:scale-105 transition-all shadow-none hover:shadow-none enabled:shadow-none}
+.carousel-admin .rec-arrow-left, .carousel-admin .rec-arrow-left:hover, .carousel-admin .rec-arrow-left:enabled {background-color: transparent !important; color: #0F52FF !important; box-shadow: none; font-family: Averta-All, sans-serif !important; background-image: url('/images/arrows/arrow-left-blue.svg') !important; @apply hover:scale-105 transition-all shadow-none hover:shadow-none enabled:shadow-none}
 
 .rec-arrow-right, .rec-arrow-right:hover, .rec-arrow-right:enabled{background-color: #0F52FF !important; color: #fff !important; font-family: Averta-All, sans-serif !important;}
 .rec-arrow-left, .rec-arrow-left:hover, .rec-arrow-left:enabled {background-color: #0F52FF !important; color: #fff !important; font-family: Averta-All, sans-serif !important;}

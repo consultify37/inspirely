@@ -33,7 +33,7 @@ const Favorite = () => {
 
         { isLoading &&
           <div className='h-[40vh] w-full flex items-center justify-center'>
-            <ReactLoading type="spin" color="#0CFF00" width={32} height={32} /> 
+            <ReactLoading type="spin" color="#0F52FF" width={32} height={32} /> 
           </div>
         }
       </div>

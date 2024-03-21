@@ -11,9 +11,10 @@ import { useAuthContext } from '../../context/AuthContext'
 
 type Props = {
   children: React.ReactNode
+  color?: string
 }
 
-const AdminLayout = ({ children }: Props) => {
+const AdminLayout = ({ children, color='admin-background' }: Props) => {
   const { currentUser } = useAuthContext()
   const router = useRouter()
   const path = usePathname()
@@ -55,7 +56,7 @@ const AdminLayout = ({ children }: Props) => {
                 width={512}
                 height={512}
                 alt={currentUser?.name || 'profil' }
-                className='w-16 h-16 object-cover rounded-full mr-2'
+                className='w-14 h-14 object-cover rounded-full mr-3'
               />
               <div>
                 <p className='text-[16px] text-secondary font-bold mt-1'>{currentUser?.name || ""}</p>
@@ -183,7 +184,7 @@ const AdminLayout = ({ children }: Props) => {
         <div className='w-1/5 min-w-[256px] max-w-80 mr-8 h-[calc(100vh-32px)]'></div>
 
         { !path?.includes('admin/users/user/') ?
-          <div className='bg-admin-background rounded-3xl w-[calc(80%-32px)] min-h-[calc(100vh-32px)] p-12'>
+          <div className={`bg-${color} rounded-3xl w-[calc(80%-32px)] min-h-[calc(100vh-32px)] p-12`}>
             { children } 
           </div>:
           <div className='w-[calc(80%-32px)] min-h-[calc(100vh-32px)]'>
