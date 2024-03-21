@@ -26,7 +26,7 @@ const Add = () => {
     e.preventDefault()
     setIsLoading(true)
 
-    if ( password != password ) {
+    if ( password != confirmPassword ) {
       toast.error('Parola și confirmarea parolei nu corespund.')
       setIsLoading(false)
       return
