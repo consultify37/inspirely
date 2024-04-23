@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const file = JSON.parse(JSON.stringify(formData.files.image))[0]
   
   axios.post(
-    credentials.apiUrl + '/b2api/v1/b2_get_upload_url',
+    credentials.apiUrl + '/b2api/v3/b2_get_upload_url',
     {
         bucketId: '5f5385ef0ecc60c38ab5071a'
     },
