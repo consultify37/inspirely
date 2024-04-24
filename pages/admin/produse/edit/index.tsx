@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AdminLayout from '../../../../components/admin-nav/AdminLayout'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import { addDoc, collection, getDocs, query, serverTimestamp, where } from 'firebase/firestore'
 import { db } from '../../../../firebase'
 import FormTextArea from '../../../../components/admin/editProgram/FormTextArea'
 import FormInput from '../../../../components/admin/editProgram/FormInput'
@@ -85,6 +85,7 @@ const Edit = ({ categories }: Props) => {
         oldPrice: oldPrice ? Math.round(oldPrice! * 100) / 100 : null,
         onSale,
         faqs,
+        lastUpdated: serverTimestamp(),
         image: { file: result1, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${result1.fileName}` },
         file: { file: result2, url: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${result2.fileName}` }
       }
