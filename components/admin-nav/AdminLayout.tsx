@@ -76,7 +76,7 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
                   dashboard
                 </p>
               </Link>
-              { currentUser?.roles && currentUser.roles.includes('banner-homepage') &&
+              { currentUser?.roles && (currentUser.roles.includes('admin') || currentUser.roles.includes('banner-homepage')) &&
                 <Link href='/admin/slide-homepage' className='flex flex-row items-center'>
                   <Image 
                     src='/images/admin/window.svg'
@@ -91,7 +91,7 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
                 </Link>
               }
 
-              { currentUser?.roles && currentUser.roles.includes('produse') && 
+              { currentUser?.roles && (currentUser.roles.includes('admin') || currentUser.roles.includes('produse')) && 
                 <Link href='/admin/e-commerce' className='flex flex-row items-center'>
                   <Image 
                     src='/images/admin/e-commerce.svg'
@@ -106,7 +106,7 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
                 </Link>
               }
 
-              { currentUser?.roles && currentUser.roles.includes('produse') && 
+              { currentUser?.roles && (currentUser.roles.includes('admin') || currentUser.roles.includes('produse')) && 
                 <Link href='/admin/produse' className='flex flex-row items-center'>
                   <Image 
                     src='/images/admin/products.svg'
@@ -122,7 +122,7 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
               } 
 
               {
-                currentUser?.roles && currentUser.roles.includes('produse') && 
+                currentUser?.roles && (currentUser.roles.includes('admin') || currentUser.roles.includes('produse')) && 
                 <Link href='/admin/categorii-produse'className='flex flex-row items-center'>
                   <Image 
                     src='/images/admin/apps 1.svg'
@@ -137,7 +137,7 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
                 </Link>
               }
               
-              { currentUser?.roles && currentUser.roles.includes('pagina-blog') && 
+              { currentUser?.roles && (currentUser.roles.includes('admin') || currentUser.roles.includes('pagina-blog')) && 
                 <Link href='/admin/blog'className='flex flex-row items-center'>
                   <Image 
                     src='/images/admin/blog.svg'
@@ -152,7 +152,7 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
                 </Link>
               }
 
-              { currentUser?.roles && currentUser.roles.includes('users') &&
+              { currentUser?.roles && (currentUser.roles.includes('admin') || currentUser.roles.includes('users')) &&
                 <Link href='/admin/users'className='flex flex-row items-center'>
                   <Image 
                     src='/images/admin/user.svg'

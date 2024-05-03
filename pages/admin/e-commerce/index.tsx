@@ -145,7 +145,7 @@ const Ecommerce = ({ products }: Props) => {
     <AdminLayout color='white'>
       <div className='flex flex-row'>
         <div className='flex flex-col w-2/3 pr-8'>
-          { currentUser?.roles.includes('produse') &&
+          { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('produse')) &&
             <>
               <h2 className='font-bold text-secondary text-[28px]'>Vânzări</h2>
               <div className='w-full bg-admin-background rounded-[24px] p-6 mt-4'>
@@ -296,7 +296,7 @@ const Ecommerce = ({ products }: Props) => {
 
             { products.map((product, index) => (
               <div 
-                className={'flex flex-row items-center justify-between pt-[15px] py-[14px] p-6 ' + (index == 0 ? 'border-[#EAEAEA] border-b-[1px]' : '')}
+                className={'flex flex-row items-center justify-between pt-[15px] py-[14px] p-6 ' + (index == 0 && products.length > 1 ? 'border-[#EAEAEA] border-b-[1px]' : '')}
                 key={product.id}
               >
                 <Image

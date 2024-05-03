@@ -118,7 +118,7 @@ const Admin = ({ article, users, banners }: Props) => {
     <AdminLayout color='white'>
       <div className='flex flex-row'>
         <div className='flex flex-col w-2/3 pr-8'>
-          { currentUser?.roles.includes('produse') &&
+          { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('produse')) &&
             <>
               <h2 className='font-bold text-secondary text-[28px]'>Vânzări</h2>
               <div className='w-full bg-admin-background rounded-[24px] p-6 mt-4'>
@@ -182,7 +182,7 @@ const Admin = ({ article, users, banners }: Props) => {
             </>
           }
 
-          { currentUser?.roles.includes('banner-homepage') &&
+          { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('banner-homepage')) &&
             <div className='flex flex-col w-full mt-4'>
               <h2 className='font-bold text-secondary text-[28px]'>Homepage - Inspirely</h2>
               <div className='w-full flex flex-col bg-admin-background rounded-[24px] p-6 mt-4'>
@@ -196,7 +196,7 @@ const Admin = ({ article, users, banners }: Props) => {
         </div>
 
         <div className='flex flex-col w-1/3'>
-          { currentUser?.roles.includes('pagina-blog') &&
+          { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('pagina-blog')) &&
             <>
               <h2 className='font-bold text-secondary text-[28px]'>Blog</h2>
               <div className='w-full bg-admin-background rounded-[24px] p-6 mt-4'>
@@ -222,7 +222,7 @@ const Admin = ({ article, users, banners }: Props) => {
             </> 
           }
 
-          { currentUser?.roles.includes('users') && 
+          { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('users')) && 
             <>
               <h2 className='font-bold text-secondary text-[28px] mt-4'>Users</h2>
               <div className='w-full flex flex-col justify-between bg-admin-background rounded-[24px] pb-6 mt-4 h-full'>
