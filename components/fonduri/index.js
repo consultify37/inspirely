@@ -43,8 +43,8 @@ const divisions = [
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultricies nibh vel massa iaculis porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium ac orci at convallis. Vivamus a auctor sapien, sed viverra erat. Cras aliquam auctor urna. Pellentesque molestie orci quis leo ornare dapibus. Nulla auctor finibus aliquam. Etiam vitae efficitur orci, id gravida sapien. Nulla facilisis est lorem, tincidunt elementum felis bibendum eu.',
         logo: '/images/our logos/creditfy.svg',
         theme: {
-            backgroundColor: '#1D2C5B',
-            cardColor: '#00071E',
+            backgroundColor: '#00071E',
+            cardColor: '#152144',
             primaryColor: '#FF7A00',
             triangle: '#D7E1FF',
             polygon: '#FF7A00',

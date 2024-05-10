@@ -47,7 +47,7 @@ const DivisionCard = ({ bulletPoints, description, logo, numberOfStars, title, t
           </div>
 
           <Stars 
-            numberOfStars={numberOfStars}
+            numberOfStars={code == 'Creditfy' ? null : numberOfStars}
           />
 
           <ul className="list-disc list-inside mt-4">
@@ -55,14 +55,22 @@ const DivisionCard = ({ bulletPoints, description, logo, numberOfStars, title, t
               <li key={index} className="text-white font-semibold text-[15px] xl:text-base mb-4">{ bulletPoint }</li>
             ))}
           </ul>
-          <Link 
-            className="py-3 mt-2  flex items-center rounded-[28.5px] font-semibold px-11 text-center text-[14px] md:text-[16px] sm:px-12 hover:scale-[1.05] transition-all" 
-            href={`https://${code}.ro`}
-            target='_blank'
-            style={{backgroundColor: theme.primaryColor, color: code == 'Socialy' ? '#000' : '#FFF'}}
-          >
-            Vezi mai mult
-          </Link>
+          { code != 'Creditfy' ?
+            <Link 
+              className="py-3 mt-2  flex items-center rounded-[28.5px] font-semibold px-11 text-center text-[14px] md:text-[16px] sm:px-12 hover:scale-[1.05] transition-all" 
+              href={`https://${code}.ro`}
+              target='_blank'
+              style={{backgroundColor: theme.primaryColor, color: code == 'Socialy' ? '#000' : '#FFF'}}
+            >
+              Vezi mai mult
+            </Link> :
+            <div 
+              className="py-3 mt-2  flex items-center rounded-[28.5px] font-semibold px-11 text-center text-[14px] md:text-[16px] sm:px-12" 
+              style={{backgroundColor: theme.primaryColor, color: '#FFF'}}
+            >
+              Coming soon...
+            </div>
+          }
         </div>
 
         <svg width="163" height="87" viewBox="0 0 163 87" fill="none" xmlns="http://www.w3.org/2000/svg" className='hidden lg:block absolute top-0 left-0'>

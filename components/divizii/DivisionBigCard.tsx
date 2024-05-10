@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import Stars from '../About/Stars'
 import Link from 'next/link'
+import { title } from 'process'
 
 type Props = {
   data: {
@@ -47,7 +48,7 @@ const DivisionBigCard = ({ data }: Props) => {
       <div className='flex flex-col px-6 lg:flex-row'>
         <div className='flex flex-col lg:w-1/2'>
           <Stars 
-            numberOfStars={data.rating}
+            numberOfStars={data.id == 2 ? null : data.rating}
           />
 
           <div className="flex flex-row mt-4 items-center">
@@ -56,7 +57,11 @@ const DivisionBigCard = ({ data }: Props) => {
                 <p className="text-[14px] font-semibold" style={{ color: data.onPrimary}}>Experiență</p>
               </div>
             </div>
-            <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.experience} / 200</p>
+            {
+              data.id == 2 ?
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">???</p> :
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.experience} / 200</p>
+            }
           </div>
 
           <div className="flex flex-row mt-[10px] items-center">
@@ -65,7 +70,11 @@ const DivisionBigCard = ({ data }: Props) => {
                 <p className="text-[14px] font-semibold" style={{color: data.onPrimary}}>Transparență</p>
               </div>
             </div>
-            <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.transperancy} / 200</p>
+            {
+              data.id == 2 ?
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">???</p> :
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.transperancy} / 200</p>
+            }
           </div>
 
           <div className="flex flex-row mt-[10px] items-center" >
@@ -74,7 +83,11 @@ const DivisionBigCard = ({ data }: Props) => {
                 <p className=" text-[14px] font-semibold" style={{color: data.onPrimary}}>Feedback</p>
               </div>
             </div>
-            <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.feedback} / 200</p>
+            {
+              data.id == 2 ?
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">???</p> :
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.feedback} / 200</p>
+            }
           </div>
 
           <div className="flex flex-row mt-[10px] items-center">
@@ -83,7 +96,11 @@ const DivisionBigCard = ({ data }: Props) => {
                 <p className="text-[14px] font-semibold" style={{color: data.onPrimary}}>Resurse umane</p>
               </div>
             </div>
-            <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.hr} / 200</p>
+            {
+              data.id == 2 ?
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">???</p> :
+              <p className="text-onSecondary font-semibold text-[15px] min-w-[68px]">{data.hr} / 200</p>
+            }
           </div>
         </div>
 
@@ -93,18 +110,32 @@ const DivisionBigCard = ({ data }: Props) => {
         </div>
       </div>
 
-      <Link
-        href='https://consultify.ro'
-        className='relative px-12 lg:px-16 flex items-center justify-center mt-4 lg:mt-8 top-6 rounded-full w-fit mx-auto py-4 hover:scale-105 transition-all'
-        style={{backgroundColor: data.primary}}
-      >
-        <p 
-          className='text-[14px] font-semibold'
-          style={{color: data.onPrimary}}
+      { data.id == 2 ?
+        <div
+          className='relative px-12 lg:px-16 flex items-center justify-center mt-4 lg:mt-8 top-6 rounded-full w-fit mx-auto py-4'
+          style={{backgroundColor: data.primary}}
         >
-          Vizitează website-ul
-        </p>
-      </Link>
+          <p 
+            className='text-[14px] font-semibold'
+            style={{color: data.onPrimary}}
+          >
+            Coming soon...
+          </p>
+        </div> :
+        <Link
+          href={data.id==0 ? 'https://consultify.ro' : 'https://socialy.ro'}
+          target='_blank'
+          className='relative px-12 lg:px-16 flex items-center justify-center mt-4 lg:mt-8 top-6 rounded-full w-fit mx-auto py-4 hover:scale-105 transition-all'
+          style={{backgroundColor: data.primary}}
+        >
+          <p 
+            className='text-[14px] font-semibold'
+            style={{color: data.onPrimary}}
+          >
+            Vizitează website-ul
+          </p>
+        </Link>
+      }
 
       {
         data.id == 0 &&
