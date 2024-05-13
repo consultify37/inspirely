@@ -181,7 +181,7 @@ const Header = () => {
                 </Link>
                 <Link
                   href='/shop/cart'
-                  className={"absolute right-0 -top-[14px] p-[12px] rounded-full border-4 bg-tertiary hover:scale-105 transition-all"+ ((!pathname?.includes('/blog/')) || (scrollPosition != 0) ? "border-secondary" : "border-transparent")}
+                  className={"absolute right-0 -top-[14px] p-[12px] rounded-full border-4 bg-tertiary border-secondary hover:scale-105 transition-all"+ ((!pathname?.includes('/blog/')) || (scrollPosition != 0) ? "border-secondary" : "border-transparent")}
                 >
                     <Image 
                       src='/images/cart.svg'
