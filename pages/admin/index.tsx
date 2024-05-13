@@ -248,7 +248,7 @@ const Admin = ({ article, users, banners }: Props) => {
                   ))}
                 </div>
 
-                <Link href={`/admin/blog/edit/${article.id}`} className="text-primary font-bold text-sm self-end underline hover:scale-105 transition-all mr-6">Vezi mai mult</Link>
+                <Link href={`/admin/users`} className="text-primary font-bold text-sm self-end underline hover:scale-105 transition-all mr-6">Vezi mai mult</Link>
               </div>
             </> 
           }
