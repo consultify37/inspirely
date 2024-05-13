@@ -115,6 +115,7 @@ const Edit = ({ initialCategories, article }: Props) => {
         authorDescription,
         category: selectedCategory,
         keywords,
+        active,
         imagesToBeDeleted: toBeDeleted,
         lastUpdated: serverTimestamp()
       }

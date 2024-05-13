@@ -9,6 +9,7 @@ export const formatter = (node: any, index: number) => {
               width={512}
               height={512}
               alt='image'
+              unoptimized={true}
               className="w-full h-auto rounded-3xl mt-6 md:mt-8"
           />
       )
