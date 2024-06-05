@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export const formatter = (node: any, index: number) => {
   if (node.type === 'tag' && node.name === 'img') {
@@ -13,8 +14,19 @@ export const formatter = (node: any, index: number) => {
               className="w-full h-auto rounded-3xl mt-6 md:mt-8"
           />
       )
-  } else if (node.type === 'tag' && node.name === 'h2') {
-      
+  } if (node.type === 'tag' && node.name === 'p' && node.children[0].type === 'tag' && node.children[0].name === 'img') {
+			return (
+					<Image 
+							key={node.children[0].attribs.src}
+							src={node.children[0].attribs.src}
+							width={512}
+							height={512}
+							alt='image'
+							unoptimized={true}
+							className="w-full h-auto rounded-3xl mt-2 md:mt-8"
+					/>
+			)
+		} else if (node.type === 'tag' && node.name === 'h2') {     
       return (
           <h2
               key={node.children[0].data}
@@ -43,15 +55,26 @@ export const formatter = (node: any, index: number) => {
               {node.children[0].data}
           </h3>
       )
-  } else if (node.type === 'tag' && node.name === 'p' && typeof node.children[0].data == 'string' ) {
-      
-      return (
-          <h3
-              key={Math.random()}
-              className="text-[14px] md:text-[16px]"
-          >
-              {node.children[0].data}
-          </h3>
-      )
-  }
+  } else if (node.type === 'tag' && node.name === 'p'  ) {
+			return (
+				<p className="text-[14px] md:text-[16px]" key={Math.random()}>
+					{ node.children.length && node.children.map((node: any) => (
+							<span key={Math.random()}>
+								{ node.type === 'tag' && node.name === 'a' &&
+									<Link 
+										href={node.attribs.href} 
+										target="_blank" 
+										className="text-[14px] md:text-[16px] text-primary underline hover:scale-105 transition-all"
+									>
+										{ node.children[0].data }
+									</Link>
+								}
+								{ node.type === 'text' &&
+									node.data
+								}
+							</span>
+					))}
+				</p>
+			)
+	}
 }
