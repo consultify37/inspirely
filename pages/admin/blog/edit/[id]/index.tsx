@@ -101,6 +101,7 @@ const Edit = ({ initialCategories, article }: Props) => {
       results.forEach((image, index) => {
         formattedContent = formattedContent.replace(`&lt;img id="${index}" /&gt;`, `<img src="${image.image}" alt="${image.file.fileName}" />`)
       })
+      console.log(formattedContent)
 
       const data = {
         mainImage: { file: result, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${result.fileName}` },
