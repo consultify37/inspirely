@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     Authorization: uploadAuthorizationToken,
                     "X-Bz-File-Name": fileName,
                     "Content-Type": "b2/x-auto",
-                    "Content-Length": fileSize,
+                    "Content-Length": Math.floor(fileSize/1024),
                     "X-Bz-Content-Sha1": sha1,
                     "X-Bz-Info-Author": "unknown"
                 }
