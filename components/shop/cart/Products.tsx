@@ -133,7 +133,7 @@ const Products = ({ products }: Props) => {
               className='py-3 lg:py-4 w-full bg-primary flex items-center justify-center rounded-full hover:scale-105 transition-all mt-6'
             >
               <p className='text-onPrimary font-semibold text-[14px]'>Plasează comanda</p>
-            </Link>:
+            </Link> :
             <ReactLoading type="spin" color="#0CFF00" width={32} height={32} className='mt-6' />
           }
         </div>
