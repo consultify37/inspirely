@@ -30,7 +30,7 @@ export const formatter = (node: any, index: number) => {
 		return (
 			<h2
 				key={index}
-				className="text-[22px] md:text-[24px] font-semibold mt-6 md:mt-8"
+				className="text-[22px] md:text-[24px] font-semibold -my-4"
 			>
 				{ node.children[0].type === 'text' ?
 					node.children[0].data :
@@ -42,7 +42,7 @@ export const formatter = (node: any, index: number) => {
 		return (
 			<h1
 				key={index}
-				className="text-[26px] md:text-[28px] font-semibold"
+				className="text-[26px] md:text-[28px] font-semibold -my-4"
 			>
 				{ 
 					node.children[0].type === 'text' ?
@@ -56,7 +56,7 @@ export const formatter = (node: any, index: number) => {
 		return (
 			<h3
 				key={index}
-				className="text-[18px] md:text-[20px] font-semibold"
+				className="text-[18px] md:text-[20px] font-semibold -my-4"
 			>
 				{ 
 					node.children[0].type === 'text' ?
@@ -68,7 +68,7 @@ export const formatter = (node: any, index: number) => {
   } else if (node.type === 'tag' && node.name === 'p'  ) {
 		return (
 			<p className="text-[14px] md:text-[16px]" key={Math.random()}>
-				{ node.children.length && node.children.map((node: any) => (
+				{ node.children.length != 0 && node.children.map((node: any) => (
 						<span key={Math.random()}>
 							{ node.type === 'tag' && node.name === 'a' &&
 								<Link 
