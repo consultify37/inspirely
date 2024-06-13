@@ -22,7 +22,7 @@ const Products = ({ categories }: Props) => {
     const products: Product[] = collectionSnap.docs.map((doc) => (
       { id: doc.id, price: doc.data().price , ...doc.data() } as Product
     ))
-    console.log(products.length)
+
     setProducts(products)
   }
 
