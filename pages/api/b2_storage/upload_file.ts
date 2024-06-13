@@ -46,7 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         var fileName = file.newFilename + '.' + file.mimetype.split('/')[1]
 
         var sha1 = crypto.createHash('sha1').update(source).digest("hex");
-        console.log(uploadUrl)
+
         axios.post(
             uploadUrl,
             source,
@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 headers: {
                     Authorization: uploadAuthorizationToken,
                     "X-Bz-File-Name": fileName,
-                    "Content-Type": "b2/x-auto",
+                    "Content-Type": file.mimetype,
                     "Content-Length": fileSize,
                     "X-Bz-Content-Sha1": sha1,
                     "X-Bz-Info-Author": "unknown"
