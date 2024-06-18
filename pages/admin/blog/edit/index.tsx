@@ -25,7 +25,7 @@ const Edit = ({ initialCategories }: Props) => {
   
   const toolbarOptions = useMemo(() => (
     {
-      container: [[{ 'header': [1, 2, 3, false] }, 'link']], //[[{ 'header': [1, 2, 3, false] }], ['bold', 'italic',{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }, { 'color': [] }, { 'background': [] }, 'link']]
+      container: [[{ 'header': [1, 2, 3, false] }], [{ 'list': 'bullet'}, 'bold', 'italic', 'link']], //[[{ 'header': [1, 2, 3, false] }], ['bold', 'italic',{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }, { 'color': [] }, { 'background': [] }, 'link']]
     }
   ), []) 
   
@@ -113,7 +113,7 @@ const Edit = ({ initialCategories }: Props) => {
 
       await addDoc(collection(db, 'articles'), data)
 
-      toast.success('Articol adaugat cu succes.', { duration: 3000 })
+      toast.success('Articol adăugat cu succes.', { duration: 3000 })
       router.push('/admin/blog')
     } catch (e) {
       toast.error('Ceva nu a mers bine. Încearcă din nou.')

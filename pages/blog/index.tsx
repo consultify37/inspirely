@@ -66,7 +66,7 @@ export default function Testimoniale({ articles, categories, products }: Props) 
         <FeaturedArticlesSection 
             articles={articles.filter((article) => article.featured).slice(0,8)}
         />
-        
+
         <section className="flex flex-col gap-5 items-stretch justify-center px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px] mt-12 md:mt-12">
                 { categories.length >= 2 ?
                   <TabsComponent 
