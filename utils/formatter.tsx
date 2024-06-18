@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const formatter = (node: any, index: number) => {
-	console.log(node)
+
   if (node.type === 'tag' && node.name === 'img') {
 		return (
 			<Image 
