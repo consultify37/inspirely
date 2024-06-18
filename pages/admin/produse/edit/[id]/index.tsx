@@ -3,7 +3,7 @@ import AdminLayout from '../../../../../components/admin-nav/AdminLayout'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore'
-import { db } from '../../../../../firebase'
+import { db, storage } from '../../../../../firebase'
 import FormTextArea from '../../../../../components/admin/editProgram/FormTextArea'
 import FormInput from '../../../../../components/admin/editProgram/FormInput'
 import Dropdown from '../../../../../components/admin/editProgram/Dropdown'
@@ -17,6 +17,7 @@ import ReactLoading from 'react-loading'
 import { NextPageContext } from 'next'
 import { deleteFile } from '../../../../../utils/b2_storage/delete_file'
 import Link from 'next/link'
+import { UploadResult, deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 type Props = {
   categories: string[]
@@ -60,7 +61,8 @@ const Edit = ({ categories, product }: Props) => {
     try {
 
       var newImage
-      var newFile
+      var newFileSnapshot: UploadResult | null
+      var newFileUrl: string | null
 
       if ( typeof image != 'string' && image != oldImage )  {
         try {
@@ -75,13 +77,19 @@ const Edit = ({ categories, product }: Props) => {
 
       if ( typeof file != 'string' && file != oldFile )  {
         try {
-          newFile = await uploadFile(file!)
-          oldFile?.file && await deleteFile(oldFile?.file)
+          const reference = ref(storage, file?.name)
+          newFileSnapshot = await uploadBytes(reference, file!)
+
+          newFileUrl = await getDownloadURL(reference)
+
+          const oldFileReference = ref(storage, oldFile?.file.fileName)
+          await deleteObject(oldFileReference)
         } catch (e) {
           throw e
         }
       } else {
-        newFile = oldFile ? oldFile.file : null
+        newFileUrl = oldFile ? oldFile.url : null
+        newFileSnapshot = null
       }
 
       const newData = {
@@ -100,7 +108,7 @@ const Edit = ({ categories, product }: Props) => {
         onSale,
         faqs,
         image: newImage ? { file: newImage, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newImage.fileName}` } : null,
-        file: newFile ? { file: newFile, url: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newFile.fileName}` } : null
+        file: newFileSnapshot ? { file: { fileName: newFileSnapshot.ref.fullPath, fileId: newFileSnapshot.ref.fullPath }, url: newFileUrl } : null
       }
       
       await updateDoc(doc(db, 'products', product.id!), newData)

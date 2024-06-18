@@ -3,7 +3,7 @@ import AdminLayout from '../../../../components/admin-nav/AdminLayout'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { addDoc, collection, getDocs, query, serverTimestamp, where } from 'firebase/firestore'
-import { db } from '../../../../firebase'
+import { db, storage } from '../../../../firebase'
 import FormTextArea from '../../../../components/admin/editProgram/FormTextArea'
 import FormInput from '../../../../components/admin/editProgram/FormInput'
 import Dropdown from '../../../../components/admin/editProgram/Dropdown'
@@ -14,6 +14,7 @@ import AdminFaq from '../../../../components/admin/editProgram/AdminFaq'
 import { uploadFile } from '../../../../utils/b2_storage/upload_file'
 import toast from 'react-hot-toast'
 import ReactLoading from 'react-loading'
+import { UploadResult, getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 type Props = {
   categories: string[]
@@ -43,23 +44,31 @@ const Edit = ({ categories }: Props) => {
     e.preventDefault()
 
     if ( image == null ) {
-      'Alege o imagine principală. Apoi încearcă din nou.'
+      toast.error('Alege o imagine principală. Apoi încearcă din nou.')
+      setIsLoading(false)
+      return
     }
 
     if ( file == null ) {
-      'Alege un fișier. Apoi încearcă din nou.'
+      toast.error('Alege un fișier. Apoi încearcă din nou.')
+      setIsLoading(false)
+      return
     }
 
     try {
       var result1
-      var result2
+      var fileSnapshot: UploadResult
+      var fileUrl: string
 
-      if ( typeof file != 'string')  {
-        try {
-          result2 = await uploadFile(file!)
-        } catch (e) {
-          throw e
-        }
+      if ( typeof file != 'string') {
+        const reference = ref(storage, file?.name)
+        fileSnapshot = await uploadBytes(reference, file!)
+
+        fileUrl = await getDownloadURL(reference)
+      } else {
+        toast.error('Alege o imagine principală. Apoi încearcă din nou.')
+        setIsLoading(false)
+        return
       }
 
       if ( typeof image != 'string')  {
@@ -87,7 +96,7 @@ const Edit = ({ categories }: Props) => {
         faqs,
         lastUpdated: serverTimestamp(),
         image: { file: result1, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${result1.fileName}` },
-        file: { file: result2, url: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${result2.fileName}` }
+        file: { file: {fileName: fileSnapshot.ref.fullPath, fielId: fileSnapshot.ref.fullPath}, url: fileUrl }
       }
       
       await addDoc(collection(db, 'products'), newData)
