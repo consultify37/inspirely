@@ -11,7 +11,7 @@ const Blog = () => {
   const [articles, setArticles] = useState< Article[] >([])
 
   const fetchArticles = async () => {
-    const collectionRef = query(collection(db, 'articles'), orderBy('lastUpdated', 'desc'))
+    const collectionRef = query(collection(db, 'articles'), orderBy('createdAt', 'desc'))
     const collectionSnap = await getDocs(collectionRef)
     
     const articles: Article[] = collectionSnap.docs.map((doc) => (
