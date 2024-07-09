@@ -82,8 +82,7 @@ const Edit = ({ categories, product }: Props) => {
 
           newFileUrl = await getDownloadURL(reference)
 
-          const oldFileReference = ref(storage, oldFile?.file.fileName)
-          await deleteObject(oldFileReference)
+          oldFile && oldFile.file && await deleteObject(ref(storage, oldFile?.file.fileName))
         } catch (e) {
           throw e
         }
