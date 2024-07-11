@@ -51,11 +51,21 @@ const Edit = ({ categories, product }: Props) => {
     e.preventDefault()
 
     if ( image == null ) {
-      'Alege o imagine principală. Apoi încearcă din nou.'
+      toast.error('Alege o imagine principală. Apoi încearcă din nou.')
+      setIsLoading(false)
+      return
     }
 
     if ( file == null ) {
-      'Alege un fișier. Apoi încearcă din nou.'
+      toast.error('Alege un fișier. Apoi încearcă din nou.')
+      setIsLoading(false)
+      return
+    }
+
+    if (price && price <= 2.0 ) {
+      toast.error('Prețul trebuie să fie mai mare de 2.')
+      setIsLoading(false)
+      return
     }
 
     try {
@@ -64,7 +74,7 @@ const Edit = ({ categories, product }: Props) => {
       var newFileSnapshot: UploadResult | null
       var newFileUrl: string | null
 
-      if ( typeof image != 'string' && image != oldImage )  {
+      if ( typeof image != 'string' )  {
         try {
           newImage = await uploadFile(image!)
           oldImage?.file && await deleteFile(oldImage?.file)
@@ -75,7 +85,7 @@ const Edit = ({ categories, product }: Props) => {
         newImage = oldImage ? oldImage.file : null
       }
 
-      if ( typeof file != 'string' && file != oldFile )  {
+      if ( typeof file != 'string' )  {
         try {
           const reference = ref(storage, file?.name)
           newFileSnapshot = await uploadBytes(reference, file!)
@@ -91,23 +101,45 @@ const Edit = ({ categories, product }: Props) => {
         newFileSnapshot = null
       }
 
-      const newData = {
-        site: process.env.SITE,
-        active,
-        featured,
-        name,
-        category,
-        description,
-        description3,
-        description2,
-        reasons,
-        title3,
-        price: Math.round(price! * 100) / 100,
-        oldPrice: oldPrice ? Math.round(oldPrice! * 100) / 100 : null,
-        onSale,
-        faqs,
-        image: newImage ? { file: newImage, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newImage.fileName}` } : null,
-        file: newFileSnapshot ? { file: { fileName: newFileSnapshot.ref.fullPath, fileId: newFileSnapshot.ref.fullPath }, url: newFileUrl } : null
+      var newData
+
+      if (newFileSnapshot) {
+        newData = {
+          site: process.env.SITE,
+          active,
+          featured,
+          name,
+          category,
+          description,
+          description3,
+          description2,
+          reasons,
+          title3,
+          price: Math.round(price! * 100) / 100,
+          oldPrice: oldPrice ? Math.round(oldPrice! * 100) / 100 : null,
+          onSale,
+          faqs,
+          image: newImage ? { file: newImage, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newImage.fileName}` } : null,
+          file: { file: { fileName: newFileSnapshot.ref.fullPath, fileId: newFileSnapshot.ref.fullPath }, url: newFileUrl }
+        }
+      } else {
+        newData = {
+          site: process.env.SITE,
+          active,
+          featured,
+          name,
+          category,
+          description,
+          description3,
+          description2,
+          reasons,
+          title3,
+          price: Math.round(price! * 100) / 100,
+          oldPrice: oldPrice ? Math.round(oldPrice! * 100) / 100 : null,
+          onSale,
+          faqs,
+          image: newImage ? { file: newImage, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${newImage.fileName}` } : null,
+        }
       }
       
       await updateDoc(doc(db, 'products', product.id!), newData)
