@@ -117,83 +117,85 @@ const Admin = ({ article, users, banners }: Props) => {
   return (
     <AdminLayout color='white'>
       <div className='flex flex-row'>
-        <div className='flex flex-col w-2/3 pr-8'>
-          { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('produse')) &&
-            <>
-              <h2 className='font-bold text-secondary text-[28px]'>Vânzări</h2>
-              <div className='w-full bg-admin-background rounded-[24px] p-6 mt-4'>
-                <div className='flex flex-row justify-between items-center'>
-                  <p className='text-secondary'>Stadiu vânzări</p>
-                  <div className='flex flex-row items-center'>
-                    { isLoadingChart && <ReactLoading type="spin" color="#0F52FF" width={20} height={20} /> }
-                    <select 
-                      className="bg-transparent text-[#8B8B8B] text-[14px] outline-none border-[#CCCCCC] border-[1px] rounded-[4px] p-2 cursor-pointer mx-2" 
-                      name="luna"
-                      onChange={(e) => setMonth(Number(e.target.value))}
-                      value={month}
-                    >
-                        {monthsDictionary.map((category, index) => (
-                          <option 
-                            key={category}
-                            value={'' + index} 
-                          >
-                            {category}
-                          </option>
-                        ))}
-                    </select>
-                    <select 
-                      className="bg-transparent text-[#8B8B8B] text-[14px] outline-none border-[#CCCCCC] border-[1px] rounded-[4px] p-2 cursor-pointer" 
-                      name="an"
-                      onChange={(e) => setYear(Number(e.target.value))}
-                      value={year}
-                    >
-                        {years.map((category, index) => (
-                          <option 
-                            key={category}
-                            value={'' + index} 
-                          >
-                            {category}
-                          </option>
-                        ))}
-                    </select>
+        { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('produse') || currentUser?.roles.includes('banner-homepage')) &&
+          <div className='flex flex-col w-2/3 pr-8'>
+            { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('produse')) &&
+              <>
+                <h2 className='font-bold text-secondary text-[28px]'>Vânzări</h2>
+                <div className='w-full bg-admin-background rounded-[24px] p-6 mt-4'>
+                  <div className='flex flex-row justify-between items-center'>
+                    <p className='text-secondary'>Stadiu vânzări</p>
+                    <div className='flex flex-row items-center'>
+                      { isLoadingChart && <ReactLoading type="spin" color="#0F52FF" width={20} height={20} /> }
+                      <select 
+                        className="bg-transparent text-[#8B8B8B] text-[14px] outline-none border-[#CCCCCC] border-[1px] rounded-[4px] p-2 cursor-pointer mx-2" 
+                        name="luna"
+                        onChange={(e) => setMonth(Number(e.target.value))}
+                        value={month}
+                      >
+                          {monthsDictionary.map((category, index) => (
+                            <option 
+                              key={category}
+                              value={'' + index} 
+                            >
+                              {category}
+                            </option>
+                          ))}
+                      </select>
+                      <select 
+                        className="bg-transparent text-[#8B8B8B] text-[14px] outline-none border-[#CCCCCC] border-[1px] rounded-[4px] p-2 cursor-pointer" 
+                        name="an"
+                        onChange={(e) => setYear(Number(e.target.value))}
+                        value={year}
+                      >
+                          {years.map((category, index) => (
+                            <option 
+                              key={category}
+                              value={'' + index} 
+                            >
+                              {category}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
                   </div>
+                  <div className='mt-4 h-52'>
+                    { chartData && 
+                      <Line 
+                        data={chartData}
+                        options={{
+                          scales: {
+                            y: {min: 0}
+                          },
+                          maintainAspectRatio: false,
+                          responsive: true
+                        }}
+                    />
+                    }
+                  </div>  
+                  <div className='w-full flex flex-row items-center justify-center mt-1'>
+                    <div className='w-3 h-3 rounded-full bg-[#FB8351] mr-2'></div>
+                    <p className='text-secondary text-[14px] font-semibold mr-4'>comenzi</p>
+                    <div className='w-3 h-3 rounded-full bg-[#0BD002] mr-2'></div>
+                    <p className='text-secondary text-[14px] font-semibold'>vânzări</p>
+                  </div>             
                 </div>
-                <div className='mt-4 h-52'>
-                  { chartData && 
-                    <Line 
-                      data={chartData}
-                      options={{
-                        scales: {
-                          y: {min: 0}
-                        },
-                        maintainAspectRatio: false,
-                        responsive: true
-                      }}
-                  />
-                  }
-                </div>  
-                <div className='w-full flex flex-row items-center justify-center mt-1'>
-                  <div className='w-3 h-3 rounded-full bg-[#FB8351] mr-2'></div>
-                  <p className='text-secondary text-[14px] font-semibold mr-4'>comenzi</p>
-                  <div className='w-3 h-3 rounded-full bg-[#0BD002] mr-2'></div>
-                  <p className='text-secondary text-[14px] font-semibold'>vânzări</p>
-                </div>             
-              </div>
-            </>
-          }
+              </>
+            }
 
-          { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('banner-homepage')) &&
-            <div className='flex flex-col w-full mt-4'>
-              <h2 className='font-bold text-secondary text-[28px]'>Homepage - Inspirely</h2>
-              <div className='w-full flex flex-col bg-admin-background rounded-[24px] p-6 mt-4'>
-                <Carousel 
-                  banners={banners}
-                />
-                <Link href={`/admin/slide-homepage`} className="text-primary font-bold text-sm underline hover:scale-105 transition-all self-end">Vezi mai mult</Link>
-              </div>
-            </div> 
-          }
-        </div>
+            { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('banner-homepage')) &&
+              <div className='flex flex-col w-full mt-4'>
+                <h2 className='font-bold text-secondary text-[28px]'>Homepage - Inspirely</h2>
+                <div className='w-full flex flex-col bg-admin-background rounded-[24px] p-6 mt-4'>
+                  <Carousel 
+                    banners={banners}
+                  />
+                  <Link href={`/admin/slide-homepage`} className="text-primary font-bold text-sm underline hover:scale-105 transition-all self-end">Vezi mai mult</Link>
+                </div>
+              </div> 
+            }
+          </div>
+        }
 
         <div className='flex flex-col w-1/3'>
           { (currentUser?.roles.includes('admin') || currentUser?.roles.includes('pagina-blog')) &&

@@ -98,7 +98,7 @@ const SlideHomepage = () => {
                 width={1066}
                 height={411}
                 alt={newImage.name}
-                className='rounded-xl h-[186px] w-[484px]'
+                className='rounded-xl h-[186px] object-cover w-[484px]'
               /> : 
               <div className='flex justify-center items-center rounded-xl bg-white h-[186px] w-[484px]'>
                 <input 

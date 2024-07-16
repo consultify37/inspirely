@@ -22,7 +22,7 @@ const AdminCarousel = ({ banners }) => {
               alt="Hero video"
               width={2000}
               height={2000}
-              className="w-full h-auto rounded-[18px] z-[5]"
+              className="w-full object-cover rounded-[18px] h-[200px] z-[5]"
             />
           </div>
         ))
