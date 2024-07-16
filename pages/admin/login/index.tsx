@@ -19,7 +19,7 @@ const Login = () => {
 
     try{
       await signInWithEmailAndPassword(auth, email, password)
-      router.push('/admin/slide-homepage')
+      router.push('/admin')
     } catch (e: any) {
       toast.error(e.message.replace('Firebase: ', ''))
     }
