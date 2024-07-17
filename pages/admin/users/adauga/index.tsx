@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { uploadFile } from '../../../../utils/b2_storage/upload_file'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../../../firebase'
+import axios from 'axios'
 
 const Add = () => {
   const router = useRouter()
@@ -68,11 +69,10 @@ const Add = () => {
         name, 
         role: numeRol, 
         roles: permisiuni, 
-        isCreating: true,
         profilePic: result ? { file: result, image: `https://f005.backblazeb2.com/file/inspirely-consultify-socialy-creditfy/${result.fileName}` } : null
       }
       
-      await addDoc(collection(db, 'users'), data)
+      const response = await axios.post('https://createuser-75cxgdbjwq-ey.a.run.app', data)
 
       toast.success('User adăugat cu succes.', { duration: 3000 })
       router.push('/admin/users')
