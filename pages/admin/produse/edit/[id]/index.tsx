@@ -68,6 +68,10 @@ const Edit = ({ categories, product }: Props) => {
       return
     }
 
+    if (price == 19.99) {
+      toast.error('Prețul nu poate fi 19,99. Poți pune prețul 19,98.')
+    }
+
     try {
 
       var newImage
