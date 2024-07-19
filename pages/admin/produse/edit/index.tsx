@@ -61,12 +61,6 @@ const Edit = ({ categories }: Props) => {
       return
     }
 
-    if (price == 19.99) {
-      toast.error('Prețul nu poate fi 19,99. Poți pune prețul 19,98.')
-      setIsLoading(false)
-      return
-    }
-
     if (String(price).split(".")[1]?.length > 2) {
       toast.error('Prețul poate avea maxim 2 zecimale.')
       setIsLoading(false)
