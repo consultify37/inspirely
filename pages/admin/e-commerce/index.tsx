@@ -204,7 +204,7 @@ const Ecommerce = ({ products }: Props) => {
                   <div className='w-3 h-3 rounded-full bg-[#FB8351] mr-2'></div>
                   <p className='text-secondary text-[14px] font-semibold mr-4'>comenzi</p>
                   <div className='w-3 h-3 rounded-full bg-[#0BD002] mr-2'></div>
-                  <p className='text-secondary text-[14px] font-semibold'>vânzări</p>
+                  <p className='text-secondary text-[14px] font-semibold'>produse vândute</p>
                 </div>             
               </div>
             </>
