@@ -58,6 +58,7 @@ const ProductsTable = ({ products, category, onlySales, setProducts }: Props) =>
             <th className='py-4'>Nume produs</th>
             <th className='py-4'>Preț</th>
             <th className='py-4'>Categorie</th>
+            <th className='py-4'>Status</th>
             <th className='py-4 rounded-e-lg'></th>
           </tr> 
         </thead>
@@ -73,7 +74,7 @@ const ProductsTable = ({ products, category, onlySales, setProducts }: Props) =>
             return product.category == category 
 
           } else if ( category != 'Toate' && onlySales ) {
-            return product.onSale && onlySales
+            return product.onSale && product.category == category 
           }       
 
         }).map((product) => (

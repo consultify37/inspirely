@@ -229,24 +229,26 @@ const Admin = ({ article, users, banners }: Props) => {
               <h2 className='font-bold text-secondary text-[28px] mt-4'>Users</h2>
               <div className='w-full flex flex-col justify-between bg-admin-background rounded-[24px] pb-6 mt-4 h-full'>
                 <div>
-                  { users.map((user) => (
-                    <Link 
-                      href={`/admin/users/user/${user.id}`}
-                      key={user.id}
-                      className='w-full flex flex-row items-center border-[#EAEAEA] border-b-[1px] p-6 py-4'
-                    >
-                      <Image 
-                        src={user && user.profilePic ? user.profilePic.image : '/images/person.jpeg' }
-                        width={512}
-                        height={512}
-                        alt={currentUser?.name || 'profil' }
-                        className='w-14 h-14 object-cover rounded-full mr-3'
-                      />
-                      <div>
-                        <p className='text-[16px] text-secondary font-bold mt-1'>{user?.name || ""}</p>
-                        <p className='relative -top-1 text-[14px] text-[#787878] font-semibold'>{user?.role || ""}</p>
-                      </div>
-                    </Link>
+                  { users.map((user, index) => (
+                    <div key={user.id} className='border-[#EAEAEA]' style={{borderBottomWidth: index != users.length-1 ? '1px' : '0px' }}>
+                      <Link 
+                        href={`/admin/users/user/${user.id}`}
+                        key={user.id}
+                        className='w-full flex flex-row items-center p-6 py-4'
+                      >
+                        <Image 
+                          src={user && user.profilePic ? user.profilePic.image : '/images/person.jpeg' }
+                          width={512}
+                          height={512}
+                          alt={currentUser?.name || 'profil' }
+                          className='w-14 h-14 object-cover rounded-full mr-3'
+                        />
+                        <div>
+                          <p className='text-[16px] text-secondary font-bold mt-1'>{user?.name || ""}</p>
+                          <p className='relative -top-1 text-[14px] text-[#787878] font-semibold'>{user?.role || ""}</p>
+                        </div>
+                      </Link>
+                    </div>
                   ))}
                 </div>
 
@@ -270,7 +272,7 @@ export const getServerSideProps = async () => {
     return ({ id: doc.id, formattedCreatedAt: formatDate(new Date(createdAt.seconds*1000)), ...data } as Article) 
   })
 
-  const docsRef = query(collection(db, 'users'), where('roles', 'array-contains-any', ['admin','editor']), limit(4))
+  const docsRef = query(collection(db, 'users'), where('roles', 'array-contains-any', ['admin','editor']), limit(3))
   const docsSnap = await getDocs(docsRef)
 
   const users: User[] = docsSnap.docs.map((doc) => (

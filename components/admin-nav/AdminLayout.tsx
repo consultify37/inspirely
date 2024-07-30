@@ -31,7 +31,9 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
 
   const signout = async () => {
     setIsLoadingSignout(true)
+    router.push('/admin/login')
     await signOut(auth)
+    toast.success('Te-ai delogat cu succes!')
     setIsLoadingSignout(false)
   }
 

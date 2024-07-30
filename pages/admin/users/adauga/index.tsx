@@ -40,23 +40,6 @@ const Add = () => {
     }
 
     try {
-      const docs = query(collection(db, 'users'), where('email', '==', email))
-      const docsSnap = await getDocs(docs)
-
-      if ( !docsSnap.empty ) {
-        toast.error('Email deja folosit.', { duration: 3000 })
-        setIsLoading(false)
-        return
-      }
-
-    } catch (e) {
-      console.log(e)
-      toast.error('Ceva nu a mers bine, încearcă din nou!')
-      setIsLoading(false)
-      return
-    }
-
-    try {
       var result
 
       if ( profilePic ) {
@@ -76,7 +59,13 @@ const Add = () => {
 
       toast.success('User adăugat cu succes.', { duration: 3000 })
       router.push('/admin/users')
-    } catch (e) {
+    } catch (e: any) {
+      if (e.response.status == 404) {
+        toast.error('Adresă de email deja folosită.')
+        setIsLoading(false)
+        return
+      }
+
       console.log(e)
       toast.error('Ceva nu a mers bine, încearcă din nou!')
     }

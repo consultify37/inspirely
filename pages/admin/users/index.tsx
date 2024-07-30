@@ -67,14 +67,14 @@ const Users = () => {
                     alt={user.name}
                     className='w-14 h-14 my-3 rounded-full mr-3 object-cover'
                   />
-                  <p>{user.name}</p>
+                  <p className='font-semibold'>{user.name}</p>
                 </div>
               </td>
-              <td className='py-4'>{user.email}</td>
-              <td className='py-4'>{user.role ? user.role : "" }</td>
+              <td className='py-4 font-semibold'>{user.email}</td>
+              <td className='py-4 font-semibold'>{user.role ? user.role : "" }</td>
               { user.isCreating ?
                 <td className='py-4' style={{color: '#FFA500'}} >se crează...</td> :
-                <td className='py-4' style={{color: user.inactive ? '#FF0F0F' : '#04D200'}} >{user.inactive ? 'blocat' : 'activ'}</td>
+                <td className='py-4 font-semibold' style={{color: user.inactive ? '#FF0F0F' : '#04D200'}} >{user.inactive ? 'blocat' : 'activ'}</td>
               }
               <td className='rounded-e-lg'>
                 { !user.isCreating &&

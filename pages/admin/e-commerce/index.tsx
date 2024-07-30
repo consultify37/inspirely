@@ -131,7 +131,8 @@ const Ecommerce = ({ products }: Props) => {
 
     setN_orders(orders.length)
     
-    setN_products(orders.reduce((prev, curr) => (prev + curr.number_of_items), 0))
+    const total_price = orders.reduce((prev, curr) => (prev + curr.line_items.data.reduce((prev, curr) => (prev + curr.amount_total), 0)), 0)/100
+    setN_products(total_price)
 
     setIsLoadingChart(false)
 
@@ -272,7 +273,7 @@ const Ecommerce = ({ products }: Props) => {
           </div>
 
           <div className='flex flex-col w-full rounded-[24px] bg-admin-background p-6 mt-4'>
-            <h2 className='font-bold text-secondary text-[16px]'>vânzări</h2>
+            <h2 className='font-bold text-secondary text-[16px]'>Vânzări</h2>
 
             <div className='flex flex-row items-center mt-2'>
               <Image 
@@ -282,7 +283,7 @@ const Ecommerce = ({ products }: Props) => {
                 alt='.'
                 className='w-8 h-auto mr-4'
               />
-              <p className='text-[40px] font-bold text-secondary mt-1'>{n_products}</p>
+              <p className='text-[40px] font-bold text-secondary mt-1'>{n_products} lei</p>
             </div>
           </div>
         </div>

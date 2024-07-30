@@ -16,7 +16,7 @@ type Props = {
   user: User
 }
 
-const User = ({ user }: Props) => {
+const UserPage = ({ user }: Props) => {
   const router = useRouter()
   const [profilePic, setProfilePic] = useState< File | string  | null >( user.profilePic && user.profilePic.image ? user.profilePic.image : null )
   const [name, setName] = useState(user.name ? user.name : '')
@@ -98,7 +98,7 @@ const User = ({ user }: Props) => {
 
       await updateDoc(docRef, {
         role: numeRol,
-        roles: permisiuni
+        roles: permisiuni.length == 1 && permisiuni.includes('editor') ? [] : permisiuni
       })
 
       toast.success('Permisiunile user-ului au fost modificate cu succes.', { duration: 3000 })
@@ -239,12 +239,13 @@ const User = ({ user }: Props) => {
   )
 }
 
-export default User
+export default UserPage
 
 export const getServerSideProps = async (context: NextPageContext) => {
   const id = context.query.id as string
   const userSnap = await getDoc(doc(db, 'users', id))
-  const user = { id: userSnap.id, ...userSnap.data() }
+  const { createdAt, ...userData }: any = userSnap.data()
+  const user = { id: userSnap.id, ...userData }
 
   return { props: { user }}
 }

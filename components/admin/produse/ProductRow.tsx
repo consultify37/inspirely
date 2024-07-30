@@ -26,6 +26,7 @@ const ProductRow = ({ product, handleDelete }: Props) => {
         <span className='text-[#7C9EF8] font-semibold text-[14px] line-through ml-2'>{ product.oldPrice }</span>
       </td>
       <td className='py-4 font-bold text-secondary' >{ product.category }</td>
+      <td className='py-4 font-bold' style={{color: product.active ? '#04D200' : '#FF0F0F'}} >{ product.active ? 'activ' : 'inactiv' }</td>
       <td className='rounded-e-lg'>
         <div className='flex flex-row items-center'>
           <Link
