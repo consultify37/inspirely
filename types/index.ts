@@ -62,6 +62,7 @@ export type Article = {
   title: string
   id: string
   description: string
+  index: number
   featured: boolean
   active: boolean
   mainImage: any
