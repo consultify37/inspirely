@@ -108,6 +108,7 @@ const Blog = ({ articles: initialArticles, isLastPage: initialIsLastPage }: Prop
         lastPage={isLastPage}
         next={next}
         previous={previous}
+        isLoading={isLoading}
       />
     </AdminLayout>
   )
