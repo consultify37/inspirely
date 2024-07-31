@@ -46,7 +46,7 @@ const Blog = ({ articles: initialArticles, isLastPage: initialIsLastPage }: Prop
   const previous = async () => {
     setIsLoading(true)
 
-    const collectionRef = query(collection(db, 'articles'), orderBy('index', 'desc'), endBefore(articles[0].index), limit(articlesPerPage))
+    const collectionRef = query(collection(db, 'articles'), orderBy('index', 'asc'), startAfter(articles[0].index), limit(articlesPerPage))
     const collectionSnap = await getDocs(collectionRef)
     
     const newArticles: Article[] = collectionSnap.docs.map((doc) => (
@@ -60,7 +60,7 @@ const Blog = ({ articles: initialArticles, isLastPage: initialIsLastPage }: Prop
       setIsLastPage(lastArticle.docs[0].id == newArticles[newArticles.length-1].id)
     }
     
-    setArticles(newArticles)
+    setArticles(newArticles.reverse())
     setPage(page-1)
     window.scrollTo({top:0, behavior: 'instant'})
 
