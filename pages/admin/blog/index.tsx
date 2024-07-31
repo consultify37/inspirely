@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AdminLayout from '../../../components/admin-nav/AdminLayout'
 import Header from '../../../components/admin/blog/Header'
 import { collection, endBefore, getDocs, limit, orderBy, query, startAfter } from 'firebase/firestore'
@@ -67,9 +67,32 @@ const Blog = ({ articles: initialArticles, isLastPage: initialIsLastPage }: Prop
     setIsLoading(false)
   }
 
-  // useEffect(() => {
-  //   fetchArticles()
-  // }, [])
+  const fetchArticles = async () => {
+    setIsLoading(true)
+
+    const collectionRef = query(collection(db, 'articles'), orderBy('index', 'desc'), limit(articlesPerPage))
+    const collectionSnap = await getDocs(collectionRef)
+    
+    const newArticles: Article[] = collectionSnap.docs.map((doc) => (
+      { id: doc.id, formattedCreatedAt: formatDate(new Date(doc.data().createdAt.seconds*1000)), ...doc.data() } as Article
+    ))
+
+    const lastArticleRef = query(collection(db, 'articles'), orderBy('index', 'asc'), limit(1))
+    const lastArticle = await getDocs(lastArticleRef)
+
+    if ( articles.length != 0 && !lastArticle.empty ) {
+      setIsLastPage(lastArticle.docs[0].id == newArticles[newArticles.length-1].id)
+    }
+    
+    setArticles(newArticles)
+    window.scrollTo({top:0, behavior: 'instant'})
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    setPage(1)
+    fetchArticles()
+  }, [])
 
   return (
     <AdminLayout>

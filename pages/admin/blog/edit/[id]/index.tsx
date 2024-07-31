@@ -123,7 +123,9 @@ const Edit = ({ initialCategories, article }: Props) => {
       await updateDoc(doc(db, 'articles', article.id ), data)
 
       toast.success('Articol modificat cu succes.', { duration: 3000 })
-      router.push('/admin/blog')
+      setTimeout(() => {
+        router.push('/admin/blog')
+       }, 200)
     } catch (e: any) {
       toast.error('Ceva nu a mers bine. Încearcă din nou.');
       ( e.code || e.message ) && await addDoc(collection(db, 'errors'), { code: e.code ? e.code : null , message: e.message ? e.message : null, severity: 'error', createdAt: new Date() })

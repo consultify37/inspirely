@@ -38,13 +38,13 @@ const ArticlesTable = ({ articles, setArticles }: Props) => {
   ]
 
   const handleDelete = async (article: Article) => {
-    if ( confirm('Ești sigur că vrei să ștergi produsul? Acțiunea este definitivă.' )) {
+    if ( confirm('Ești sigur că vrei să ștergi articolul? Acțiunea este definitivă.' )) {
       const docRef = doc(db, 'articles', article.id!)
 
       try {
         await deleteDoc(docRef)
 
-        setArticles(articles.filter((article) => article.id != article.id ))
+        setArticles(articles.filter((item) => item.id != article.id ))
 
         article.file && await deleteFile({ fileId: article.file.file.fileId, fileName: article.file.file.fileName })
         article.image && await deleteFile({ fileId: article.image.file.fileId, fileName: article.image.file.fileName })

@@ -114,7 +114,9 @@ const Edit = ({ initialCategories }: Props) => {
       await addDoc(collection(db, 'articles'), data)
 
       toast.success('Articol adăugat cu succes.', { duration: 3000 })
-      router.push('/admin/blog')
+      setTimeout(() => {
+       router.push('/admin/blog')
+      }, 200)
     } catch (e) {
       toast.error('Ceva nu a mers bine. Încearcă din nou.')
     }
