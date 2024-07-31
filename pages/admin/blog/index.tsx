@@ -33,7 +33,7 @@ const Blog = ({ articles: initialArticles, isLastPage: initialIsLastPage }: Prop
     const lastArticleRef = query(collection(db, 'articles'), orderBy('index', 'asc'), limit(1))
     const lastArticle = await getDocs(lastArticleRef)
 
-    if ( articles.length != 0 && !lastArticle.empty ) {
+    if ( newArticles.length != 0 && !lastArticle.empty ) {
       setIsLastPage(lastArticle.docs[0].id == newArticles[newArticles.length-1].id)
     }
     
