@@ -103,7 +103,12 @@ const OrderDetails = () => {
       Cookies.set('cart_session_id', response.data.session_id)
 
       router.replace(response.data.url)
-    } catch (e) {
+    } catch (e: any) {
+      if (e.response && e.response.status == 404) {
+        toast.error('Comanda minimă este de 2 lei!')
+        setIsLoading(false)
+        return
+      }
       toast.error('Ceva nu a mers bine. Încearcă din nou!')
       console.log(e)
     }
