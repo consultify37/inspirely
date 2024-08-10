@@ -117,6 +117,11 @@ html.normal-scroll {
   .carousel-fonduri .rec-dot { margin-top: 256px !important; }
 }
 
+.rec {
+  display: flex;
+  align-items: stretch;
+}
+
 @media screen and (min-width: 1024px) {
   .carousel-fonduri .rec-dot { margin-top: 116px !important; }
 }

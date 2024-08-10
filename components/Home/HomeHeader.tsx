@@ -36,19 +36,11 @@ const HomeHeader = ({ slides }: Props) => {
         <div className="z-10 w-full flex flex-col items-center gap-6 md:gap-7 relative pt-14 md:pt-12">
           <div className="relative flex items-center justify-center">
             <h1 className="text-white text-[30px] md:text-[38px] xl:text-[45px] font-extrabold text-center">
-              Platforma care se ocupă de afacerea ta
+              Platforma care se ocupă de <span className="text-tertiary">afacerea</span> ta!
             </h1>
-            {/* <Image
-              id="hero-video"
-              src="/images/home-header/home-line.svg"
-              alt="Hero like"
-              width={500}
-              height={500}
-              className="absolute w-[625px] right-0 -bottom-6 lg:w-[380px] xl:w-[460px] 2xl:w-[460px] lg:-bottom-8 2xl:-bottom-10"
-            /> */}
           </div>
           <p className="text-white font-light text-center text-[14px] md:text-[18px] lg:max-w-[60%]">
-            Inspirely este partenerul tău de încredere în obținerea finanțărilor nerambursabile, oferind soluții personalizate pentru dezvoltarea afacerii tale.
+            Inspirely este platforma completă care îți oferă toate soluțiile necesare pentru succesul afacerii tale.
           </p>
           <Link
             href='/divizii'

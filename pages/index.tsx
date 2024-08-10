@@ -40,7 +40,7 @@ export default function Home({ slides, products, articles }: Props) {
       <News
          articles={articles}
       />
-      <NewsLetter headingText={'Alătură-te comunității noastre și fii la curent cu cele mai noi oportunități de finanțare!'} />
+      <NewsLetter headingText={'Alătură-te comunității Inspirely! Abonează-te la newsletter pentru a primi cele mai bune soluții pentru afacerea ta.'} />
     </>
   )
 }

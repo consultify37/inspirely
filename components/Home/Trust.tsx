@@ -8,9 +8,9 @@ const TrustSRL = () => {
       className="w-full flex flex-col items-center mt-32 md:mt-[72px] justify-center"
     >
       <h2 className="text-primary font-bold text-[20px] md:text-xl lg:text-2xl xl:text-4xl text-center px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">
-      Peste 850 de companii au accesat fonduri europene cu ajutorul nostru. 
+       Peste 1000 de afaceri au colaborat cu brandurile partenere Inspirely.
       </h2>
-      <h3 className="text-primary text-[16px] md:text-lg lg:text-xl xl:text-2xl px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">
+      <h3 className="text-primary text-[16px] mt-4 md:text-lg lg:text-xl xl:text-2xl px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px]">
         Iată câteva dintre ele:
       </h3>
       <div className="md:px-[56px] xl:px-[100px] 2xl:px-[180px] pt-8">

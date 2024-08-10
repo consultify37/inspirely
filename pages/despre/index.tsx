@@ -31,11 +31,13 @@ const About = ({ articles, products }: Props) => {
             <FAQAbout />
             <FeaturedProducts 
                 products={products}
+                title="Scalează-ți afacerea împreună cu<br /> produsele noastre digitale:"
             />
             <News 
                 articles={articles}
+                title="Explorează ultimele tendințe<br /> din lumea afacerilor împreună cu noi:"
             />
-            <NewsLetter headingText={'Abonează-te la newsletter pentru informații actualizate despre afaceri!'} />
+            <NewsLetter headingText={'Transformă-ți afacerea cu insight-uri exclusive și oferte speciale!'} />
         </>
     )
 }

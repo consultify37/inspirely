@@ -8,6 +8,7 @@ import { Article, Product } from '../../types'
 import FeaturedProducts from '../../components/Home/Why-Us/FeaturedProducts'
 import News from '../../components/Home/News/News'
 import DivisionBigCard from '../../components/divizii/DivisionBigCard'
+import NewsLetter from '../../components/global/newsletter'
 
 type Props = {
   products: Product[]
@@ -17,40 +18,40 @@ type Props = {
 const Data = [
   { 
     id: 0,
-    title: 'Consultify - Consultanță pentru dezvoltare',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultricies nibh vel massa iaculis porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium ac orci at convallis. Vivamus a auctor sapien, sed viverra erat. Cras aliquam auctor urna. Pellentesque molestie orci quis leo ornare dapibus. Nulla auctor finibus aliquam. Etiam vitae efficitur orci, id gravida sapien. Nulla facilisis est lorem, tincidunt elementum felis bibendum eu.',
-    experience: 160,
+    title: 'Consultify – Consultanță in Fonduri Europene',
+    description: 'Consultify este partenerul tău de încredere în accesarea fondurilor europene. Cu o echipă de experți în diverse domenii, de la turism și tehnologie la agricultură durabilă și dezvoltare rurală, oferim consultanță personalizată pentru fiecare client in parte. Misiunea noastră este să simplificăm procesul complex de aplicare și să te ghidăm pe parcursul întregii călătorii, asigurându-ne că obții finanțarea necesară pentru a-ți dezvolta afacerea. Consultify se mândrește cu un număr impresionant de proiecte acceptate și cu un nivel ridicat de satisfacție a clienților.',
+    experience: 190,
     transperancy: 180,
-    feedback: 190,
-    hr: 160,
+    feedback: 160,
+    hr: 170,
     primary: '#CF9FFF',
     onPrimary: '#fff',
     background: '#260056',
     logo: '/images/our logos/consultify.svg',
-    rating: 5
+    rating: 4.5
   },
   { 
     id: 1,
-    title: 'Socialy - Îți face afacerea virală',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultricies nibh vel massa iaculis porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium ac orci at convallis. Vivamus a auctor sapien, sed viverra erat. Cras aliquam auctor urna. Pellentesque molestie orci quis leo ornare dapibus. Nulla auctor finibus aliquam. Etiam vitae efficitur orci, id gravida sapien. Nulla facilisis est lorem, tincidunt elementum felis bibendum eu.',
-    experience: 160,
+    title: 'Socialy – Agenție de marketing',
+    description: 'La Socialy, ne dedicăm să fim partenerul preferat al afacerilor în dezvoltarea și consolidarea prezenței lor online. Suntem specializați în ads pe social media, web-design, branding, conținut organic și video marketing. Oferim soluții personalizate și inovatoare pentru a ajuta clienții să atingă succesul pe termen lung. Colaborăm strâns cu fiecare client pentru a înțelege viziunea și valorile afacerii, dezvoltând strategii de marketing eficiente și creative care să atragă și să angajeze publicul țintă. Socialy se remarcă prin creativitate, profesionalism și rezultate măsurabile, ajutând afacerile să se dezvolte și să prospere într-un mediu digital competitiv.',
+    experience: 180,
     transperancy: 180,
-    feedback: 190,
+    feedback: 160,
     hr: 160,
     primary: '#0CFF00',
     onPrimary: '#000',
     background: '#0E0E0E',
     logo: '/images/our logos/socialy.svg',
-    rating: 5
+    rating: 4.4
   },
   { 
     id: 2,
-    title: 'Creditfy - Credite pentru nevoile tale!',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultricies nibh vel massa iaculis porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium ac orci at convallis. Vivamus a auctor sapien, sed viverra erat. Cras aliquam auctor urna. Pellentesque molestie orci quis leo ornare dapibus. Nulla auctor finibus aliquam. Etiam vitae efficitur orci, id gravida sapien. Nulla facilisis est lorem, tincidunt elementum felis bibendum eu.',
-    experience: 160,
-    transperancy: 140,
-    feedback: 190,
-    hr: 160,
+    title: 'Creditfy - Brokeraj în credite',
+    description: 'Creditfy este agenția ta de brokeraj în credite, specializată în oferirea soluțiilor financiare adaptate nevoilor tale. Cu o rețea vastă de parteneri bancari și instituții financiare, Creditfy te ajută să găsești cele mai avantajoase opțiuni de creditare. De la credite pentru dezvoltarea afacerii până la soluții pentru nevoi personale, echipa noastră îți oferă suport pe tot parcursul procesului, simplificând aplicarea și negocierea pentru a obține cele mai bune condiții. ',
+    experience: 170,
+    transperancy: 170,
+    feedback: 170,
+    hr: 170,
     primary: '#FF7A00',
     onPrimary: '#fff',
     background: '#00071E',
@@ -83,7 +84,7 @@ const Divisions = ({ products, articles }: Props) => {
             />
 
             <h1 className="text-[24px] md:text-4xl xl:text-[44px] font-extrabold md:leading-[48px] text-white md:max-w-[68%] text-center pt-20 md:pt-20 mx-4 z-50">
-              Diviziile Inspirely
+              Diviziile Inspirely:
             </h1>
 
             <div className='px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px] w-full mt-8 md:mt-24'>
@@ -132,9 +133,14 @@ const Divisions = ({ products, articles }: Props) => {
         <div className='h-8 lg:h-12'></div>
         <FeaturedProducts 
           products={products}
+          title='Descoperă soluțiile digitale oferite de<br /> Inspirely pentru afacerea ta:'
         />
         <News
           articles={articles}
+          title='Rămâi informat cu ultimele noutăți<br /> din lumea afacerilor și nu numai:'
+        />
+        <NewsLetter 
+          headingText='Alătură-te comunității Inspirely și ai acces la resurse valoroase pentru afacerea ta!'
         />
       </div>
     </>

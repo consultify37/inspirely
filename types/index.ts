@@ -112,11 +112,13 @@ export type User = {
 export type Product = {
   stripe_price_id: string
   active: boolean
+  sells_number: number
   id?: string
   name: string
   price: number
   oldPrice: number | null
   description: string
+  lastUpdated: number
   description2: string
   description3: string
   category: string

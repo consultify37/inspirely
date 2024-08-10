@@ -4,13 +4,15 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { Product } from '../../../types'
 import { backCarousel, nextCarousel } from '../../../utils/functions'
 import ProductCard from '../../shop/ProductCard'
+import Link from 'next/link'
 
 type Props = {
   products: Product[]
   dark?: boolean
+  title?: string
 }
 
-const FeaturedProducts = ({ products, dark=false }: Props) => {
+const FeaturedProducts = ({ products, dark=false, title='Inspirely vine în ajutorul tău cu produse digitale<br /> pentru scalarea afacerii tale:' }: Props) => {
   const [scrollAmount, setScrollAmount] = useState(0)
   const [cardRef, setCardRef] = useState< any >([])
   const carouselRef = useRef<HTMLDivElement | null>(null)
@@ -32,13 +34,13 @@ const FeaturedProducts = ({ products, dark=false }: Props) => {
   }, [scrollAmount])
 
   return(
-    <div className="flex flex-col mt-16 lg:mt-32">
+    <div className="flex flex-col mt-20 lg:mt-40">
       <div className="flex justify-between w-full items-center">
         <h2 
-          className="text-[15px] lg:text-[32px] mr-2 sm:max-w-[65%] lg:mr-32 xl:max-w-[65%] text-secondary font-bold pl-7 md:pl-[80px] xl:pl-[140px] 2xl:pl-[276px]"
-          style={{color: dark ? 'white' : 'black' }}
+          className="md:text-xl lg:text-2xl xl:text-[32px] text-primary font-bold pl-7 md:pl-[80px] xl:pl-[140px] 2xl:pl-[276px]"
+          style={{color: dark ? 'white' : '#0F52FF' }}
         >
-          Inspirely vine în ajutorul tău cu produse digitale pentru scalarea afacerii tale
+          { title.split('<br />').map((item, index) => <>{item}{ index != title.split('<br />').length -1 ? <br/> : null}</>)}
         </h2>
         <div className="flex flex-row pr-7 md:pr-[80px] xl:pr-[140px] 2xl:pr-[276px]">
           <span
@@ -74,6 +76,13 @@ const FeaturedProducts = ({ products, dark=false }: Props) => {
           </div>
         ))}
       </div>
+
+      <Link
+        href='/shop'
+        className='py-3 lg:py-4 w-fit self-center px-16 bg-primary flex items-center justify-center rounded-full hover:scale-105 transition-all mt-8 lg:mt-12 lg:mb-6 mb-12'
+      >
+        <p className='text-onPrimary font-semibold text-[14px]'>Vezi toate produsele</p>
+      </Link>
     </div>
   )
 }

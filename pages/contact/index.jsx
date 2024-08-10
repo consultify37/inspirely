@@ -4,16 +4,15 @@ import Link from "next/link"
 import NewsLetter from "../../components/global/newsletter"
 import Head from "next/head"
 import toast from "react-hot-toast"
-import Rezultate from "../../components/Rezultate"
 import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
 import ReCAPTCHA from "react-google-recaptcha"
 import PageHeader from "../../components/Header/PageHeader"
-import axios from "axios"
 import ReactLoading from 'react-loading'
 import { facebook, instagram, tiktok } from "../../utils/constants"
 import WhyUs from "../../components/Home/WhyUs"
 import TrustSRL from "../../components/Home/Trust"
+import { collection } from "firebase/firestore"
  
 export default function Contact() {
     const [nume, setNume] = useState('')
@@ -25,6 +24,7 @@ export default function Contact() {
     const [cui, setCui] = useState('')
     const [firma, setFirma] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [newsletter, setNewsletter] = useState(true)
 
     const [isChecked, setIsChecked] = useState(false)
     const [captchaVerified, setCaptchaVerified] = useState(false)
@@ -46,34 +46,22 @@ export default function Contact() {
         }
 
         try {
-            const response = await axios.get('https://api.inspiredconsulting.ro/contact', {
-                params: {
-                    nume: nume,
-                    prenume: prenume,
-                    email: email,
-                    mesaj: mesaj,
-                    firma: firma,
-                    cui: cui,
-                    nevoie: nevoie,
-                    telefon: telefon,
-                    website: process.env.SITE
-                }
-            })
-            
-            if (response.status == 200) {
-                toast.success('Mulțumim! Un reprezentat Inspirely te va contacta în curând. 🚀', { duration: 5000, style: { textAlign: 'center' } })
-                setCui("")
-                setEmail("")
-                setIsChecked(false)
-                setFirma("")
-                setMesaj("")
-                setNevoie("")
-                setNume('')
-                setPrenume('')
-                setTelefon('')
-            } else {
-                throw 'error'
-            }
+            const collectionRef = collection(db, 'contactForms')
+
+            await addDoc(collectionRef, { nume, prenume, firma, cui, telefon, email, subscribe: newsletter, nevoie, mesaj, website: process.env.SITE, createdAt: serverTimestamp() } )
+            newsletter && await addDoc(collection(db, 'newsletter'), { website: process.env.SITE, email: email })
+
+            toast.success(`Mulțumim! Un reprezentant ${process.env.SITE} te va contacta în curând. 🚀`, { duration: 5000, style: { textAlign: 'center' } })
+            setCui("")
+            setEmail("")
+            setIsChecked(false)
+            setFirma("")
+            setMesaj("")
+            setNevoie("")
+            setNume('')
+            setPrenume('')
+            setTelefon('')
+
         } catch (e) {
             setIsLoading(false)
             toast.error('Ceva nu a mers bine. Încearcă din nou!')
@@ -120,7 +108,7 @@ export default function Contact() {
                         </div>
                         <div className="flex flex-col justify-center">
                             <h5 className="text-xl text-white font-bold">Email:</h5>
-                            <Link href={`mailto:contact@socialy.ro`} className="text-lg md:text:xl text-white font-bold hover:text-primary transition-all">contact@socialy.ro</Link>
+                            <Link href={`mailto:contact@inspirely.ro`} className="text-lg md:text:xl text-white font-bold hover:text-primary transition-all">contact@inspirely.ro</Link>
                         </div>
                     </div>
                     <div className="flex flex-row mb-6">
@@ -135,7 +123,7 @@ export default function Contact() {
                         </div>
                         <div className="flex flex-col justify-center">
                             <h5 className="text-xl text-white font-bold">Telefon:</h5>
-                            <span className="text-lg md:text-xl text-white font-bold hover:text-primary transition-all"><Link href='tel:0727 153 317'>0727 153 317</Link></span>
+                            <span className="text-lg md:text-xl text-white font-bold hover:text-primary transition-all"><Link href='tel:0771 059 932'>0771 059 932</Link></span>
                         </div>
                     </div>
                     <h6 className="text-xl text-white mb-4 font-bold text-center">Sau ne poți găsi și aici:</h6>
@@ -173,34 +161,20 @@ export default function Contact() {
                     className="mt-12 lg:mt-0 lg:ml-12 rounded-3xl shadow-box bg-[#fff] w-full max-w-[1000px] p-8 px-4 md:px-8 flex flex-col"
                     onSubmit={upload}
                 >
-                    <h2 className="text-xl text-secondary font-bold mb-10 md:text-2xl text-center">Hai să lucrăm împreună!</h2>
+                    <h2 className="text-xl text-secondary font-bold mb-10 md:text-2xl text-center">Ia legătura cu noi!</h2>
                     <div className="flex w-full flex-col items-center md:flex-row justify-between mb-6">
-                        <div className="flex flex-col w-full md:w-[47%] md:mr-2 mb-6 md:mb-0">
+                    <div className="flex flex-col w-full">
                             <span className="text-md mb-2 font-semibold">
-                                Nume*
+                                Nume și prenume*
                             </span>
                             <input
                                 required 
                                 type="text"
                                 name="Nume"
                                 className="rounded-xl w-full border-primary text-ms leading-6 border-2 p-[14px] outline-none" 
-                                placeholder="ex: Popescu"
+                                placeholder="ex: Popescu Andrei"
                                 onChange={(e) => setNume(e.target.value)}
                                 value={nume}
-                            />
-                        </div>
-                        <div className="flex flex-col w-full md:w-[47%]">
-                            <span className="text-md mb-2 font-semibold">
-                                Prenume*
-                            </span>
-                            <input
-                                required 
-                                type="text"
-                                name="Prenume"
-                                className="rounded-xl w-full border-primary text-ms leading-6 border-2 p-[14px] outline-none" 
-                                placeholder="ex: Andrei"
-                                onChange={(e) => setPrenume(e.target.value)}
-                                value={prenume}
                             />
                         </div>
                     </div>
@@ -273,9 +247,12 @@ export default function Contact() {
                                 value={nevoie}
                             >
                                 <option value="Selectează aici" className="hidden">Selectează aici</option>
-                                <option value="Consultanță Fonduri Europene">Consultanță Fonduri Europene</option>
-                                <option value="Implementare proiect">Implementare proiect</option>
+                                <option value="Suport vânzări">Suport vânzări</option>
+                                <option value="Sesizări comandă">Sesizări comandă</option>
                                 <option value="Colaborări & Angajări">Colaborări & Angajări</option>
+                                <option value="Feedback și sugestii">Feedback și sugestii</option>
+                                <option value="Oferte personalizate">Oferte personalizate</option>
+                                <option value="Altele">Altele</option>
                             </select>
                         </div>
                     <div className="flex flex-col w-full my-6">
@@ -291,11 +268,17 @@ export default function Contact() {
                             value={mesaj}
                         ></textarea>
                     </div>
-                    <div className="flex items-center justify-center mb-6 self-center ml-1">
+                    <div className="flex items-center self-start justify-center mb-6 ml-1">
                         <input 
                             checked={isChecked} onChange={(e) => setIsChecked(!isChecked) }
-                            id="link-checkbox" type="checkbox" className="w-4 cursor-pointer h-4 text-secondary rounded border-[2px] bg-[#F2F4FF] border-primary outline-none" />
+                            id="link-checkbox" type="checkbox" className="w-4 min-w-[16px] cursor-pointer h-4 text-secondary rounded border-[2px] bg-[#F2F4FF] border-primary outline-none" />
                         <label htmlFor="link-checkbox" className="ml-2 text-md font-bold text-secondary">Accept <Link href="/termeni" target="_blank" className="text-secondary underline">Termenii și Condițiile.</Link></label>
+                    </div>
+                    <div className="flex self-start justify-center mb-6 ml-1">
+                        <input 
+                            checked={newsletter} onChange={(e) => setNewsletter(!newsletter) }
+                            id="checkbox-newsletter" type="checkbox" className="w-4 min-w-[16px] cursor-pointer h-4 text-secondary rounded border-[2px] bg-[#F2F4FF] border-primary outline-none" />
+                        <label htmlFor="checkbox-newsletter" className="ml-2 -mt-[3px] text-md font-bold text-secondary">Aboneaza-te la newsletter-ul nostru pentru a primi cele mai bune oferte!</label>
                     </div>
                     <div className="flex flex-col md:flex-row justify-center w-full items-center">
                         <ReCAPTCHA
@@ -317,15 +300,14 @@ export default function Contact() {
                 </form>
             </section>
             {/* <Rezultate contact={false} /> */}
-            <div className="h-2 md:h-4"></div>
             <WhyUs />
             <div className="h-0 md:h-32"></div>
             <TrustSRL />
             <Link href='#' className="bg-primary mt-12 flex font-semibold items-center justify-center w-[max-content] mx-auto justify-self-center px-12 md:px-16 py-3 md:py-4 text-onPrimary rounded-[28.5px] hover:scale-[1.05] transition-all">
-                Vreau să lucrez alături de voi!
+              Vreau să iau legătura cu voi!
             </Link>
             <div className="h-12 md:h-4"></div>
-            <NewsLetter headingText={'Fii la curent cu cele mai recente informații despre fonduri europene!'} />
+            <NewsLetter headingText={'Alătură-te comunității noastre și primește ultimele noutăți!'} />
         </>
     )
 }

@@ -7,18 +7,20 @@ import reactHtmlParser from 'react-html-parser'
 import { formatter } from "../../../utils/formatter"
 import { collection, doc, getDoc, getDocs, limit, orderBy, query, where } from "firebase/firestore"
 import { db } from "../../../firebase"
-import { Article } from "../../../types"
+import { Article, Product } from "../../../types"
 import { formatDate } from "../../../utils/formatDate"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import FeaturedProducts from "../../../components/Home/Why-Us/FeaturedProducts"
 
 type Props = {
     article: Article
     articles: Article[]
+    products: Product[]
 }
 
 
-const BlogPost = ({ article, articles }: Props) => {
+const BlogPost = ({ article, articles, products }: Props) => {
     const [shareButton, setShareButton] = useState('/images/link.svg')
     const [shareButtonText, setShareButtonText] = useState('')
     const pathName = usePathname()
@@ -70,7 +72,7 @@ const BlogPost = ({ article, articles }: Props) => {
                     </div>
                     <div className="w-full flex md:justify-end items-center flex-row">
                         <span className="text-base font-bold mr-4">
-                            Distribuie pe social media
+                            Distribuie pe social media:
                         </span>
                         <div className="flex flex-row items-center">
                             {/* <Link href='#' className="flex items-center bg-primary rounded-full mr-2 p-2 hover:scale-105 transition-all">
@@ -130,8 +132,15 @@ const BlogPost = ({ article, articles }: Props) => {
                     Nullam efficitur fermentum tristique. Maecenas sed odio eu nisl semper sollicitudin nec vitae nibh. Duis rhoncus mauris sit amet risus malesuada tristique. Integer consectetur ante elit, vitae venenatis felis ullamcorper ut. Sed eget ipsum urna. Etiam tincidunt accumsan tortor et aliquam. Suspendisse vitae tempus ligula. Pellentesque vitae pulvinar ipsum, nec sodales est. Etiam eu eros faucibus, rutrum elit eu, suscipit enim. Quisque tincidunt felis sapien, et rutrum risus maximus vitae. Curabitur dictum pulvinar gravida.
                 </p> */}
             </section>
-            <News articles={articles}/>
-            <NewsLetter headingText={'Alătură-te comunității noastre și fii la curent cu cele mai noi oportunități de finanțare!'} />
+            <News 
+                title="Descoperă ultimele noutăți în materie de business și mediul online:" 
+                articles={articles}
+            />
+            <FeaturedProducts 
+                products={products}
+                title="Scalează-ți afacerea împreună cu<br /> produsele noastre digitale:"
+            />
+            <NewsLetter headingText={'Transformă-ți afacerea cu insight-uri exclusive și oferte speciale!'} />
         </>
     )
 }
@@ -173,8 +182,17 @@ export const getStaticProps = async (context: any) => {
         articles = articles.filter((item) => item.id != article.id )
     }
 
+    const collectionRef = query(collection(db, 'products'), where('active', '==', true), where('featured', '==', true), orderBy('lastUpdated', 'desc'), limit(8))
+    const collectionSnap = await getDocs(collectionRef)
+    
+    const products: Product[] = collectionSnap.docs.map((doc) => {
+      const { lastUpdated, ...data } = doc.data()
+  
+      return ({ id: doc.id, ...data } as Product)
+    })
+
     return { 
-        props: { article, articles }, 
+        props: { article, articles, products }, 
         revalidate: Number(process.env.REVALIDATE )
     }
 }

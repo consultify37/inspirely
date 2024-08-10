@@ -9,7 +9,7 @@ export default function TopBar() {
             <div className="flex flex-row items-center justify-between mx-4 py-2 md:mx-[80px] xl:mx-[140px] 2xl:mx-[276px]">
                 <Link href='tel:0727153317' className="flex sm:hidden flex-row items-center text-white text-[12px] md:text-[16px] mr-2 hover:scale-105 transition-all">
                     <Image src='/images/TopBar/phone.svg' width={10} height={10} alt="phone" className="w-[14px] md:w-[20px] mr-1 lg:ml-2 lg:mr-2"/>
-                    (0727) 153 317
+                    0771 059 932
                 </Link>
                 <Link href={`mailto:${email}`} className="flex sm:hidden  flex-row items-center text-white text-[12px] md:text-[16px] mr-2  hover:scale-105 transition-all">
                     <Image src='/images/TopBar/mail.svg' width={10} height={10} alt="phone" className="w-[14px] md:w-[20px] mr-1 lg:ml-2 lg:mr-2"/>
@@ -18,7 +18,7 @@ export default function TopBar() {
                 <div className="hidden sm:flex flex-row justify-between flex-wrap">
                     <Link href='tel:0727153317' className="flex flex-row items-center text-white text-[12px] md:text-[16px] mr-2 hover:scale-105 transition-all">
                         <Image src='/images/TopBar/phone.svg' width={10} height={10} alt="phone" className="w-[14px] md:w-[20px] mr-1 lg:ml-2 lg:mr-2"/>
-                        (0727) 153 317
+                        0771 059 932
                     </Link>
                     <Link href={`mailto:${email}`} className="flex flex-row items-center text-white text-[12px] md:text-[16px] mr-2  hover:scale-105 transition-all">
                         <Image src='/images/TopBar/mail.svg' width={10} height={10} alt="phone" className="w-[14px] md:w-[20px] mr-1 lg:ml-2 lg:mr-2"/>

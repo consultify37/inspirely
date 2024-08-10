@@ -10,26 +10,23 @@ export interface FAQInterface {
 
 const IntrebariStandard: FAQInterface[] = [
     {
-        id: 1, intrebari: 'Cum funcționează procesul de accesare a fondurilor europene?', raspuns: 'Procesul de accesare a fondurilor europene implică identificarea programelor de finanțare relevante, elaborarea și depunerea unui proiect în conformitate cu cerințele specifice, evaluarea și selecția acestuia de către autoritățile competente, și gestionarea finanțării și raportarea în timpul implementării proiectului.',
+        id: 1, intrebari: 'Ce servicii oferă Inspirely?', raspuns: 'Inspirely oferă soluții integrate pentru afaceri, inclusiv consultanță în accesarea fondurilor europene prin Consultify, strategii de marketing digital prin Socialy și soluții de creditare prin Creditfy. De asemenea, avem o platformă de e-commerce unde poți achiziționa produse și servicii digitale.',
     },
     {
-        id: 2, intrebari: 'Ce tipuri de proiecte sunt eligibile pentru finanțare europeană?', raspuns: 'Domeniile eligibile pentru finanțare europeană sunt diverse și acoperă inovarea, dezvoltarea regională, protecția mediului, cercetarea și dezvoltarea tehnologică, antreprenoriatul, educația, cultura, agricultura și multe altele. Fiecare program de finanțare are cerințe specifice și criterii de eligibilitate.',
+        id: 2, intrebari: 'Cum pot accesa fonduri europene prin Consultify?', raspuns: 'Consultify îți oferă suport complet pentru accesarea fondurilor europene. Începem cu o evaluare a eligibilității proiectului tău, pregătim documentația necesară și te ghidăm pe parcursul întregului proces pentru a maximiza șansele de obținere a finanțării.',
     },
     {
-        id: 3, intrebari: 'Care sunt criteriile de eligibilitate și termenele limită pentru aplicarea la fondurile europene?', raspuns: 'Criteriile de eligibilitate și termenele limită variază în funcție de programul de finanțare. Acestea pot include aspecte legate de beneficiar, proiect, buget, plan de implementare, impact social sau economic, durată proiect etc. Respectarea cerințelor și depunerea în timp util sunt esențiale.',
+        id: 3, intrebari: 'Ce tipuri de campanii de marketing poate crea Socialy pentru afacerea mea?', raspuns: 'Socialy dezvoltă campanii de marketing personalizate, inclusiv ads pe social media, branding, conținut organic și video marketing. Scopul nostru este să creștem vizibilitatea brandului tău și să generăm lead-uri și conversii.',
     },
     {
-        id: 4, intrebari: 'Care sunt avantajele de a lucra cu o firmă de consultanță în fonduri europene?', raspuns: 'Avantajele de a lucra cu o firmă de consultanță în fonduri europene includ acces la expertiză și experiență specializată, reducerea riscurilor și erorilor, economisirea timpului și resurselor, îmbunătățirea șanselor de succes și optimizarea rezultatelor proiectelor.',
+        id: 4, intrebari: 'Cum pot obține un credit avantajos prin Creditfy?', raspuns: 'Creditfy te ajută să găsești cele mai bune soluții de creditare adaptate nevoilor tale. Evaluăm situația financiară a afacerii tale, identificăm opțiunile de creditare potrivite și te asistăm pe tot parcursul procesului de aplicare și aprobare pentru a obține cele mai avantajoase condiții.',
     },
     {
-        id: 5, intrebari: 'Ce experiență și expertiză are firma dvs. în accesarea fondurilor europene?', raspuns: 'Firma noastră are o vastă experiență în accesarea fondurilor europene, cu un portofoliu divers de proiecte de succes în diferite sectoare. Echipa noastră de experți are cunoștințe solide în privința programelor de finanțare și poate oferi asistență completă în elaborarea și implementarea proiectelor.',
+        id: 5, intrebari: 'Ce produse și servicii digitale pot achiziționa prin platforma de e-commerce Inspirely?', raspuns: 'Platforma noastră de e-commerce oferă o gamă variată de produse și servicii digitale, de la contracte necesare desfășurării activității și ghiduri complete, până la servicii de consultanță și marketing digital. Toate produsele sunt selectate pentru a îndeplini cele mai înalte standarde de calitate.',
     },
     {
-        id: 6, intrebari: 'Care sunt costurile implicate în consultanța în fonduri europene?', raspuns: 'Costurile consultanței în fonduri europene variază în funcție de complexitatea proiectului și serviciile solicitate. Vom discuta în detaliu nevoile dvs. și vă vom prezenta o ofertă personalizată, transparentă și competitivă, în conformitate cu cerințele proiectului dvs.',
-    },
-    {
-        id: 7, intrebari: 'Cum pot stabili o întâlnire sau obține mai multe informații?', raspuns: 'Pentru a stabili o întâlnire sau obține mai multe informații despre serviciile noastre de consultanță în fonduri europene, vă rugăm să ne contactați prin intermediul formularului de contact de pe site-ul nostru, la adresa de email sau la numărul de telefon afișat. Vom fi încântați să răspundem la întrebările dvs. și să vă oferim suportul necesar!',
-    },
+        id: 6, intrebari: 'De ce să aleg Inspirely în locul altor furnizori de servicii?', raspuns: 'Inspirely se remarcă prin soluțiile integrate și personalizate oferite de echipele Consultify, Socialy și Creditfy. Combinăm expertiza în diverse domenii pentru a oferi suport complet afacerii tale. Ne angajăm să furnizăm rezultate măsurabile și să fim partenerul tău de încredere în fiecare etapă a dezvoltării afacerii.',
+    }
 ]
 
 type Props = {

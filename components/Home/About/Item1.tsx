@@ -9,23 +9,23 @@ const Item1About = () => {
           Despre Inspirely
         </h2>
         <p className="text-white font-base max-w-[600px] text-[16px] mt-5 z-[2] mb-8">
-          Ai nevoie de finanțare prin fonduri europene pentru proiectul tău? Consultify te poate ajuta! Suntem specializați în accesarea fondurilor europene pentru diverse proiecte, de la turism și tehnologie la agricultură durabilă și dezvoltare rurală.
+          Bine ați venit la Inspirely, platforma care reunește soluții complete pentru afacerea ta, sub un singur nume. Inspirely aduce împreună branduri de top precum Consultify, specializată în accesarea fondurilor europene, Socialy, o agenție de marketing de elită, și Creditfy, experți în brokeraj de credite. În plus, oferim un e-commerce cu produse și servicii digitale disponibile online.
         </p>
         <p className="text-white font-base max-w-[600px] text-[16px] mt-5 z-[2]">
-          La Inspirely, ne concentrăm pe nevoile tale specifice. Echipa noastră de experți îți oferă cele mai bune soluții de finanțare personalizate, indiferent de domeniul în care activezi. Accesarea fondurilor europene poate fi complicată, dar Consultify simplifică și eficientizează acest proces pentru tine!
+          La Noi credem în puterea colaborării și a soluțiilor integrate. La Inspirely, ne concentrăm pe nevoile și obiectivele tale specifice, oferindu-ți acces la resurse esențiale și expertiză de top. Fie că ai nevoie de consultanță pentru finanțare, strategii de marketing eficiente sau soluții de creditare, Inspirely este partenerul tău de încredere pentru a-ți dezvolta și crește afacerea.
         </p>
         <div className="flex gap-4 mt-6 z-[2]">
+          <Link
+            href="/despre"
+            className="py-3 bg-transparent text-onSecondary flex items-center rounded-[28.5px] border-2 font-semibold border-primary px-10 sm:px-12 transition-all hover:scale-[1.05]"
+          >
+            Află mai mult
+          </Link>
           <Link
             href="/blog"
             className="py-3 bg-tertiary text-onTertiary flex items-center font-semibold rounded-[28.5px] px-10 sm:px-12 transition-all hover:scale-[1.05]"
           >
             Noutăți
-          </Link>
-          <Link
-            href="/contact"
-            className="py-3 bg-transparent text-onSecondary flex items-center rounded-[28.5px] border-2 font-semibold border-primary px-10 sm:px-12 transition-all hover:scale-[1.05]"
-          >
-            Contact
           </Link>
         </div>
       </div>

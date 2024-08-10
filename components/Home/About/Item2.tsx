@@ -11,21 +11,21 @@ const Item2About = () => {
             <div className='w-full md:w-[48%] font-light'>
                 <h2 className='text-xl font-bold text-onSecondary z-[2] md:text-xl lg:text-2xl xl:text-4xl'>Misiunea noastră este:</h2>
                 <p className='text-white font-base text-[16px] mt-5 max-w-[560px]'>
-                Bine ai venit la Inspirely -  experți în accesarea fondurilor europene! Misiunea noastră este să sprijinim antreprenorii să acceseze fondurile europene și să-și transforme proiectele în realitate. 
-                Cu o echipă tânără și dedicată, suntem pregătiți să acceptăm provocări și să obținem cele mai bune rezultate pentru clienții noștri. Iată câteva dintre obiectivele noastre:
+                    Misiunea noastră la Inspirely este să oferim soluții integrate și personalizate pentru a sprijini afacerile în fiecare etapă a dezvoltării lor. Prin platforma noastră de e-commerce, oferim o gamă variată de produse și servicii digitale, disponibile pentru achiziție directă online, asigurând acces rapid la tot ceea ce ai nevoie pentru a-ți dezvolta afacerea eficient. 
+                    Reunind expertiza brandurilor Consultify, Socialy și Creditfy, ne dedicăm să furnizăm consultanță de top, strategii de marketing eficiente și soluții de creditare avantajoase.
                 </p>
                 <ul className='list-none mt-4'>
-                    <li className='flex gap-5 items-center'>
+                    <li className='flex gap-5 items-start'>
                         <span className='text-onTertiary px-[15px] w-8 h-8 rounded-[50%] bg-tertiary flex items-center justify-center font-semibold'>1</span>
-                        <p className='text-white text-[16.5px] font-normal'>Să fim lideri de piață în domeniul consultanței în accesarea fondurilor europene.</p>
+                        <p className='text-white text-[16.5px] font-normal'>Furnizarea de soluții complete și integrate pentru afaceri, acoperind consultanța în fonduri europene, marketing-ul și brokerajul in credite.</p>
                     </li>
-                    <li className='flex gap-5 items-center mt-4'>
+                    <li className='flex gap-5 items-start mt-4'>
                         <span className='text-onPrimary px-[15px] w-8 h-8 rounded-[50%] bg-primary flex items-center justify-center font-semibold'>2</span>
-                        <p className='text-white text-[16.5px] font-normal'>Să creștem gradul de satisfacție al clienților noștri la peste 90%.</p>
+                        <p className='text-white text-[16.5px] font-normal'>Maximizarea succesului clienților noștri prin strategii inovatoare și personalizate.</p>
                     </li>
-                    <li className='flex gap-5 items-center mt-4'>
+                    <li className='flex gap-5 items-start mt-4'>
                         <span className='text-onYellow px-[15px] w-8 h-8 rounded-[50%] bg-yellow flex items-center justify-center font-semibold'>3</span>
-                        <p className='text-white text-[16.5px] font-normal'>Să dezvoltăm parteneriate solide cu companii din diverse domenii.</p>
+                        <p className='text-white text-[16.5px] font-normal'>Dezvoltarea unor parteneriate puternice și durabile cu companii din diverse domenii.</p>
                     </li>
                 </ul>
                 <div className='flex gap-6 mt-6'>
