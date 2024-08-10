@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AccountLayout from '../../../components/AccountLayout'
 import ReCAPTCHA from 'react-google-recaptcha'
 import ReactLoading from 'react-loading'
@@ -6,16 +6,24 @@ import Link from 'next/link'
 import toast from 'react-hot-toast'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../../../firebase'
+import { useAuthContext } from '../../../context/AuthContext'
 
 const Sesizari = () => {
+	const { currentUser } = useAuthContext()
   const [captchaVerified, setCaptchaVerified] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [nume, setNume] = useState('')
+  const [nume, setNume] = useState(currentUser && currentUser.name ? currentUser.name : "")
   const [prenume, setPrenume] = useState('')
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(currentUser ? currentUser.email : "")
   const [message, setMessage] = useState('')
-  const [telefon, setTelefon] = useState('')
+  const [telefon, setTelefon] = useState(currentUser && currentUser.phone ? currentUser.phone : "")
   const [isChecked, setIsChecked] = useState(false)
+
+	useEffect(() => {
+		setNume(currentUser && currentUser.name ? currentUser.name : "")
+		setTelefon(currentUser && currentUser.phone ? currentUser.phone : "")
+		setEmail(currentUser && currentUser.email ? currentUser.email : "")
+	}, [currentUser])
 
   const upload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -64,7 +72,7 @@ const Sesizari = () => {
             onSubmit={upload}
         >
             <div className="flex w-full flex-col items-center sm:flex-row justify-between mb-6">
-                <div className="flex flex-col w-full md:w-[47%] sm:mr-2 mb-6 sm:mb-0">
+                <div className="flex flex-col w-full">
                     <span className="text-[14px] text-secondary mb-2 font-semibold">
                         Nume*
                     </span>
@@ -72,13 +80,14 @@ const Sesizari = () => {
                         required 
                         type="text"
                         name="Nume"
-                        className="rounded-xl w-full border-primary text-ms leading-6 border-2 p-[14px] outline-none" 
+                        className="rounded-xl w-full border-[#0F52FF] text-ms leading-6 border-2 p-[14px] outline-none" 
                         placeholder="ex: Popescu"
                         onChange={(e) => setNume(e.target.value)}
+                        disabled={true}
                         value={nume}
                     />
                 </div>
-                <div className="flex flex-col w-full md:w-[47%]">
+                {/* <div className="flex flex-col w-full md:w-[47%]">
                     <span className="text-[14px] text-secondary mb-2 font-semibold">
                         Prenume*
                     </span>
@@ -86,12 +95,12 @@ const Sesizari = () => {
                         required 
                         type="text"
                         name="Prenume"
-                        className="rounded-xl w-full border-primary text-ms leading-6 border-2 p-[14px] outline-none" 
+                        className="rounded-xl w-full border-[#0F52FF] text-ms leading-6 border-2 p-[14px] outline-none" 
                         placeholder="ex: Andrei"
                         onChange={(e) => setPrenume(e.target.value)}
                         value={prenume}
                     />
-                </div>
+                </div> */}
             </div>
             <div className="flex w-full flex-col items-center justify-between mb-6">
                 {/* <div className="flex flex-col w-full md:mr-2">
@@ -104,21 +113,35 @@ const Sesizari = () => {
                         name="Telefon"
                         required
                         onChange={(phone) => setTelefon(phone)}
-                        className="rounded-xl w-full border-primary text-ms leading-6 border-2 p-2 mb-6 outline-none"
+                        className="rounded-xl w-full border-[#0F52FF] text-ms leading-6 border-2 p-2 mb-6 outline-none"
                     />
                 </div> */}
                 <div className="flex flex-col w-full">
                     <span className="text-[14px] text-secondary mb-2 font-semibold">
-                        Email*
+                        Email
                     </span>
                     <input
                         required 
                         type="email"
                         name="Email"
-                        className="rounded-xl w-full border-primary text-ms leading-6 border-2 p-[14px] outline-none" 
+                        className="rounded-xl w-full border-[#0F52FF] text-ms leading-6 border-2 p-[14px] outline-none" 
                         placeholder="ex: exemplu@email.com"
                         onChange={(e) => setEmail(e.target.value)}
+												disabled={true}
                         value={email}
+                    />
+                </div>
+								<div className="flex flex-col w-full mt-6">
+                    <span className="text-[14px] text-secondary mb-2 font-semibold">
+                        Telefon
+                    </span>
+                    <input 
+                        type="tel"
+                        name="Telefon"
+                        className="rounded-xl w-full border-[#0F52FF] text-ms leading-6 border-2 p-[14px] outline-none" 
+                        placeholder="ex: 0770 123 456"
+                        onChange={(e) => setTelefon(e.target.value)}
+                        value={telefon}
                     />
                 </div>
             </div>
@@ -127,7 +150,7 @@ const Sesizari = () => {
                     Oferă-ne câteva detalii*
                 </span>
                 <textarea
-                    className="rounded-xl w-full bg-[#fff] h-48 border-primary text-ms border-2 p-[14px] outline-none" 
+                    className="rounded-xl w-full bg-[#fff] h-48 border-[#0F52FF] text-ms border-2 p-[14px] outline-none" 
                     placeholder="Scrie aici mesajul tău"
                     required
                     name="Detalii"
@@ -135,11 +158,11 @@ const Sesizari = () => {
                     value={message}
                 ></textarea>
             </div>
-            <div className="flex items-center justify-center mb-6 self-center ml-1">
+            <div className="flex items-center justify-center mb-6 self-center">
                 <input 
                     checked={isChecked} onChange={(e) => setIsChecked(!isChecked) }
-                    id="link-checkbox" type="checkbox" className="w-4 cursor-pointer h-4 text-secondary rounded border-[2px] bg-[#F2F4FF] border-primary outline-none" />
-                <label htmlFor="link-checkbox" className="ml-2 text-[14px] text-secondary font-bold">Accept <Link href="/termeni" target="_blank" className="text-secondary underline">Termenii și Condițiile.</Link></label>
+                    id="link-checkbox" type="checkbox" className="w-4 cursor-pointer h-4 text-secondary rounded border-[2px] bg-[#F2F4FF] border-[#0F52FF] outline-none" />
+                <label htmlFor="link-checkbox" className="ml-2 text-[14px] text-secondary font-bold">Accept <Link href="/termeni" target="_blank" className="text-[#260056] underline">Termenii și Condițiile.</Link></label>
             </div>
             <div className="flex flex-col md:flex-row justify-center w-full items-center">
                 <ReCAPTCHA
@@ -148,10 +171,10 @@ const Sesizari = () => {
                 />
                 { isLoading ? 
                     <div className='w-full flex items-center justify-center px-16 mt-4 md:mt-0'>
-                        <ReactLoading type="spin" color="#8717F8" width={32} height={32} />
+                        <ReactLoading type="spin" color="#0F52FF" width={32} height={32} />
                     </div> :
                     <button                      
-                        className='py-3 md:py-4 mt-4 md:mt-0 md:ml-4 bg-primary h-fit text-onPrimary rounded-[28px] font-semibold px-14 text-center text-[14px] w-full md:w-fit md:text-[16px] hover:scale-[1.05] transition-all'
+                        className='py-3 md:py-4 mt-4 md:mt-0 md:ml-4 bg-[#0F52FF] h-fit text-white rounded-[28px] font-semibold px-14 text-center text-[14px] w-full md:w-fit md:text-[16px] hover:scale-[1.05] transition-all'
                         type="submit"
                     >
                         Trimite!

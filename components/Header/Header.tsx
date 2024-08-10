@@ -169,14 +169,14 @@ const Header = () => {
               <li
                 className={`lg:hidden w-full lg:w-auto p-2 pl-16`}
               >
-                <Link href={ currentUser ? '/cont' : '/login' } className="font-semibold text-tertiary text-[16px] transition-all">
+                <Link href={ currentUser ? '/cont/comenzi' : '/login' } className="font-semibold text-tertiary text-[16px] transition-all">
                   { currentUser ? 'cont' : 'login' }
                 </Link>
               </li>
               <li
                 className='relative hidden lg:block'
               >
-                <Link href={ currentUser ? '/cont' : '/login' } className="py-[14px] pl-8 pr-16 bg-tertiary rounded-full text-onTertiary font-semibold hover:scale-105 transition-all">
+                <Link href={ currentUser ? '/cont/comenzi' : '/login' } className="py-[14px] pl-8 pr-16 bg-tertiary rounded-full text-onTertiary font-semibold hover:scale-105 transition-all">
                   { currentUser ? 'cont' : 'login' }
                 </Link>
                 <Link
@@ -214,7 +214,7 @@ const Header = () => {
               {/* <li className="ml-4 hidden cursor-pointer lg:flex">
                 {loggedIn ? (
                   <Link
-                    href="/cont"
+                    href="/cont/comenzi"
                     className="font-semibold bg-[#7000FF] p-[10px] px-8 pr-9 rounded-full text-[#fff] relative transition-all hover:scale-[1.05]"
                   >
                     Cont

@@ -1,15 +1,19 @@
-import { useContext, useState, createContext, useEffect } from "react"
+import { useContext, useState, createContext, useEffect, Dispatch, SetStateAction } from "react"
 import { Product } from "../types"
 import Cookies from "js-cookie"
 import toast from "react-hot-toast"
 import { collection, documentId, getDocs, query, where } from "firebase/firestore"
 import { db } from "../firebase"
+import Modal from "../components/shop/Modal"
 
 
 type CartContextType = {
   cart: Product[]
   handleAddProduct: (product: Product) => void
   handleRemoveProduct: (product: Product) => void
+  setSelectedProduct: Dispatch<SetStateAction<Product | null>>
+  setCoupon: Dispatch<any>
+  coupon: any
 }
 
 const Context = createContext<CartContextType | null>(null)
@@ -20,6 +24,8 @@ type Props = {
 
 export const CartContext = ({ children }: Props) => {
   const [cart, setCart] = useState< Product[] >([])
+  const [coupon, setCoupon] = useState< any | null >(null)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   const fetchCartProducts = async () => {
     const session_id = Cookies.get('cart_session_id')
@@ -74,7 +80,10 @@ export const CartContext = ({ children }: Props) => {
     const cartIds = [product, ...cart].map((product) => product.id )
 
     Cookies.set('cart', JSON.stringify(cartIds))
-    toast.success('Produs adăugat în coșul de cumpărături.')
+
+    setSelectedProduct(product)
+
+    // toast.success('Produs adăugat în coșul de cumpărături.')
   }
 
   const handleRemoveProduct = ( product: Product ) => {
@@ -88,9 +97,10 @@ export const CartContext = ({ children }: Props) => {
 
   return(
     <Context.Provider 
-      value={{ cart, handleAddProduct, handleRemoveProduct }}
+      value={{ cart, handleAddProduct, handleRemoveProduct, setSelectedProduct, coupon, setCoupon }}
     >
       {children}
+      <Modal product={selectedProduct}/>
     </Context.Provider>
   )
 }

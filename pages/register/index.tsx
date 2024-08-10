@@ -2,25 +2,30 @@ import React from 'react'
 import HowWorks from '../../components/shop/HowWorks'
 import RegisterForm from '../../components/register/RegisterForm'
 import Link from 'next/link'
+import Head from 'next/head'
 
 const items = [
   {
-    title: 'Ai totul într-un loc', 
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    title: 'Acces la Resurse și Servicii Exclusive', 
+    description: 'Prin crearea unui cont, vei avea acces la o gamă variată de servicii si produse digitale.💯'
   },
   {
-    title: 'Ai totul într-un loc', 
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    title: 'Management Simplificat al Comenzilor', 
+    description: 'Poți accesa istoricul achizițiilor, statusul comenzilor și detaliile de facturare oricând ai nevoie.🎉'
   },
   {
-    title: 'Ai totul într-un loc', 
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    title: 'Păstrarea Preferințelor și Personalizare', 
+    description: 'Contul tău păstrează preferințele și setările personale, oferindu-ți o experiență de utilizare personalizată.🙋🏼‍♀️'
   }
 ]
 
 const Register = () => {
   return (
     <div className='mt-40 px-7 md:px-[80px] xl:px-[140px] 2xl:px-[276px] mb-32'>
+      <Head>
+        <title>Inspirely | Înregistrare</title>
+      </Head>
+
       <HowWorks 
         items={items}
         title='De ce să îți creezi un cont nou?'

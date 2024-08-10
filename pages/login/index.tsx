@@ -52,7 +52,7 @@ const Login = () => {
     try{
       await signInWithEmailAndPassword(auth, email, password) 
       
-      router.replace('/cont')
+      router.replace('/cont/comenzi')
     } catch (e: any) {
       if ( e.code == 'auth/invalid-login-credentials' ) {
         toast.error('Email sau parolă invalide.')
@@ -69,7 +69,7 @@ const Login = () => {
   return (
     <div className='min-h-screen min-w-screen flex flex-col items-center justify-end'>
       <Head>
-        <title>Consultify | Login</title>
+        <title>Inspirely | Login</title>
       </Head>
       <div className='rounded-full p-4 bg-secondary border-white border-[10px]'>
         <Image 

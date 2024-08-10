@@ -66,7 +66,7 @@ const FeaturedProducts = ({ products, dark=false, title='Inspirely vine în ajut
         ref={carouselRef}
       >
         { products.map((item, index) => (
-          <div key={item.id!+index} className={ index == 0 ? ' ml-7 md:ml-[80px] xl:ml-[140px] 2xl:ml-[276px] ' : '' }>
+          <div key={item.id} className={ index == 0 ? ' ml-7 md:ml-[80px] xl:ml-[140px] 2xl:ml-[276px] ' : '' }>
             <ProductCard 
               cardRef={cardRef[index]}
               hasMargin={index == products.length - 1}

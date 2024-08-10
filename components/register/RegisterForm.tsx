@@ -47,7 +47,7 @@ const RegisterForm = () => {
 
       subscribe && await addDoc(collection(db, 'newsletter'), { website: process.env.SITE, email })
 
-      router.replace('/cont')
+      router.replace('/cont/comenzi')
     } catch (e: any) {
       if ( e.message ) {
         e.code == 'auth/email-already-in-use' ? toast.error('Email deja folosit.') : toast.error(e.message)
@@ -145,7 +145,7 @@ const RegisterForm = () => {
       >
         <div 
           className='w-[14px] h-[14px] border-secondary border-[1.5px] rounded-[4px] mr-2'
-          style={{ background: termsAccepted ? '#0F52FF' : 'transparent' }}
+          style={{ background: termsAccepted ? '#00103C' : 'transparent' }}
         ></div>
         <p className='text-secondary font-semibold text-[14px] pt-[2px]'>Sunt de acord cu <Link href='/termeni' target='_blank' className='text-blue-600 underline-offset-1 underline'>termenii și condițiile</Link></p>
       </div>
@@ -156,7 +156,7 @@ const RegisterForm = () => {
       >
         <div 
           className='w-[14px] min-w-[14px] h-[14px] border-secondary border-[1.5px] rounded-[4px] mr-2'
-          style={{ background: subscribe ? '#0F52FF' : 'transparent' }}
+          style={{ background: subscribe ? '#00103C' : 'transparent' }}
         ></div>
         <p className='text-secondary font-semibold text-[14px] -mt-[3px]'>Aboneaza-te la newsletter-ul nostru pentru a primi cele mai bune oferte!</p>
       </div>
