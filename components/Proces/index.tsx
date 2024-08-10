@@ -157,7 +157,7 @@ export default function Proces(){
                     />
                 </div>
                 <div className='relative mx-auto lg:mx-0'>
-                    <Image src='/images/About/Pag - despre noi - structura misiunea noastra.png' alt='Why-Us' className='relative rounded-[35px] z-[2] w-[400px]' width={350} height={400} placeholder='blur' blurDataURL='/images/About/Pag - despre noi - structura misiunea noastra.png' />
+                    <Image src='/images/About/Pag - despre noi - structura misiunea noastra.png' alt='Why-Us' className='relative rounded-[35px] z-[2] w-[400px]' width={768} height={768} />
                     <Image src='/images/About/triangle.svg' alt='triangle' width={164} height={164} className='z-[1] w-[120px] md:w-[164px] absolute -top-12 -left-16' /> 
                 </div>
                 <div className="w-full flex justify-center md:mt-16">

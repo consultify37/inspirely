@@ -33,14 +33,14 @@ export default function NewsLetter({ headingText }: NewsLetterProps) {
           <Image
             src="/images/news.png"
             alt="people-cheering"
-            className="relative top-[-90px] lg:top-[auto] w-[280px] lg:w-[380px] h-auto z-[2] rounded-3xl mb-10 md:mb-0"
+            className="relative top-[-90px] lg:top-[auto] w-[280px] lg:w-[300px] h-auto z-[2] rounded-3xl mb-10 md:mb-0"
             width={200}
             height={500}
           />
           <Image
             src="/images/Ellipse 23.svg"
             alt="people-cheering"
-            className="absolute right-[-30px] -top-4 xl:left-[280px] md:left-[220px] md:top-7 w-[130px] lg:w-[145px] h-auto z-2"
+            className="absolute right-[-30px] -top-4 xl:left-[220px] md:left-[180px] md:top-7 w-[130px] lg:w-[145px] h-auto z-2"
             width={200}
             height={500}
           />

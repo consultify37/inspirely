@@ -20,7 +20,7 @@ const WhyUs = ({ inverted=false }: Props) => {
         <div className='relative flex flex-wrap w-full lg:mt-10 justify-center items-center md:justify-between md:items-start gap-y-20'>
             {/* Left-Side */}
             <div className='relative mx-auto lg:mx-0'>
-                <Image src='/images/contact/pag - contact - structura calitati.png' alt='Why-Us' className='relative rounded-[35px] z-[2] w-[400px]' width={350} height={400} placeholder='blur' blurDataURL='/images/About/Pag - despre noi - structura misiunea noastra.png' />
+                <Image src='/images/contact/pag - contact - structura calitati.png' alt='Why-Us' className='relative rounded-[35px] z-[2] w-[400px]' width={768} height={768} />
                 <Image src='/images/About/Rectangle 392 (1).svg' alt='triangle' width={164} height={164} className='z-[10] absolute -bottom-6 -right-6 md:-bottom-12 md:-right-12 w-[80px] md:w-[110px]' />
             </div>
             {/* Right-Side */}
