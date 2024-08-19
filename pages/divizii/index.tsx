@@ -28,6 +28,7 @@ const Data = [
     onPrimary: '#fff',
     background: '#260056',
     logo: '/images/our logos/consultify.svg',
+    gif: '/images/divizii/Divizii - Consultify.gif',
     rating: 4.5
   },
   { 
@@ -42,6 +43,7 @@ const Data = [
     onPrimary: '#000',
     background: '#0E0E0E',
     logo: '/images/our logos/socialy.svg',
+    gif: '/images/divizii/Divizii - Socialy.gif',
     rating: 4.4
   },
   { 
@@ -56,6 +58,7 @@ const Data = [
     onPrimary: '#fff',
     background: '#00071E',
     logo: '/images/our logos/creditfy.svg',
+    gif: '/images/divizii/Divizii - Creditfy.gif',
     rating: 4.9
   },
 ]

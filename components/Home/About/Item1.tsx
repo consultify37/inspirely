@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
 const Item1About = () => {
   return (
@@ -37,6 +37,7 @@ const Item1About = () => {
         height={400}
       />
     </div>
-  );
-};
-export default Item1About;
+  )
+}
+
+export default Item1About

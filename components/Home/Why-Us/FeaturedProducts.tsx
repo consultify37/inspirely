@@ -40,7 +40,7 @@ const FeaturedProducts = ({ products, dark=false, title='Inspirely vine în ajut
           className="md:text-xl lg:text-2xl xl:text-[32px] text-primary font-bold pl-7 md:pl-[80px] xl:pl-[140px] 2xl:pl-[276px]"
           style={{color: dark ? 'white' : '#0F52FF' }}
         >
-          { title.split('<br />').map((item, index) => <>{item}{ index != title.split('<br />').length -1 ? <br key={index}/> : null}</>)}
+          { title.split('<br />').map((item, index) => <span key={index}>{item}{ index != title.split('<br />').length -1 ? <br/> : null}</span>)}
         </h2>
         <div className="flex flex-row pr-7 md:pr-[80px] xl:pr-[140px] 2xl:pr-[276px]">
           <span

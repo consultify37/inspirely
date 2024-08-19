@@ -17,6 +17,7 @@ type Props = {
     onPrimary: string
     background: string
     logo: string
+    gif: string
     rating: number
   }
 }
@@ -29,7 +30,7 @@ const DivisionBigCard = ({ data }: Props) => {
     >
       <div className='relative w-full rounded-t-[18px]'>
         <Image 
-          src='/images/divizii/8228a77d4e03af852a0d4c74e0d6a45c.jpeg'
+          src={data.gif}
           width={4096}
           height={2646}
           alt='.'
