@@ -53,6 +53,9 @@ const Footer = () => {
                         <li>
                             <Link href='/politica-cookie' className='font-semibold text-primary text-[16px]'>Politica Cookies</Link>
                         </li>
+                        <li>
+                            <Link href='/politica-confidentialitate' className='font-semibold text-primary text-[16px]'>Politică de Confidențialitate</Link>
+                        </li>
                     </ul>
                 </div>
                 <div className='flex flex-col gap-1 lg:max-w-[20%]'>
