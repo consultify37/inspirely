@@ -59,7 +59,7 @@ const Details = ({ city, companyIdentityNumber, companyName, county, email, setS
             >
               <div 
                 className='w-4 h-4 border-secondary border-[1.5px] rounded-[4px] mr-2'
-                style={{ background: invoicePreference == 'person' ? '#260056' : 'transparent' }}
+                style={{ background: invoicePreference == 'person' ? '#00103C' : 'transparent' }}
               ></div>
               <p className='text-secondary font-bold text-[14px]'>persoană fizică</p>
             </div>
@@ -70,7 +70,7 @@ const Details = ({ city, companyIdentityNumber, companyName, county, email, setS
             >
               <div 
                 className='w-4 h-4 border-secondary border-[1.5px] rounded-[4px] mr-2'
-                style={{ background: invoicePreference == 'company' ? '#260056' : 'transparent' }}
+                style={{ background: invoicePreference == 'company' ? '#00103C' : 'transparent' }}
               ></div>
               <p className='text-secondary font-bold text-[14px]'>persoană juridică</p>
             </div>
@@ -151,7 +151,7 @@ const Details = ({ city, companyIdentityNumber, companyName, county, email, setS
           >
             <div 
               className='w-4 h-4 border-secondary border-[1.5px] rounded-[4px] mr-2'
-              style={{ background: paymentMethod ? '#260056' : 'transparent' }}
+              style={{ background: paymentMethod ? '#00103C' : 'transparent' }}
             ></div>
             <p className='text-secondary font-bold text-[14px] lg:text-[16px] pt-[2px]'>Online cu card bancar</p>
           </div>
