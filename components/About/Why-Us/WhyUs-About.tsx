@@ -90,7 +90,7 @@ export default function WhyUsAbout(){
                         <p className="text-base font-light text-[#fff] ">{selectedProces.text}</p>
                     </div>
                 </div>
-                <Link href='/shop' className="mt-12 py-3 md:py-4 font-semibold bg-primary text-onPrimary rounded-[28.5px] px-12 flex items-center justify-center w-fit mx-auto transition-all hover:scale-[1.05]">
+                <Link href='/shop' className="mt-12 hidden py-3 md:py-4 font-semibold bg-primary text-onPrimary rounded-[28.5px] px-12 flex items-center justify-center w-fit mx-auto transition-all hover:scale-[1.05]">
                     Vezi produsele noastre!
                 </Link>
             </div>

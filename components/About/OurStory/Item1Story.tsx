@@ -23,7 +23,7 @@ const Item1Story = () => {
             Noutăți
           </Link>
           <Link
-            href="/shop"
+            href="#"
             className="py-3 text-[14px] lg:text-[16px] bg-transparent font-semibold text-secondary flex items-center rounded-[28.5px] border-2 border-primary px-12 hover:scale-[1.05] transition-all"
           >
             Shop
