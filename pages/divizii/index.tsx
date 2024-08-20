@@ -134,10 +134,10 @@ const Divisions = ({ products, articles }: Props) => {
           ))}
         </div>
         <div className='h-8 lg:h-12'></div>
-        <FeaturedProducts 
+        {/* <FeaturedProducts 
           products={products}
           title='Descoperă soluțiile digitale oferite de<br /> Inspirely pentru afacerea ta:'
-        />
+        /> */}
         <News
           articles={articles}
           title='Rămâi informat cu ultimele noutăți<br /> din lumea afacerilor și nu numai:'

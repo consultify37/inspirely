@@ -34,9 +34,9 @@ export default function Home({ slides, products, articles }: Props) {
       <div id="proces"></div>
       <Proces />
       <WhyUs />
-      <FeaturedProducts 
+      {/* <FeaturedProducts 
         products={products}
-      />
+      /> */}
       <News
          articles={articles}
       />

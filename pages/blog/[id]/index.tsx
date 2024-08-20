@@ -136,10 +136,10 @@ const BlogPost = ({ article, articles, products }: Props) => {
                 title="Descoperă ultimele noutăți în materie de business și mediul online:" 
                 articles={articles}
             />
-            <FeaturedProducts 
+            {/* <FeaturedProducts 
                 products={products}
                 title="Scalează-ți afacerea împreună cu<br /> produsele noastre digitale:"
-            />
+            /> */}
             <NewsLetter headingText={'Transformă-ți afacerea cu insight-uri exclusive și oferte speciale!'} />
         </>
     )

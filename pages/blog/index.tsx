@@ -200,9 +200,9 @@ export default function Testimoniale({ articles: initialArticles, categories, pr
                 isLoading={isLoading}
             />
         </section>
-      <FeaturedProducts 
+      {/* <FeaturedProducts 
         products={products}
-      />
+      /> */}
       <NewsLetter headingText={'Alătură-te comunității Inspirely! Abonează-te la newsletter pentru a primi cele mai bune soluții pentru afacerea ta.'} />
     </>
   )

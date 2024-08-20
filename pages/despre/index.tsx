@@ -29,10 +29,10 @@ const About = ({ articles, products }: Props) => {
             <WhyUsAbout />
             {/* <Partners /> */}
             <FAQAbout />
-            <FeaturedProducts 
+            {/* <FeaturedProducts 
                 products={products}
                 title="Scalează-ți afacerea împreună cu<br /> produsele noastre digitale:"
-            />
+            /> */}
             <News 
                 articles={articles}
                 title="Explorează ultimele tendințe<br /> din lumea afacerilor împreună cu noi:"

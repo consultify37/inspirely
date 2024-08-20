@@ -88,7 +88,7 @@ const Header = () => {
             <div className="flex flex-row items-center lg:hidden z-[99]">
               <Link
                 href='/shop/cart'
-                className="p-[14px] lg:p-[16px] rounded-full bg-tertiary hover:scale-105 transition-all -mr-2 lg:-mr-0"
+                className="p-[14px] hidden lg:p-[16px] rounded-full bg-tertiary hover:scale-105 transition-all -mr-2 lg:-mr-0"
               >
                 <div className="relative">
                   <Image 
@@ -152,21 +152,28 @@ const Header = () => {
                   blog
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={`w-full lg:w-auto p-2 pl-16 border-b-[1px] border-white lg:pl-18 lg:pl-0 lg:p-0 lg:border-0`}
               >
                 <Link href="/shop" className="font-semibold text-white text-[16px] hover:text-tertiary transition-all">
                   shop
                 </Link>
+              </li> */}
+              <li
+                className='relative hidden lg:block hover:scale-105 transition-all'
+              >
+                <Link href='/contact' className="py-[14px] px-8 bg-tertiary rounded-full text-onTertiary font-semibold">
+                  contactează-ne
+                </Link>
               </li>
               <li
-                className={`w-full lg:w-auto p-2 pl-16 border-b-[1px] border-white lg:pl-18 lg:pl-0 lg:p-0 lg:border-0`}
+                className={`w-full lg:w-aut lg:hidden p-2 pl-16 border-b-[1px] border-transparent lg:pl-18 lg:pl-0 lg:p-0 lg:border-0`}
               >
                 <Link href="/contact" className="font-semibold text-white text-[16px] hover:text-tertiary transition-all">
                   contact
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={`lg:hidden w-full lg:w-auto p-2 pl-16`}
               >
                 <Link href={ currentUser ? '/cont/comenzi' : '/login' } className="font-semibold text-tertiary text-[16px] transition-all">
@@ -196,7 +203,7 @@ const Header = () => {
                       </div>
                     }
                 </Link>
-              </li>
+              </li> */}
               {/* <li
                 className={`${
                   toggle

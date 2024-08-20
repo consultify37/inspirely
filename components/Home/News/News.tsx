@@ -24,7 +24,7 @@ const News = ({ articles, title='Descoperă ultimele noutăți<br /> în materie
         <section className='flex flex-col gap-5 items-center mt-12 md:mt-24 justify-center w-full'>
             <div className='flex justify-between w-full items-center'>
                 <h2 className='md:text-xl lg:text-2xl xl:text-[32px] text-primary font-bold pl-7 md:pl-[80px] xl:pl-[140px] 2xl:pl-[276px]'>
-                    { title.split('<br />').map((item, index) => <>{item}{ index != title.split('<br />').length -1 ? <br key={index}/> : null}</>)}
+                    { title.split('<br />').map((item, index) => <span key={index}>{item}{ index != title.split('<br />').length -1 ? <br /> : null}</span>)}
                 </h2>
                 <div className='flex flex-row pr-7 md:pr-[80px] xl:pr-[140px] 2xl:pr-[276px]'>
                     <span className='bg-primary w-[43px] h-[43px] flex items-center justify-center rounded-full cursor-pointer mr-2 transition-all hover:scale-[1.05]' onClick={() => backCarousel(setScrollAmount, carouselRef, cardRef)}>
