@@ -88,7 +88,7 @@ export default function Proces(){
                     <p className="text-[14px] md:text-base text-[#fff] ">{selectedProces.text}</p>
                 </div>
             </div>
-            <Link href='/shop' className="mt-8 md:mt-24 py-4 md:py-4 text-[15px] md:text-base font-semibold bg-primary text-onPrimary rounded-[28.5px] px-12 flex items-center justify-center w-fit mx-auto transition-all hover:scale-[1.05]">
+            <Link href='/shop' className="mt-8 hidden md:mt-24 py-4 md:py-4 text-[15px] md:text-base font-semibold bg-primary text-onPrimary rounded-[28.5px] px-12 flex items-center justify-center w-fit mx-auto transition-all hover:scale-[1.05]">
                 Vezi produsele noastre!
             </Link>
 
