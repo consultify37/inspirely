@@ -8,6 +8,7 @@ import Cookies from "js-cookie"
 import { usePathname } from "next/navigation"
 import { useAuthContext } from "../../context/AuthContext"
 import { useCartContext } from "../../context/CartContext"
+import FixedLeft from "./FixedLeft"
 
 const Header = () => {
   const { cart } = useCartContext()
@@ -70,7 +71,7 @@ const Header = () => {
         <Head>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        {/* <FixedLeft /> */}
+        <FixedLeft />
         <nav
           role="main"
           className="fixed z-[999] top-14 w-[calc(100%-12px*2)] lg:w-[calc(100%-60px*2)] xl:w-[calc(100%-40px*2)] 2xl:w-[calc(100%-166px*2)] mx-3 lg:mx-[60px] xl:mx-[40px] 2xl:mx-[166px]"
