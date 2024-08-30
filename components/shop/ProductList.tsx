@@ -89,6 +89,7 @@ const ProductList = ({ products }: Props) => {
               key={item.id} 
               hasMargin={false}
               product={item}
+              isCategory={true}
               className='w-full sm:max-w-[320px] sm:mx-0'
             />
           ))
