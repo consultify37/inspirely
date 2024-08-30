@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const formatter = (node: any, index: number) => {
-
+	console.log(node)
   if (node.type === 'tag' && node.name === 'img') {
 		return (
 			<Image 
@@ -53,7 +53,6 @@ export const formatter = (node: any, index: number) => {
 			</h1>
 		)
   } else if (node.type === 'tag' && node.name === 'h3') {     
-		console.log(node)
 		return (
 			<h3
 				key={index}
@@ -88,6 +87,10 @@ export const formatter = (node: any, index: number) => {
 							}
 							{ node.type === 'text' &&
 								node.data
+							}
+							{
+								node.type === 'tag' && node.name == 'span' &&
+								node.children[0].data 
 							}
 						</span>
 				))}

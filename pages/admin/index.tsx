@@ -114,6 +114,10 @@ const Admin = ({ article, users, banners }: Props) => {
     fetchOrders()
   }, [month, year, fetchOrders])
 
+  if ( !currentUser?.roles ) {
+    return <AdminLayout>{null}</AdminLayout>
+  }
+
   return (
     <AdminLayout color='white'>
       <div className='flex flex-row'>

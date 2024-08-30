@@ -21,7 +21,6 @@ const AdminLayout = ({ children, color='admin-background' }: Props) => {
   const [isLoadingSignout, setIsLoadingSignout] = useState(false)
 
   useEffect(() => {
-
     if ( !currentUser || !currentUser.roles || (!currentUser!.roles.includes("editor") && !currentUser!.roles.includes("admin") ) ) {
       toast.error('Nu aveți permisii suficiente să accesați această pagină.', { duration: 3000 })
       router.push('/admin/login')
