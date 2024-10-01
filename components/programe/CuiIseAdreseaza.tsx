@@ -7,7 +7,7 @@ type Props = {
   title: string
   description: string
 }
-
+//
 const CuiIseAdreseaza = ({ title, description }: Props) => {
   return (
     <div className='flex flex-col md:flex-row justify-center md:justify-between items-center mt-12 md:mt-32 w-full'>
