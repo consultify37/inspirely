@@ -88,7 +88,7 @@ const ProductPage = ({ product, featuredProducts }: Props) => {
             className='text-[14px] text-secondary lg:text-[16px] self-start pt-1 lg:pt-[6px]'
             text={product.description2}
           />
-        <div className='mb-8 lg:mb-16'></div>
+        <div className='mb-8 lg:mb-16'></div>  
         {/* <p className='text-[14px] text-secondary mt-2 lg:mt-6 lg:text-[16px] self-start mb-8 lg:mb-16'>{ product.description2 }</p> */}
         
         <HowWorks 
