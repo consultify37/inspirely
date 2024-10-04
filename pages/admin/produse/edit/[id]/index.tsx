@@ -89,7 +89,11 @@ const Edit = ({ categories, product }: Props) => {
       if ( typeof image != 'string' )  {
         try {
           newImage = await uploadFile(image!)
-          oldImage?.file && await deleteFile(oldImage?.file)
+          
+          try {
+            oldImage?.file && await deleteFile(oldImage?.file)
+          } catch (e) {}
+
         } catch (e) {
           throw e
         }
@@ -104,8 +108,11 @@ const Edit = ({ categories, product }: Props) => {
 
           newFileUrl = await getDownloadURL(reference)
 
-          oldFile && oldFile.file && await deleteObject(ref(storage, oldFile?.file.fileName))
-        } catch (e) {
+          try {
+            oldFile && oldFile.file && await deleteObject(ref(storage, oldFile?.file.fileName))
+          } catch (e) {}
+          
+        } catch (e: any) {
           throw e
         }
       } else {
