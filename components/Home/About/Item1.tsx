@@ -22,7 +22,7 @@ const Item1About = () => {
             Află mai mult
           </Link>
           <Link
-            href="/blog"
+            href="https://consultify.ro/blog"
             className="py-3 bg-tertiary text-onTertiary flex items-center font-semibold rounded-[28.5px] px-10 sm:px-12 transition-all hover:scale-[1.05]"
           >
             Noutăți

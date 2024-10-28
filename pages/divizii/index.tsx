@@ -138,10 +138,10 @@ const Divisions = ({ products, articles }: Props) => {
           products={products}
           title='Descoperă soluțiile digitale oferite de<br /> Inspirely pentru afacerea ta:'
         /> */}
-        <News
+        {/* <News
           articles={articles}
           title='Rămâi informat cu ultimele noutăți<br /> din lumea afacerilor și nu numai:'
-        />
+        /> */}
         <NewsLetter 
           headingText='Alătură-te comunității Inspirely și ai acces la resurse valoroase pentru afacerea ta!'
         />

@@ -25,7 +25,7 @@ const Footer = () => {
                             <Link href='/divizii' className='font-semibold text-primary text-[16px]'>Divizii</Link>
                         </li>
                         <li>
-                            <Link href='/blog' className='font-semibold text-primary text-[16px]'>Blog</Link>
+                            <Link href='https://consultify.ro/blog' className='font-semibold text-primary text-[16px]'>Blog</Link>
                         </li>
                         {/* <li>
                             <Link href='/shop' className='font-semibold text-primary text-[16px]'>Shop</Link>

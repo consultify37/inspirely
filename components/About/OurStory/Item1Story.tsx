@@ -17,7 +17,7 @@ const Item1Story = () => {
         </p>
         <div className="flex gap-4 mt-6 md:mt-8">
           <Link
-            href="/blog" 
+            href="https://consultify.ro/blog" 
             className="bg-tertiary py-3 text-[14px] lg:text-[16px] text-onTertiary font-semibold rounded-[28.5px] px-12 hover:scale-[1.05] transition-all"
           >
             Noutăți

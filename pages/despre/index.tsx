@@ -33,10 +33,10 @@ const About = ({ articles, products }: Props) => {
                 products={products}
                 title="Scalează-ți afacerea împreună cu<br /> produsele noastre digitale:"
             /> */}
-            <News 
+            {/* <News 
                 articles={articles}
                 title="Explorează ultimele tendințe<br /> din lumea afacerilor împreună cu noi:"
-            />
+            /> */}
             <NewsLetter headingText={'Transformă-ți afacerea cu insight-uri exclusive și oferte speciale!'} />
         </>
     )

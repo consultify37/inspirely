@@ -37,9 +37,9 @@ export default function Home({ slides, products, articles }: Props) {
       {/* <FeaturedProducts 
         products={products}
       /> */}
-      <News
+      {/* <News
          articles={articles}
-      />
+      /> */}
       <NewsLetter headingText={'Alătură-te comunității Inspirely! Abonează-te la newsletter pentru a primi cele mai bune soluții pentru afacerea ta.'} />
     </>
   )
